@@ -1,0 +1,427 @@
+@import "tailwindcss";
+
+
+
+:root {
+
+  /* Primary colors */
+
+  --primary: #f98513;
+  --white: #ffffff;
+  --black: #000000;
+  --surface-primary: #ffa146;
+
+
+  /* Secondary colors */
+  --secondary: #4319e6;
+  --surface-secondary: #a4b935;
+  --gray-secondary: #959494;
+  --darkgray: #3b506a;
+
+}
+
+
+::selection {
+  background-color: #f98513;
+  color: black;
+}
+
+
+body {
+  background-color: var(--black);
+  color: var(--white)
+}
+
+
+@layer components {
+
+  .primary-btn {
+    @apply px-5 py-2 rounded-lg bg-(--primary) text-(--white) font-medium tracking-tighter cursor-pointer hover:bg-(--surface-primary) transition
+  }
+
+  .input {
+    @apply w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-2 focus:border-orange-500 transition
+  }
+
+  /* .stylish-btn {
+    @apply cursor-pointer items-center justify-center border align-middle select-none font-sans font-medium text-center duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none text-sm py-2 px-4 shadow-sm hover:shadow-md bg-amber-500 hover:bg-warning-light relative bg-linear-to-b from-orange-500 to-orange-600 border-orange-600 text-stone-50 rounded-lg hover:bg-linear-to-b hover:from-orange-600 hover:to-orange-600 hover:border-orange-600 after:absolute after:inset-0 after:rounded-[inherit] after:box-shadow after:shadow-[inset_0_1px_0px_rgba(255,255,255,0.35),inset_0_-2px_0px_rgba(0,0,0,0.18)] after:pointer-events-none transition antialiased
+  } */
+
+}
+
+
+
+/* Company logo animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+
+
+/* Input */
+.input-glass {
+  @apply w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent backdrop-blur-md transition;
+}
+
+
+
+
+
+
+
+
+/* ===== GRID BACKGROUND ANIMATION ===== */
+@keyframes gridMove {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+
+  50% {
+    background-position: 30px 30px, 30px 30px;
+  }
+
+  100% {
+    background-position: 0 0, 0 0;
+  }
+}
+
+.animate-gridMove {
+  animation: gridMove 60s linear infinite;
+}
+
+/* ===== CENTER ORANGE RADIAL GLOW ===== */
+@keyframes glowMove {
+
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  25% {
+    transform: translate(20px, -10px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(-15px, 15px) scale(1.1);
+  }
+
+  75% {
+    transform: translate(10px, -20px) scale(0.95);
+  }
+}
+
+.animate-glowMove {
+  animation: glowMove 20s ease-in-out infinite;
+}
+
+/* ===== LEFT BOTTOM GLOW ===== */
+@keyframes glowMove2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(15px, -10px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(-20px, 10px) scale(0.95);
+  }
+
+  75% {
+    transform: translate(5px, -15px) scale(1.1);
+  }
+}
+
+.animate-glowMove2 {
+  animation: glowMove2 25s ease-in-out infinite;
+}
+
+/* ===== RIGHT BOTTOM GLOW ===== */
+@keyframes glowMove3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(-10px, 5px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(15px, -10px) scale(1.1);
+  }
+
+  75% {
+    transform: translate(-5px, 10px) scale(0.95);
+  }
+}
+
+.animate-glowMove3 {
+  animation: glowMove3 22s ease-in-out infinite;
+}
+
+/* ===== GRID BACKGROUND ANIMATION ===== */
+@keyframes gridMove {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+
+  50% {
+    background-position: 30px 30px, 30px 30px;
+  }
+
+  100% {
+    background-position: 0 0, 0 0;
+  }
+}
+
+.animate-gridMove {
+  animation: gridMove 60s linear infinite;
+}
+
+/* ===== CENTER ORANGE RADIAL GLOW ===== */
+@keyframes glowMove {
+
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  25% {
+    transform: translate(20px, -10px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(-15px, 15px) scale(1.1);
+  }
+
+  75% {
+    transform: translate(10px, -20px) scale(0.95);
+  }
+}
+
+.animate-glowMove {
+  animation: glowMove 20s ease-in-out infinite;
+}
+
+/* ===== LEFT BOTTOM GLOW ===== */
+@keyframes glowMove2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(15px, -10px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(-20px, 10px) scale(0.95);
+  }
+
+  75% {
+    transform: translate(5px, -15px) scale(1.1);
+  }
+}
+
+.animate-glowMove2 {
+  animation: glowMove2 25s ease-in-out infinite;
+}
+
+/* ===== RIGHT BOTTOM GLOW ===== */
+@keyframes glowMove3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(-10px, 5px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(15px, -10px) scale(1.1);
+  }
+
+  75% {
+    transform: translate(-5px, 10px) scale(0.95);
+  }
+}
+
+.animate-glowMove3 {
+  animation: glowMove3 22s ease-in-out infinite;
+}
+
+
+
+
+
+
+/* For glassic header */
+
+.glass-header {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.glass-mega {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+
+
+
+
+/* ===== TIPTAP BASE STYLES ===== */
+
+.tiptap-content {
+  line-height: 1.6;
+}
+
+.tiptap-content p {
+  margin: 0.5rem 0;
+  min-height: 1.6em;
+}
+
+.tiptap-content p:empty::before,
+.tiptap-content p:has(> br:only-child)::before {
+  content: "\00a0";
+}
+
+/* Headings */
+.tiptap-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+.tiptap-content h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.tiptap-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.75rem 0;
+}
+
+.tiptap-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.tiptap-content h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.tiptap-content h6 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Lists */
+.tiptap-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.tiptap-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.tiptap-content li {
+  margin: 0.25rem 0;
+}
+
+/* Blockquote */
+.tiptap-content blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 1rem;
+  color: #4b5563;
+  margin: 1rem 0;
+}
+
+
+/* ===== TIPTAP EDITOR FIXES ===== */
+
+.tiptap-content {
+  cursor: text;
+}
+
+/* ProseMirror main editor element */
+.tiptap-content .ProseMirror {
+  outline: none;
+  min-height: 200px;
+  caret-color: #ffffff;
+}
+
+/* Remove focus outline */
+.tiptap-content .ProseMirror:focus {
+  outline: none;
+}
+
+/* Show blinking cursor clearly */
+.tiptap-content .ProseMirror-focused {
+  caret-color: #ffffff;
+}
+
+/* Optional: placeholder styling */
+.tiptap-content .ProseMirror p.is-editor-empty:first-child::before {
+  content: "Start typing...";
+  color: #9ca3af;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+
+
+
+
+
+/* General Brand & Manufacturing Authority
+
+3-Axis CNC Vertical Machine Center
+
+CNC Horizontal Machine Center
+
+CNC Vertical Lathe Machine
+
+CNC Slant Bed Lathe Machine
+
+Conversational Milling & Lathe Machines
+
+Surface Grinder Machine
+
+Clamping Vise & Tool Holders
+
+CNC Controller Spare Parts
+
+Robotics & Automation Solutions
+
+Injection Mold & Hydraulic Press Machines */

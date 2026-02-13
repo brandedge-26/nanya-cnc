@@ -1,0 +1,6 @@
+google callbacl url
+http://localhost:5510/api/auth/google/callback
+
+
+google authorize origing
+http://localhost:3000
