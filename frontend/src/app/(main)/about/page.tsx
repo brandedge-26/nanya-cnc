@@ -1,13 +1,18 @@
-// app/about/page.tsx
 import Image from "next/image";
-import { Cpu, ShieldCheck, Zap } from "lucide-react";
+import { Cpu, ShieldCheck, Zap, Wrench, GraduationCap, Settings, Package, Headphones } from "lucide-react";
 import OurJourney from "@/components/about/OurJourney";
+import YouTubeEmbed from "@/components/home/YoutubeCard";
+import Link from "next/link";
+
+
 
 export const metadata = {
-    title: "About Us | NANYA CNC – Precision Engineering & Innovation",
+    title: "About Us | NANYA CNC – Engineering Excellence Since 2010",
     description:
-        "NANYA CNC is a global leader in precision CNC manufacturing, driven by innovation, quality, and smart manufacturing solutions.",
+        "Founded in 2010, NANYA CNC is a globally trusted manufacturer of high-precision CNC machine solutions including Vertical Machining Centers, Horizontal Machining Centers, and advanced CNC Lathe machines.",
 };
+
+
 
 const AboutPage = () => {
     return (
@@ -35,25 +40,27 @@ const AboutPage = () => {
                 {/* HERO CONTENT */}
                 <div className="relative z-10 max-w-5xl px-6 text-center">
 
+                    <p className="text-sm md:text-base uppercase tracking-widest text-orange-500 mb-4 font-medium">
+                        About Us — NANYA CNC
+                    </p>
+
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tighter leading-tight">
-                        Our <span className="text-orange-500">Story</span>
+                        Engineering <span className="text-orange-500">Excellence</span> Since 2010
                     </h1>
 
                     <p className="mt-6 text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                        NANYA CNC was founded with a clear and powerful vision: to make
-                        world-class CNC technology accessible to industries across the
-                        globe. What began as a modest operation has evolved into an
-                        ultra-modern manufacturing enterprise equipped with advanced
-                        production facilities and strict quality control systems.
+                        Founded in 2010, NANYA CNC is a globally trusted manufacturer of high-precision CNC machine solutions.
+                        We specialize in Vertical Machining Centers, Horizontal Machining Centers, and advanced CNC Lathe machines,
+                        delivering superior accuracy, durability, and performance.
                     </p>
 
                     <div className="mt-10 flex justify-center gap-4">
                         <button className="cursor-pointer px-8 py-3 rounded-full bg-orange-500 text-black font-medium hover:bg-orange-500/80 transition">
-                            Contact Us
+                            <Link href="/get-quote">Contact Us</Link>
                         </button>
 
                         <button className="cursor-pointer px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition">
-                            Our Services
+                            <Link href="/products">Our Products</Link>
                         </button>
                     </div>
 
@@ -62,6 +69,8 @@ const AboutPage = () => {
             </section>
 
 
+            {/* Youtube placeholder */}
+            <YouTubeEmbed videoid="o2J_jdKBLI4" />
 
 
             {/* WHY WE EXIST (ZIGZAG BLOCKS) */}
@@ -71,20 +80,18 @@ const AboutPage = () => {
                 <div className="md:flex md:items-center md:gap-12">
                     <div className="md:w-1/2 order‑2 md:order‑1">
                         <h2 className="text-2xl font-semibold text-(--primary) mb-4 font-serif">
-                            Our Mission
+                            Our Story
                         </h2>
                         <p className="text-gray-300 leading-relaxed max-sm:mb-10 max-md:mb-5">
-                            Our mission at NANYA CNC is to empower manufacturers across the globe to reach their full potential with superior CNC solutions.
-                            We combine precision engineering with cutting-edge technology to deliver machines that are both reliable and highly productive.
-                            Through smart manufacturing and AI-driven automation, we help our partners reduce downtime and increase efficiency.
-                            We are committed to providing sustainable, innovative solutions that adapt to the evolving needs of modern industries.
-                            Our goal is to enable manufacturers to consistently achieve excellence, transforming challenges into growth opportunities.
+                            NANYA CNC was founded with a clear and powerful vision: to make world-class CNC technology accessible to industries across the globe.
+                            What began as a modest operation has evolved into an ultra-modern manufacturing enterprise equipped with advanced production facilities and strict quality control systems.
+                            From our advanced manufacturing facilities in China with strong Taiwanese engineering expertise, we design machines that meet the highest international quality standards.
                         </p>
                     </div>
                     <div className="md:w-1/2 relative h-60 md:h-96 order‑1 md:order‑2">
                         <Image
                             src="/about/mission-img.jpg"
-                            alt="Our Mission"
+                            alt="Our Story - NANYA CNC Manufacturing"
                             fill
                             className="object-cover rounded-2xl shadow-lg"
                         />
@@ -96,20 +103,19 @@ const AboutPage = () => {
                 <div className="md:flex md:items-center md:gap-12 md:flex-row-reverse">
                     <div className="md:w-1/2">
                         <h2 className="text-2xl font-semibold text-orange-500 mb-4 font-serif">
-                            Our Vision
+                            Quality & Innovation
                         </h2>
                         <p className="text-gray-300 leading-relaxed max-sm:mb-10 max-md:mb-5">
-                            At NANYA CNC, our vision is to set the global benchmark in CNC manufacturing by integrating cutting-edge innovation with unmatched precision.
-                            We leverage intelligent automation and smart manufacturing technologies to elevate industrial productivity worldwide.
-                            Our solutions are designed to empower every partner to optimize efficiency and maximize operational excellence.
-                            By continuously advancing engineering practices, we aim to redefine what manufacturers can achieve.
-                            Ultimately, we strive to create a world where precision, reliability, and innovation drive every production process.
+                            Quality is not just a standard at NANYA CNC — it is a commitment.
+                            Every machine manufactured at our facility undergoes rigorous testing and inspection procedures to ensure compliance with the highest international standards.
+                            Driven by innovation, we integrate smart technologies, AI-based monitoring, and industrial automation to help manufacturers achieve higher productivity and long-term operational excellence.
+                            Today, NANYA CNC proudly serves customers in 50+ countries worldwide, supporting industries with reliable, innovative, and cost-effective CNC solutions.
                         </p>
                     </div>
                     <div className="md:w-1/2 relative h-60 md:h-96">
                         <Image
                             src="/about/vision-img.jpg"
-                            alt="Our Vision"
+                            alt="Quality & Innovation - NANYA CNC"
                             fill
                             className="object-cover rounded-2xl shadow-lg"
                         />
@@ -119,8 +125,51 @@ const AboutPage = () => {
             </section>
 
 
-            <OurJourney/>
+            {/* OUR SERVICES */}
+            <section className="py-20 bg-black">
+                <div className="max-w-6xl mx-auto px-6 text-center">
+                    <h2 className="text-3xl font-semibold text-orange-500 mb-4 font-serif">
+                        Our Services
+                    </h2>
+                    <p className="text-gray-400 max-w-2xl mx-auto mb-12">
+                        NANYA CNC provides complete lifecycle support to ensure optimal machine performance and maximum uptime.
+                    </p>
 
+                    {/* Updated Container: Flex use kiya hai taake 2nd line center ho jaye */}
+                    <div className="flex flex-wrap justify-center gap-3">
+                        {[
+                            { title: "Installation & Commissioning", icon: Wrench },
+                            { title: "Operator & Technical Training", icon: GraduationCap },
+                            { title: "Preventive & Corrective Maintenance", icon: Settings },
+                            { title: "Genuine Spare Parts Supply", icon: Package },
+                            { title: "Technical Support & Troubleshooting", icon: Headphones },
+                        ].map((item) => {
+                            const Icon = item.icon;
+                            return (
+                                <div
+                                    key={item.title}
+                                    className="bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-lg flex flex-col items-center text-center transition duration-300 w-full md:w-[calc(33.33%-12px)] lg:w-[calc(32%)] min-w-62.5"
+                                >
+                                    <div className="mb-4 w-14 h-14 flex items-center justify-center bg-orange-500/10 rounded-xl">
+                                        <Icon size={24} className="text-orange-500" strokeWidth={1.5} />
+                                    </div>
+                                    <h3 className=" font-semibold text-white leading-snug">
+                                        {item.title}
+                                    </h3>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    <p className="mt-10 text-gray-400 text-sm max-w-xl mx-auto">
+                        Our customer-centric service approach ensures long-term reliability, efficiency, and peace of mind for our partners.
+                    </p>
+                </div>
+            </section>
+
+
+
+            <OurJourney />
 
 
             {/* WHAT WE STAND FOR */}

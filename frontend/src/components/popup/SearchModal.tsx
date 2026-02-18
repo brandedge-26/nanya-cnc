@@ -3,27 +3,8 @@
 import { useState, useEffect } from "react";
 import { X, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
-import api from "@/config/axios";
+import { useProductStore, Product } from "@/store/productStore";
 import Image from "next/image";
-
-
-
-interface ProductImage {
-    url: string;
-    altText: string;
-    isPrimary: boolean;
-}
-
-
-
-interface Product {
-    _id: string;
-    slug: string;
-    modelName: string;
-    tagline?: string;
-    category?: string;
-    images: ProductImage[];
-}
 
 
 
@@ -36,26 +17,14 @@ const SearchModal = ({ onClose }: SearchModalProps) => {
 
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState("");
-    const [products, setProducts] = useState<Product[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-    const [loading, setLoading] = useState(true);
 
+    const { products, isLoading: loading, fetchProducts } = useProductStore();
 
     // Fetch all products on mount
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const res = await api.get("/products/all");
-                setProducts(res.data.data);
-            } catch (err) {
-                console.error("Failed to fetch products:", err);
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchProducts();
-    }, []);
+    }, [fetchProducts]);
 
 
     // Filter products based on search query
@@ -75,11 +44,11 @@ const SearchModal = ({ onClose }: SearchModalProps) => {
         );
 
         setFilteredProducts(filtered);
-        
+
     }, [searchQuery, products]);
 
     const handleProductClick = (slug: string) => {
-        router.push(`/product-test/${slug}`);
+        router.push(`/products/${slug}`);
         onClose();
     };
 
@@ -94,11 +63,13 @@ const SearchModal = ({ onClose }: SearchModalProps) => {
 
     return (
         <>
+
             {/* Backdrop with animation */}
             <div
                 className="fixed inset-0 bg-black/60 backdrop-blur-sm z-100 animate-fadeIn"
                 onClick={onClose}
             />
+
 
             {/* Modal with slide-down animation */}
             <div className="fixed top-0 left-0 right-0 z-101 animate-slideDown">
@@ -141,7 +112,7 @@ const SearchModal = ({ onClose }: SearchModalProps) => {
                                 <div className="divide-y divide-white/10">
                                     {filteredProducts.map((product) => {
                                         const primaryImage = product.images?.find(img => img.isPrimary) || product.images?.[0];
-                                        
+
                                         return (
                                             <div
                                                 key={product._id}

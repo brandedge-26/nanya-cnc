@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import { User } from "../models/User.js";
 import { generateAccessToken, generateRefreshToken } from "../utils/token.js";
 import { sendEmail } from "../config/nodemailer.js";
+import { ENV } from "../config/env.js";
 
 
 
@@ -328,11 +329,127 @@ const adminChangePasswordController = async (req, res, next) => {
 
 
 
+// GOOGLE CLIENT ID CONTROLLER
+const googleClientIdController = async (req, res, next) => {
+    try {
+        return res.status(200).json({
+            success: true,
+            clientId: ENV.GOOGLE_CLIENT_ID
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
+
+
+// GOOGLE ONE TAP LOGIN CONTROLLER
+const googleOneTapLoginController = async (req, res, next) => {
+    try {
+        const { credential } = req.body;
+
+        if (!credential) {
+            return res.status(400).json({
+                success: false,
+                message: "Google credential is required"
+            });
+        }
+
+        const response = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${credential}`);
+        const payload = await response.json();
+
+        if (!response.ok || payload.error_description || payload.aud !== ENV.GOOGLE_CLIENT_ID) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid Google credential"
+            });
+        }
+
+        if (!payload.email || payload.email_verified !== "true") {
+            return res.status(401).json({
+                success: false,
+                message: "Google account email is not verified"
+            });
+        }
+
+        let user = await User.findOne({
+            provider: "google",
+            providerId: payload.sub
+        });
+
+        if (!user) {
+            user = await User.findOne({ email: payload.email.toLowerCase() });
+
+            if (!user) {
+                user = await User.create({
+                    name: payload.name || payload.email.split("@")[0],
+                    email: payload.email.toLowerCase(),
+                    provider: "google",
+                    providerId: payload.sub,
+                    avatar: payload.picture || null,
+                    password: null,
+                    role: "user"
+                });
+
+                await sendEmail({
+                    name: user.name,
+                    email: user.email,
+                    subject: "Welcome to NANYA CNC",
+                });
+            } else {
+                user.provider = "google";
+                user.providerId = payload.sub;
+
+                if (!user.avatar && payload.picture) {
+                    user.avatar = payload.picture;
+                }
+
+                await user.save();
+
+                await sendEmail({
+                    name: user.name,
+                    email: user.email,
+                    subject: "Welcome back to NANYA CNC",
+                });
+            }
+        }
+
+        const accessToken = generateAccessToken({ id: user._id });
+        const refreshToken = generateRefreshToken({ id: user._id });
+
+        res.cookie("refreshToken", refreshToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "strict",
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: "Google login successful",
+            accessToken,
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                avatar: user.avatar,
+                role: user.role
+            }
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
+
+
 export {
     checkAuthController,
     registerController,
     loginController,
     logoutController,
     adminLoginController,
-    adminChangePasswordController
+    adminChangePasswordController,
+    googleClientIdController,
+    googleOneTapLoginController
 };

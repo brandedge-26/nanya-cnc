@@ -39,7 +39,7 @@ const createBlogController = async (req, res, next) => {
 const getAllBlogsController = async (req, res, next) => {
     try {
 
-        const blogs = await Blog.find().sort({ createdAt: -1 });
+        const blogs = await Blog.find();
 
         return res.status(200).json({
             success: true,

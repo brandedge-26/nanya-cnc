@@ -1,5 +1,5 @@
 import { useAuthStore } from '@/store/authStore';
-import { User } from '@/store/userStore';
+import type { User } from '@/store/authStore';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -17,7 +17,7 @@ const UserAvatar = ({ user }: UserAvatarProps) => {
 
 
     // extract name first letters
-    const getInitialName = (name: string) => {
+    const getInitialName = (name?: string) => {
         if (!name) return "";
 
         const words = name.trim().split(" ");
@@ -41,7 +41,7 @@ const UserAvatar = ({ user }: UserAvatarProps) => {
                     {user?.avatar ? (
                         <Image
                             src={user?.avatar || "/default-avatar.png"}
-                            alt={user?.name}
+                            alt={user?.name || "User avatar"}
                             className="h-full w-full object-cover"
                             width={40}
                             height={40}

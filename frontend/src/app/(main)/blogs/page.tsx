@@ -47,7 +47,7 @@ const BlogPage = () => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 bg-[radial-gradient(circle,rgba(255,140,0,0.2),transparent_70%)] blur-3xl"></div>
 
                 <div className="relative max-w-4xl mx-auto text-center px-5">
-                    <h1 className="text-4xl md:text-5xl font-bold">Our <span className="text-orange-500">Blogs</span></h1>
+                    <h1 className="text-4xl md:text-5xl font-bold font-serif">Our <span className="text-orange-500">Blogs</span></h1>
                     <p className="text-gray-400 mt-4 text-lg max-w-2xl mx-auto">
                         Insights, updates, and expert knowledge from the world of CNC manufacturing and precision engineering.
                     </p>

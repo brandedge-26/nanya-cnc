@@ -1,4 +1,12 @@
+"use client";
+
+
+import { useRouter } from "next/navigation";
+
 const HeroSection = () => {
+
+  const router = useRouter();
+
   return (<>
 
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-black">
@@ -34,13 +42,19 @@ const HeroSection = () => {
         </p>
 
         <div className="mt-10 flex justify-center gap-4">
-          <button className="cursor-pointer px-8 py-3 rounded-full bg-orange-500 text-black font-medium hover:bg-orange-500/80 transition">
-            Contact Us
+
+          <button 
+            onClick={() => router.push("/get-quote")}
+            className="cursor-pointer px-8 py-3 rounded-full bg-orange-500 text-black font-medium hover:bg-orange-500/80 transition">
+            Get Quote
           </button>
 
-          <button className="cursor-pointer px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition">
-            Our Services
+          <button 
+            onClick={() => router.push("/products")}
+            className="cursor-pointer px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition">
+            Our Products
           </button>
+
         </div>
 
       </div>

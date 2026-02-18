@@ -1,5 +1,4 @@
-import IndustrBanner from "@/components/industry/IndustrBanner";
-import IndustryProducts from "@/components/industry/IndustryProductCard";
+import IndustryDetailClient from "@/components/industry/IndustryDetailClient";
 
 export const metadata = {
     title: "Trusted Industries | NANYA CNC – Engineering Excellence Since 2010",
@@ -8,16 +7,11 @@ export const metadata = {
 };
 
 
-const IndutryDetail = () => {
+const IndustryDetail = async ({ params }: { params: Promise<{ name: string }> }) => {
 
-    return (<>
-    
-        <div className="px-5 mt-10">
-            <IndustrBanner/>
-            <IndustryProducts/>
-        </div>
+    const { name } = await params;
 
-    </>);
+    return <IndustryDetailClient slug={name} />;
 }
 
-export default IndutryDetail;
+export default IndustryDetail;

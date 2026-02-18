@@ -36,9 +36,9 @@ export default function MainLayout({
                     <UtilityBar />
                     <Header />
                     {children}
-                </Provider>
+                </Provider> 
 
-                <script src="//code.tidio.co/q0rbikpfrmby33jbvifhmfwmwzvqgys4.js" async></script>
+                {/* <script src="//code.tidio.co/q0rbikpfrmby33jbvifhmfwmwzvqgys4.js" async></script> */}
 
                 {/* Footer */}
                 <Footer />

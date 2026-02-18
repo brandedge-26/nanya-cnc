@@ -12,7 +12,7 @@ interface ApiErrorResponse {
 
 
 // User state
-interface User {
+export interface User {
     _id?: string;
     name?: string;
     email?: string;
@@ -52,6 +52,8 @@ interface AuthState {
     checkAuth: () => Promise<void>;
     setUser: (user: User) => void;
     loginWithGoogle: () => void;
+    getGoogleClientId: () => Promise<string | null>;
+    loginWithGoogleOneTap: (credential: string) => Promise<boolean>;
     register: (userData: User) => Promise<boolean>;
     login: (userData: User) => Promise<boolean>;
     adminLogin: (data: AdminState) => Promise<boolean>;
@@ -118,6 +120,43 @@ export const useAuthStore = create<AuthState>((set) => ({
         window.location.href = "http://localhost:5510/api/auth/google"
     },
 
+
+
+    // fetch google client id (for One Tap)
+    getGoogleClientId: async (): Promise<string | null> => {
+        try {
+
+            const response = await api.get("/auth/google/client-id");
+            const { success, clientId } = response.data;
+
+            if (success && clientId) {
+                return clientId;
+            }
+
+            return null;
+        } catch {
+            return null;
+        }
+    },
+
+
+    // one tap login
+    loginWithGoogleOneTap: async (credential: string): Promise<boolean> => {
+        try {
+            const response = await api.post("/auth/google/one-tap", { credential });
+            const { success, accessToken, user } = response.data;
+
+            if (!success || !accessToken || !user) {
+                return false;
+            }
+
+            localStorage.setItem("accessToken", accessToken);
+            set({ user, isAuthenticated: true });
+            return true;
+        } catch {
+            return false;
+        }
+    },
 
 
     // register action

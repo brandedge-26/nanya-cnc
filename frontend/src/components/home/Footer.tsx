@@ -83,8 +83,8 @@ const Footer = () => {
                             <ul className="space-y-3 text-gray-300 text-sm">
                                 <li><Link href="/about" className="hover:text-white">About Us</Link></li>
                                 <li><Link href="#" className="hover:text-white">Careers</Link></li>
-                                <li><Link href="#" className="hover:text-white">Privacy Policy</Link></li>
-                                <li><Link href="#" className="hover:text-white">Terms & Conditions</Link></li>
+                                <li><Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>
+                                <li><Link href="/terms" className="hover:text-white">Terms & Conditions</Link></li>
                             </ul>
                         </div>
 
@@ -125,7 +125,8 @@ const Footer = () => {
 
                     {/* Bottom Bar */}
                     <div className="mt-12 pt-6 border-t border-white/20 flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm">
-                        <span>© {new Date().getFullYear()} Wefab. All rights reserved.</span>
+                        <span>© {new Date().getFullYear()} <span className="text-orange-500">NANYA CNCN</span>. All rights reserved.</span>
+                        <span>Developed by <Link href="https://brandedgecreations.io/" target="_blank" className="font-bold text-orange-500">BrandEdge Creations</Link></span>
                         <span>Built for Precision Manufacturing</span>
                     </div>
 

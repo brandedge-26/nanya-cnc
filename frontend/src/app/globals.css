@@ -425,3 +425,8 @@ CNC Controller Spare Parts
 Robotics & Automation Solutions
 
 Injection Mold & Hydraulic Press Machines */
+
+
+.custom-zoom-window {
+  z-index: 9999 !important;
+}

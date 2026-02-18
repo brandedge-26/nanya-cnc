@@ -1,80 +1,60 @@
 "use client";
 
-
-import Image from "next/image";
 import Link from "next/link";
-
-
-
-const cards = [
-    {
-        title: "Google deve",
-        description:
-            "Google is a global technology company focused on search, cloud computing, and artificial intelligence.",
-        image: "/01-NYE.jpg",
-    },
-    {
-        title: "Microsoft",
-        description:
-            "Microsoft develops software, cloud solutions, and enterprise tools that power businesses worldwide.",
-        image: "/02-NYE.jpg",
-    },
-    {
-        title: "Amazon",
-        description:
-            "Amazon is a leading e-commerce and cloud services provider with a strong focus on innovation.",
-        image: "/03-NYE.jpg",
-    },
-    {
-        title: "Tesla",
-        description:
-            "Tesla designs electric vehicles and clean energy solutions with cutting-edge technology.",
-        image: "/01-NYE.jpg",
-    },
-];
+import { industries } from "@/data/nidustry-products";
+import { ArrowRight } from "lucide-react";
 
 
 const IndustryCard = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-5 py-16">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                {cards.map((card, index) => (
-                    <div
-                        key={index}
-                        className="bg-white rounded-xl border border-gray-200 transition overflow-hidden"
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {industries.map((industry) => (
+                    <Link
+                        key={industry.slug}
+                        href={`/industry/${industry.slug}`}
+                        className="group relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 p-6 transition-all duration-300 hover:bg-white/10 hover:border-orange-500/30 hover:shadow-lg hover:shadow-orange-500/5"
                     >
-                        <Image
-                            src={card.image}
-                            alt={card.title}
-                            width={200}
-                            height={200}
-                            className="w-full h-44 object-cover"
-                        />
 
-                        <div className="p-5">
-                            <h3 className="text-lg font-semibold">
-                                {card.title}
-                            </h3>
-
-                            <p className="text-sm text-gray-600 mt-2">
-                                {card.description}
-                            </p>
-
-                            <div className="mt-4">
-                                <Link href={{
-                                    pathname: `/industry/${encodeURIComponent(card.title.toLowerCase())}`,
-                                    query: { img: card.image }
-                                }} className="primary-btn hover:underline cursor-pointer">
-                                    Read More →
-                                </Link>
-                            </div>
-
+                        {/* Icon */}
+                        <div className="mb-4">
+                            <industry.icon size={50} className="text-gray-500" />
                         </div>
-                    </div>
-                ))}
 
+                        {/* Title */}
+                        <h3 className="text-white text-xl font-semibold mb-2 group-hover:text-orange-400 transition-colors">
+                            {industry.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                            {industry.description}
+                        </p>
+
+                        {/* Machine types preview */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                            {industry.machineTypes.slice(0, 2).map((mt, idx) => (
+                                <span
+                                    key={idx}
+                                    className="text-xs px-3 py-1 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20"
+                                >
+                                    {mt.name.length > 25 ? mt.name.slice(0, 25) + "..." : mt.name}
+                                </span>
+                            ))}
+                        </div>
+
+                        {/* Arrow */}
+                        <div className="flex items-center gap-2 text-sm text-orange-500 group-hover:gap-3 transition-all">
+                            Explore
+                            <ArrowRight className="w-4 h-4" />
+                        </div>
+
+                        {/* Glow effect */}
+                        <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </Link>
+                ))}
             </div>
         </div>
     );

@@ -53,6 +53,13 @@ app.use(passport.initialize());
 
 
 
+// API HEALTH
+app.get("/", (req, res) => {
+    res.send("API Working...");
+});
+
+
+
 // API ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/industry", industryRoutes);

@@ -4,6 +4,7 @@
 import { ModalProvider } from "@/context/ModalContext";
 import { AuthProvider } from "./AuthProvider";
 import { Toaster } from "react-hot-toast";
+import GoogleOneTap from "@/components/auth/GoogleOneTap";
 
 
 export default function Provider({
@@ -23,6 +24,7 @@ export default function Provider({
                     }
                 }}
             />
+            <GoogleOneTap />
             <ModalProvider>
                 {children}
             </ModalProvider>

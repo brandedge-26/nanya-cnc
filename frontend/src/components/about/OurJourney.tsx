@@ -6,26 +6,26 @@ const OurJourney = () => {
     const milestones = [
         {
             year: "2010",
-            title: "Founded",
-            desc: "Started manufacturing in Wuxi, China with a vision for precision and quality.",
+            title: "Foundation",
+            desc: "NANYA CNC was founded and began manufacturing operations in Wuxi, Jiangsu, China, with strong technical collaboration and influence from Taiwanese engineering expertise.",
             icon: Calendar,
         },
         {
             year: "2014",
             title: "Global Expansion",
-            desc: "First international exports, marking the start of our worldwide reach.",
+            desc: "Achieved our first international exports, providing customized CNC solutions to overseas clients and marking the beginning of our global footprint.",
             icon: TrendingUp,
         },
         {
             year: "2018",
             title: "Innovation Milestone",
-            desc: "Launched 5-axis machining centers and advanced CNC solutions.",
+            desc: "Introduced multiple advanced machine solutions, including Horizontal, Vertical, Slant-Bed, and Flat-Bed Lathe machines, along with the development of 5-Axis Machining Centers.",
             icon: Rocket,
         },
         {
             year: "2025",
-            title: "Global Presence",
-            desc: "Serving 50+ countries with AI-driven CNC automation solutions.",
+            title: "Global Presence & Smart Manufacturing",
+            desc: "Serving customers in 50+ countries worldwide, integrated AI-driven technologies into CNC machines, offering real-time monitoring, smart diagnostics, and robotic integration.",
             icon: Globe,
         },
     ];

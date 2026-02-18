@@ -15,45 +15,45 @@
 // const productMegaMenu = [
 //     {
 //         title: "Vertical Machine Center",
-//         path: "/product-test?category=CNC+Vertical+Machine+Center",
+//         path: "/products?category=CNC+Vertical+Machine+Center",
 //         items: [
-//             { label: "NANO-X8", path: "/product-test/nano-x8", series: "ECO-LINE 3 Axis" },
-//             { label: "NANO-X10", path: "/product-test/nano-x10", series: "ECO-LINE 3 Axis" },
-//             { label: "NV-855", path: "/product-test/nv-855", series: "HIGH SPEED 3 Axis" },
-//             { label: "NV-1165", path: "/product-test/nv-1165", series: "HIGH SPEED 3 Axis" },
-//             { label: "NV-1370", path: "/product-test/nv-1370", series: "HIGH SPEED 3 Axis" },
+//             { label: "NANO-X8", path: "/products/nano-x8", series: "ECO-LINE 3 Axis" },
+//             { label: "NANO-X10", path: "/products/nano-x10", series: "ECO-LINE 3 Axis" },
+//             { label: "NV-855", path: "/products/nv-855", series: "HIGH SPEED 3 Axis" },
+//             { label: "NV-1165", path: "/products/nv-1165", series: "HIGH SPEED 3 Axis" },
+//             { label: "NV-1370", path: "/products/nv-1370", series: "HIGH SPEED 3 Axis" },
 //         ],
 //     },
 //     {
 //         title: "Horizontal Machine Center",
-//         path: "/product-test?category=CNC+Horizontal+Machine+Center",
+//         path: "/products?category=CNC+Horizontal+Machine+Center",
 //         items: [
-//             { label: "HMC-630A", path: "/product-test/hmc-630a", series: "HMC Series" },
-//             { label: "HMC-800A", path: "/product-test/hmc-800a", series: "HMC Series" },
+//             { label: "HMC-630A", path: "/products/hmc-630a", series: "HMC Series" },
+//             { label: "HMC-800A", path: "/products/hmc-800a", series: "HMC Series" },
 //         ],
 //     },
 //     {
 //         title: "Slant-Bed Lathe",
-//         path: "/product-test?category=CNC+Slant-Bed+Lathe+Machine",
+//         path: "/products?category=CNC+Slant-Bed+Lathe+Machine",
 //         items: [
-//             { label: "3015S", path: "/product-test/3015s", series: "3015 Series" },
-//             { label: "3015M", path: "/product-test/3015m", series: "3015 Series" },
-//             { label: "3015L", path: "/product-test/3015l", series: "3015 Series" },
-//             { label: "3605S", path: "/product-test/3605s", series: "3605 Series" },
-//             { label: "3605M", path: "/product-test/3605m", series: "3605 Series" },
+//             { label: "3015S", path: "/products/3015s", series: "3015 Series" },
+//             { label: "3015M", path: "/products/3015m", series: "3015 Series" },
+//             { label: "3015L", path: "/products/3015l", series: "3015 Series" },
+//             { label: "3605S", path: "/products/3605s", series: "3605 Series" },
+//             { label: "3605M", path: "/products/3605m", series: "3605 Series" },
 //         ],
 //     },
 //     {
 //         title: "Vertical Lathe",
-//         path: "/product-test?category=CNC+Vertical+Lathe+Machine",
+//         path: "/products?category=CNC+Vertical+Lathe+Machine",
 //         items: [
-//             { label: "VLT-550", path: "/product-test/vlt-550", series: "VLT Series" },
-//             { label: "VLT-750", path: "/product-test/vlt-750", series: "VLT Series" },
+//             { label: "VLT-550", path: "/products/vlt-550", series: "VLT Series" },
+//             { label: "VLT-750", path: "/products/vlt-750", series: "VLT Series" },
 //         ],
 //     },
 //     {
 //         title: "Double Column",
-//         path: "/product-test?category=CNC+Double+Column+Machine+Center",
+//         path: "/products?category=CNC+Double+Column+Machine+Center",
 //         items: [],
 //     },
 // ];
@@ -139,7 +139,7 @@
 
 
 //                         <div className="relative group">
-//                             <Link href="/product-test" className={`flex items-center gap-1 py-4 cursor-pointer ${pathname.startsWith("/product-test") ? "text-orange-500" : ""}`}>
+//                             <Link href="/products" className={`flex items-center gap-1 py-4 cursor-pointer ${pathname.startsWith("/products") ? "text-orange-500" : ""}`}>
 //                                 Products <ChevronDown size={16} />
 //                             </Link>
 
@@ -175,7 +175,7 @@
 
 //                                 {/* View All Products Link */}
 //                                 <div className="mt-6 pt-4 border-t border-white/10 text-center">
-//                                     <Link href="/product-test" className="text-sm text-orange-500 hover:text-orange-400 transition-colors">
+//                                     <Link href="/products" className="text-sm text-orange-500 hover:text-orange-400 transition-colors">
 //                                         View All Products →
 //                                     </Link>
 //                                 </div>
@@ -296,7 +296,7 @@
 //                                     </div>
 //                                 ))}
 
-//                                 <Link href="/product-test" className="block text-sm text-orange-500 font-medium pt-2" onClick={() => setMenuOpen(false)}>
+//                                 <Link href="/products" className="block text-sm text-orange-500 font-medium pt-2" onClick={() => setMenuOpen(false)}>
 //                                     View All Products →
 //                                 </Link>
 //                             </div>
@@ -402,51 +402,58 @@ import SearchModal from "../popup/SearchModal";
 const productMegaMenu = [
     {
         title: "Vertical Machine Center",
-        path: "/product-test?category=CNC+Vertical+Machine+Center",
+        path: "/products?category=CNC+Vertical+Machine+Center",
         items: [
-            { label: "NANO-X8", path: "/product-test/nano-x8", series: "ECO-LINE 3 Axis" },
-            { label: "NANO-X10", path: "/product-test/nano-x10", series: "ECO-LINE 3 Axis" },
-            { label: "NV-855", path: "/product-test/nv-855", series: "HIGH SPEED 3 Axis" },
-            { label: "NV-1165", path: "/product-test/nv-1165", series: "HIGH SPEED 3 Axis" },
-            { label: "NV-1370", path: "/product-test/nv-1370", series: "HIGH SPEED 3 Axis" },
+            { label: "NANO-X8", path: "/products/nano-x8", series: "ECO-LINE 3 Axis" },
+            { label: "NANO-X10", path: "/products/nano-x10", series: "ECO-LINE 3 Axis" },
+            { label: "NV-855", path: "/products/nv-855", series: "HIGH SPEED 3 Axis" },
+            { label: "NV-1165", path: "/products/nv-1165", series: "HIGH SPEED 3 Axis" },
+            { label: "NV-1370", path: "/products/nv-1370", series: "HIGH SPEED 3 Axis" },
         ],
     },
     {
         title: "Horizontal Machine Center",
-        path: "/product-test?category=CNC+Horizontal+Machine+Center",
+        path: "/products?category=CNC+Horizontal+Machine+Center",
         items: [
-            { label: "HMC-630A", path: "/product-test/hmc-630a", series: "HMC Series" },
-            { label: "HMC-800A", path: "/product-test/hmc-800a", series: "HMC Series" },
+            { label: "HMC-630A", path: "/products/hmc-630a", series: "HMC Series" },
+            { label: "HMC-800A", path: "/products/hmc-800a", series: "HMC Series" },
         ],
     },
     {
         title: "Slant-Bed Lathe",
-        path: "/product-test?category=CNC+Slant-Bed+Lathe+Machine",
+        path: "/products?category=CNC+Slant-Bed+Lathe+Machine",
         items: [
-            { label: "3015S", path: "/product-test/3015s", series: "3015 Series" },
-            { label: "3015M", path: "/product-test/3015m", series: "3015 Series" },
-            { label: "3015L", path: "/product-test/3015l", series: "3015 Series" },
-            { label: "3605S", path: "/product-test/3605s", series: "3605 Series" },
-            { label: "3605M", path: "/product-test/3605m", series: "3605 Series" },
+            { label: "3015S", path: "/products/3015s", series: "3015 Series" },
+            { label: "3015M", path: "/products/3015m", series: "3015 Series" },
+            { label: "3015L", path: "/products/3015l", series: "3015 Series" },
+            { label: "3605S", path: "/products/3605s", series: "3605 Series" },
+            { label: "3605M", path: "/products/3605m", series: "3605 Series" },
         ],
     },
     {
         title: "Vertical Lathe",
-        path: "/product-test?category=CNC+Vertical+Lathe+Machine",
+        path: "/products?category=CNC+Vertical+Lathe+Machine",
         items: [
-            { label: "VLT-550", path: "/product-test/vlt-550", series: "VLT Series" },
-            { label: "VLT-750", path: "/product-test/vlt-750", series: "VLT Series" },
+            { label: "VLT-550", path: "/products/vlt-550", series: "VLT Series" },
+            { label: "VLT-750", path: "/products/vlt-750", series: "VLT Series" },
         ],
     },
     {
         title: "Double Column",
-        path: "/product-test?category=CNC+Double+Column+Machine+Center",
+        path: "/products?category=CNC+Double+Column+Machine+Center",
         items: [],
     },
 ];
 
 
-const industryMenu = ["Industry 1", "Industry 2"];
+const industryMenu = [
+    { label: "Automotive", slug: "automotive" },
+    { label: "Aerospace & Defense", slug: "aerospace-defense" },
+    { label: "Medical & Healthcare", slug: "medical-healthcare" },
+    { label: "Mold, Die & Engineering", slug: "mold-die-engineering" },
+    { label: "Electronics & Semiconductors", slug: "electronics-semiconductors" },
+    { label: "Robotics & Smart Manufacturing", slug: "robotics-smart-manufacturing" },
+];
 
 const Header = () => {
 
@@ -455,6 +462,7 @@ const Header = () => {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [productsOpen, setProductsOpen] = useState(false);
+    const [equipmentsOpen, setEquipmentsOpen] = useState(false);
     const [industryOpen, setIndustryOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
 
@@ -493,7 +501,7 @@ const Header = () => {
 
                             {/* ================= Products Mega Menu ================= */}
                             <div className="relative group">
-                                <Link href="/product-test" className={`flex items-center gap-1 py-4 cursor-pointer ${pathname.startsWith("/product-test") ? "text-orange-500" : ""}`}>
+                                <Link href="/products" className={`flex items-center gap-1 py-4 cursor-pointer ${pathname.startsWith("/products") ? "text-orange-500" : ""}`}>
                                     Products <ChevronDown size={16} />
                                 </Link>
 
@@ -529,7 +537,7 @@ const Header = () => {
 
                                     {/* View All Products Link */}
                                     <div className="mt-6 pt-4 border-t border-white/10 text-center">
-                                        <Link href="/product-test" className="text-sm text-orange-500 hover:text-orange-400 transition-colors">
+                                        <Link href="/products" className="text-sm text-orange-500 hover:text-orange-400 transition-colors">
                                             View All Products →
                                         </Link>
                                     </div>
@@ -539,24 +547,57 @@ const Header = () => {
 
 
 
+                            {/* ================= Equipments Dropdown ================= */}
+                            <div className="relative group">
+                                <Link href="/equipments" className={`flex items-center gap-1 py-4 cursor-pointer ${pathname.startsWith("/equipments") ? "text-orange-500" : ""}`}>
+                                    Equipments <ChevronDown size={16} />
+                                </Link>
+
+                                <div className="absolute left-0 top-full mt-3 w-64
+                                opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                                transition-all duration-200
+                                glass rounded-xl p-4 bg-black border-2 border-gray-900"
+                                >
+                                    {[
+                                        { label: "AR Series", key: "AR+Series" },
+                                        { label: "52 Series", key: "52+Series" },
+                                        { label: "96 Series", key: "96+Series" },
+                                        { label: "Self-Centering Vise", key: "Self-Centering+Vise" },
+                                        { label: "Pneumatic Vise", key: "Pneumatic+Vise" },
+                                        { label: "ER Zero Point Chuck", key: "ER+Zero+Point+Chuck" },
+                                        { label: "4-Axis L Plate", key: "4-Axis+L+Plate" },
+                                        { label: "Three Jaws Series", key: "Three+Jaws+Series" },
+                                        { label: "Run Out Tester", key: "Run+Out+Tester" },
+                                    ].map((cat) => (
+                                        <Link
+                                            key={cat.key}
+                                            href={`/equipments?category=${cat.key}`}
+                                            className="block py-1.5 cursor-pointer hover:text-orange-500 text-sm"
+                                        >
+                                            {cat.label}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+
                             {/* ================= Industries Dropdown ================= */}
                             <div className="relative group">
-                                <Link href="/industry" className={`flex items-center gap-1 py-4 cursor-pointer ${pathname === "/industries" ? "text-orange-500" : ""}`}>
+                                <Link href="/industry" className={`flex items-center gap-1 py-4 cursor-pointer ${pathname.startsWith("/industry") ? "text-orange-500" : ""}`}>
                                     Industries <ChevronDown size={16} />
                                 </Link>
 
-                                <div className="absolute left-0 top-full mt-3 w-48
+                                <div className="absolute left-0 top-full mt-3 w-64
                                 opacity-0 invisible group-hover:opacity-100 group-hover:visible
                                 transition-all duration-200
                                 glass rounded-xl p-4 bg-black border-2 border-gray-900"
                                 >
                                     {industryMenu.map((i) => (
                                         <Link
-                                            key={i}
-                                            href="#"
-                                            className="block py-1 cursor-pointer hover:text-(--primary)"
+                                            key={i.slug}
+                                            href={`/industry/${i.slug}`}
+                                            className="block py-1.5 cursor-pointer hover:text-orange-500 text-sm"
                                         >
-                                            {i}
+                                            {i.label}
                                         </Link>
                                     ))}
                                 </div>
@@ -661,8 +702,41 @@ const Header = () => {
                                         </div>
                                     ))}
 
-                                    <Link href="/product-test" className="block text-sm text-orange-500 font-medium pt-2" onClick={() => setMenuOpen(false)}>
+                                    <Link href="/products" className="block text-sm text-orange-500 font-medium pt-2" onClick={() => setMenuOpen(false)}>
                                         View All Products →
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Equipments Mobile */}
+                        <div>
+                            <button
+                                onClick={() => setEquipmentsOpen(!equipmentsOpen)}
+                                className="flex items-center justify-between w-full cursor-pointer"
+                            >
+                                Equipments <ChevronDown size={18} className={`transition-transform ${equipmentsOpen ? "rotate-180" : ""}`} />
+                            </button>
+
+                            {equipmentsOpen && (
+                                <div className="mt-3 pl-4 text-gray-300 space-y-2">
+                                    {[
+                                        { label: "AR Series", key: "AR+Series" },
+                                        { label: "52 Series", key: "52+Series" },
+                                        { label: "96 Series", key: "96+Series" },
+                                        { label: "Self-Centering Vise", key: "Self-Centering+Vise" },
+                                        { label: "Pneumatic Vise", key: "Pneumatic+Vise" },
+                                        { label: "ER Zero Point Chuck", key: "ER+Zero+Point+Chuck" },
+                                        { label: "4-Axis L Plate", key: "4-Axis+L+Plate" },
+                                        { label: "Three Jaws Series", key: "Three+Jaws+Series" },
+                                        { label: "Run Out Tester", key: "Run+Out+Tester" },
+                                    ].map((cat) => (
+                                        <Link key={cat.key} href={`/equipments?category=${cat.key}`} className="block cursor-pointer hover:text-orange-500 text-sm" onClick={() => setMenuOpen(false)}>
+                                            {cat.label}
+                                        </Link>
+                                    ))}
+                                    <Link href="/equipments" className="block text-sm text-orange-500 font-medium pt-2" onClick={() => setMenuOpen(false)}>
+                                        View All Equipments →
                                     </Link>
                                 </div>
                             )}
@@ -684,8 +758,8 @@ const Header = () => {
                             {industryOpen && (
                                 <div className="mt-3 pl-4 text-gray-300 space-y-2">
                                     {industryMenu.map((i) => (
-                                        <Link key={i} href="#" className="block cursor-pointer">
-                                            {i}
+                                        <Link key={i.slug} href={`/industry/${i.slug}`} className="block cursor-pointer hover:text-orange-500 text-sm" onClick={() => setMenuOpen(false)}>
+                                            {i.label}
                                         </Link>
                                     ))}
                                 </div>

@@ -5,7 +5,9 @@ import {
     loginController,
     logoutController,
     registerController,
-    adminChangePasswordController
+    adminChangePasswordController,
+    googleClientIdController,
+    googleOneTapLoginController
 } from "../controllers/auth.controller.js";
 import passport from "passport";
 import { googleAuthSuccess } from "../middlewares/passport.middleware.js";
@@ -27,6 +29,8 @@ authRoutes.post("/logout", logoutController);
 
 authRoutes.post("/admin-login", adminLoginController)
 authRoutes.put("/change-admin-password", adminAuthMiddleware, adminChangePasswordController)
+authRoutes.get("/google/client-id", googleClientIdController);
+authRoutes.post("/google/one-tap", googleOneTapLoginController);
 
 
 // GOOGLE ROUTES
