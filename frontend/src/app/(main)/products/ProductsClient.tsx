@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Product, useProductStore } from "@/store/productStore";
+import { useSearchParams } from "next/navigation";
 
 
 /* ---------- Category short labels for tabs ---------- */
@@ -78,6 +79,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 /* ---------- Main Component ---------- */
 const ProductsClient = () => {
 
+    const searchParams = useSearchParams();
     const { products, categories, isLoading, fetchProducts, fetchCategories } = useProductStore();
     const [activeTab, setActiveTab] = useState("All");
 
@@ -85,6 +87,14 @@ const ProductsClient = () => {
         fetchProducts();
         fetchCategories();
     }, [fetchProducts, fetchCategories]);
+
+    useEffect(() => {
+        const category = searchParams.get("category");
+        if (!category) return;
+
+        const decodedCategory = decodeURIComponent(category.replace(/\+/g, " "));
+        setActiveTab(decodedCategory);
+    }, [searchParams]);
 
 
     // Filter products by active tab

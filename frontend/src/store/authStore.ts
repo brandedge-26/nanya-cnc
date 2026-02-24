@@ -133,6 +133,8 @@ export const useAuthStore = create<AuthState>((set) => ({
                 return clientId;
             }
 
+            console.log(clientId);
+
             return null;
         } catch {
             return null;

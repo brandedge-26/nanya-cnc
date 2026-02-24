@@ -1,4 +1,11 @@
 import ProductsClient from "./ProductsClient";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Products | NANYA CNC",
+    description:
+        "Explore NANYA CNC product range including vertical machining centers, horizontal machining centers, lathes, and precision industrial solutions.",
+};
 
 
 const ProductTestPage = () => {

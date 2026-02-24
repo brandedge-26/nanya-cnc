@@ -39,8 +39,8 @@ const UtilityBar = () => {
 
                 {/* Left */}
                 <div className="flex items-center gap-6 font-medium">
-                    <span>Email: nanyacnc@gmail.com</span>
-                    <span>Phone: +92 495849589</span>
+                    <span>Email: att0905@gmail.com</span>
+                    <span>Phone: +965-520-531</span>
                 </div>
 
                 {/* Right */}

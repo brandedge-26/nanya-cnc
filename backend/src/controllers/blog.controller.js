@@ -1,5 +1,33 @@
 import { Blog } from "../models/Blog.js";
 import cloudinary from "../config/cloudinary.js";
+import sanitizeHtml from "sanitize-html";
+
+const sanitizeBlogHtml = (html) => {
+    return sanitizeHtml(html, {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+            "img",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "blockquote",
+            "pre",
+            "code",
+        ]),
+        allowedAttributes: {
+            a: ["href", "name", "target", "rel"],
+            img: ["src", "alt", "title", "width", "height", "loading"],
+            "*": ["class"],
+        },
+        allowedSchemes: ["http", "https", "mailto"],
+        allowProtocolRelative: false,
+        transformTags: {
+            a: sanitizeHtml.simpleTransform("a", { rel: "noopener noreferrer" }),
+        },
+    });
+};
 
 
 // CREATE BLOG
@@ -15,7 +43,7 @@ const createBlogController = async (req, res, next) => {
             });
         }
 
-        const blogData = { title, category, content };
+        const blogData = { title, category, content: sanitizeBlogHtml(content) };
 
         if (req.file) {
             blogData.image = req.file.path;
@@ -85,7 +113,7 @@ const updateBlogController = async (req, res, next) => {
         const { id } = req.params;
         const { title, category, content } = req.body;
 
-        const updateData = { title, category, content };
+        const updateData = { title, category, content: sanitizeBlogHtml(content) };
 
         if (req.file) {
             

@@ -20,13 +20,13 @@ const EquipmentCard = ({
         <div className="relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg transition-all duration-300 hover:border-orange-500/30 hover:shadow-orange-500/5 hover:shadow-2xl p-4 flex flex-col">
 
             {/* Image */}
-            <div className="h-48 w-full overflow-hidden rounded-xl bg-white flex items-center justify-center relative shadow-inner">
+            <div className="h-48 w-full overflow-hidden rounded-xl flex items-center justify-center relative bg-transparent">
                 {!imgError ? (
                     <Image
                         src={equipment.image}
                         alt={equipment.name}
                         fill
-                        className="object-contain p-4"
+                        className="object-contain bg-black border border-white/10 p-4"
                         style={{ mixBlendMode: "multiply" }}
                         onError={() => setImgError(true)}
                     />
@@ -96,13 +96,12 @@ const EquipmentModal = ({
                 </button>
 
                 {/* Image Header */}
-                <div className="h-56 w-full bg-white flex items-center justify-center rounded-t-2xl border-b border-gray-100 relative overflow-hidden">
+                <div className="h-56 w-full bg-black/40 flex items-center justify-center rounded-t-2xl border-b border-white/10 relative overflow-hidden">
                     <Image
                         src={equipment.image}
                         alt={equipment.name}
                         fill
                         className="object-contain p-8"
-                        style={{ mixBlendMode: "multiply" }}
                         onError={(e) => {
                             const target = e.currentTarget;
                             target.style.display = "none";

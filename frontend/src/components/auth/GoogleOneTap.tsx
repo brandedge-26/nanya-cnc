@@ -29,6 +29,7 @@ type GoogleAccounts = {
             auto_select?: boolean;
             cancel_on_tap_outside?: boolean;
             itp_support?: boolean;
+            use_fedcm_for_prompt: boolean;
         }) => void;
         prompt: (callback?: (notification: PromptMomentNotification) => void) => void;
         cancel: () => void;
@@ -90,22 +91,24 @@ const GoogleOneTap = () => {
 
                 const success = await loginWithGoogleOneTap(response.credential);
                 if (success) {
-                    toast.success("Google login successful");
+                    toast.success("Login successful");
                     window.google?.accounts.id.cancel();
                 }
             };
 
-            const init = () => {
+            const init = async () => {
                 if (!window.google?.accounts?.id) {
                     return;
                 }
 
+                // await new Promise(resolve => setTimeout(resolve, 100));
                 window.google.accounts.id.initialize({
                     client_id: clientId,
                     callback: handleCredential,
                     auto_select: false,
                     cancel_on_tap_outside: true,
-                    itp_support: true
+                    itp_support: true,
+                    use_fedcm_for_prompt: false
                 });
 
                 window.google.accounts.id.prompt((notification: PromptMomentNotification) => {

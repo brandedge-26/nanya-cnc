@@ -36,7 +36,7 @@ export const equipments: Equipment[] = [
         name: "Pneumatic Zero Point Quick Change Plate (Type 52)",
         modelNo: "AR52-108",
         category: "AR Series",
-        image: "/equipments/ar52-108.jpg",
+        image: "/equipments/ar52-108.png",
         shortDescription: "Pneumatic zero point quick change plate with 12KN locking force for rapid workpiece changeover.",
         description:
             "The AR52-108 is a pneumatic zero point quick change plate designed for rapid and precise workpiece changeover on CNC machining centers. Built with hardened stainless steel, it delivers 12KN locking force at 7bar pressure. The 52mm hole spacing system ensures high repeatability and accuracy across multiple setups.",
@@ -60,7 +60,7 @@ export const equipments: Equipment[] = [
         name: "Pneumatic Zero Point Quick Change Plate (Type 96)",
         modelNo: "AR96-155",
         category: "AR Series",
-        image: "/equipments/ar96-155.jpg",
+        image: "/equipments/ar96-155.png",
         shortDescription: "Larger pneumatic zero point plate with 22KN locking force for heavy-duty applications.",
         description:
             "The AR96-155 is a heavy-duty pneumatic zero point quick change plate with 96mm hole spacing. Delivering 22KN locking force, it is ideal for larger workpieces and demanding machining operations. Made from hardened stainless steel for maximum durability and precision.",
@@ -84,7 +84,7 @@ export const equipments: Equipment[] = [
         name: "Single Station Pneumatic Vise",
         modelNo: "AR155-I",
         category: "AR Series",
-        image: "/equipments/ar155-i.jpg",
+        image: "/equipments/ar155-i.png",
         shortDescription: "Single station pneumatic vise with 8-10KN clamping force for automated clamping.",
         description:
             "The AR155-I is a single station pneumatic vise that provides 8-10KN clamping force at 6-7bar air pressure. Built with aluminum body and hardened steel jaws, it offers a 130mm jaw width with 145mm clamping range. Ideal for automated CNC machining setups.",
@@ -109,7 +109,7 @@ export const equipments: Equipment[] = [
         name: "Double Station Pneumatic Vise",
         modelNo: "AR155-II",
         category: "AR Series",
-        image: "/equipments/ar155-ii.jpg",
+        image: "/equipments/ar155-ii.png",
         shortDescription: "Double station pneumatic vise for dual workpiece clamping in a single setup.",
         description:
             "The AR155-II is a double station pneumatic vise that allows clamping two workpieces simultaneously. With 8-10KN clamping force at 6-7bar, it features 130mm jaw width and 65mm clamping range per station. Perfect for high-volume production with reduced cycle time.",
@@ -136,7 +136,7 @@ export const equipments: Equipment[] = [
         name: "Square Zero Point Quick Change Plate",
         modelNo: "IS52-108",
         category: "52 Series",
-        image: "/equipments/is52-108.jpg",
+        image: "/equipments/is52-108.png",
         shortDescription: "Manual square zero point plate with 78KN locking force for precision workholding.",
         description:
             "The IS52-108 is a manual square zero point quick change plate with exceptional 78KN locking force. Made from hardened stainless steel with 52mm hole spacing, it provides ultra-strong clamping for demanding machining operations without requiring pneumatic supply.",
@@ -160,7 +160,7 @@ export const equipments: Equipment[] = [
         name: "Circular Zero Point Quick Change Plate",
         modelNo: "IS52-120",
         category: "52 Series",
-        image: "/equipments/is52-120.jpg",
+        image: "/equipments/is52-120.png",
         shortDescription: "Circular manual zero point plate with 18KN locking force.",
         description:
             "The IS52-120 is a circular manual zero point quick change plate with 18KN locking force. Its compact circular design is ideal for rotary table applications and space-constrained setups. Made from hardened stainless steel for long service life.",
@@ -184,7 +184,7 @@ export const equipments: Equipment[] = [
         name: "Circular Zero Point Quick Change Plate (Large)",
         modelNo: "IS52-170",
         category: "52 Series",
-        image: "/equipments/is52-170.jpg",
+        image: "/equipments/is52-170-.png",
         shortDescription: "Large circular zero point plate with 18KN locking force at 7bar.",
         description:
             "The IS52-170 is a larger circular zero point quick change plate with 18KN locking force at 7bar pressure. Features 6 bolt mounting for enhanced stability. Ideal for larger diameter workpieces and rotary applications.",
@@ -208,7 +208,7 @@ export const equipments: Equipment[] = [
         name: "52mm to 96mm Conversion Plate",
         modelNo: "IS52-96",
         category: "52 Series",
-        image: "/equipments/is52-96.jpg",
+        image: "/equipments/is52-96.png",
         shortDescription: "Conversion plate to adapt 52mm systems to 96mm hole spacing.",
         description:
             "The IS52-96 conversion plate allows you to adapt 52mm zero point systems to 96mm hole spacing. With 18KN locking force and hardened stainless steel construction, it provides a seamless bridge between the two zero point system sizes.",
@@ -232,7 +232,7 @@ export const equipments: Equipment[] = [
         name: "Multi-Station Zero Point Quick Change Plate",
         modelNo: "IS52-210",
         category: "52 Series",
-        image: "/equipments/is52-210.jpg",
+        image: "/equipments/is52-210.png",
         shortDescription: "Multi-station plate for clamping multiple workpieces simultaneously.",
         description:
             "The IS52-210 is a multi-station zero point quick change plate that allows clamping multiple workpieces in a single setup. With 18KN locking force, it maximizes machine utilization by reducing setup time and enabling batch processing.",
@@ -256,7 +256,7 @@ export const equipments: Equipment[] = [
         name: "Square Zero Point Quick Change Plate (Aluminum)",
         modelNo: "IA52-108",
         category: "52 Series",
-        image: "/equipments/ia52-108.jpg",
+        image: "/equipments/ia52-108.png",
         shortDescription: "Lightweight aluminum zero point plate with hardened steel ring.",
         description:
             "The IA52-108 is a lightweight aluminum zero point quick change plate with hardened steel ring insert. At just 1.7kg, it offers 77KN locking force while being significantly lighter than full-steel alternatives. Perfect for applications where weight reduction matters.",
@@ -280,7 +280,7 @@ export const equipments: Equipment[] = [
         name: "Zero Point Tower (Type 52)",
         modelNo: "TS52-215",
         category: "52 Series",
-        image: "/equipments/ts52-215.jpg",
+        image: "/equipments/ts52-215.png",
         shortDescription: "Multi-face zero point tower for 4-sided machining with 18KN locking force.",
         description:
             "The TS52-215 Zero Point Tower enables 4-sided machining by providing zero point clamping on multiple faces. Made from aluminum with hardened stainless steel inserts, it features 18KN locking force per station and 52mm pull stud mounting.",
@@ -304,7 +304,7 @@ export const equipments: Equipment[] = [
         name: "0-90° Zero Point Workholding (Type 52)",
         modelNo: "TS52-9052",
         category: "52 Series",
-        image: "/equipments/ts52-9052.jpg",
+        image: "/equipments/ts52-9052.png",
         shortDescription: "Adjustable 0-90° zero point workholding for angled machining setups.",
         description:
             "The TS52-9052 provides 0-90° adjustable workholding with zero point positioning. Made from aluminum with hardened stainless steel components, it allows precise angled clamping using 52mm pull studs with 78KN locking force.",
@@ -328,7 +328,7 @@ export const equipments: Equipment[] = [
         name: "0-90° Zero Point Workholding (Large)",
         modelNo: "TS52-0090",
         category: "52 Series",
-        image: "/equipments/ts52-0090.jpg",
+        image: "/equipments/ts52-0090.png",
         shortDescription: "Large 0-90° workholding fixture with 78KN force for bigger workpieces.",
         description:
             "The TS52-0090 is a larger version of the 0-90° zero point workholding system. With 78KN locking force and 52mm pull stud mounting, it handles bigger workpieces at precise angles for multi-face machining operations.",
@@ -352,7 +352,7 @@ export const equipments: Equipment[] = [
         name: "90° Zero Point Workholding (Type 52)",
         modelNo: "TS52-9096",
         category: "52 Series",
-        image: "/equipments/ts52-9096.jpg",
+        image: "/equipments/ts52-9096.png",
         shortDescription: "Fixed 90° zero point workholding for perpendicular machining setups.",
         description:
             "The TS52-9096 provides fixed 90° workholding with 18KN locking force. Designed for perpendicular machining setups using 52mm pull stud mounting system. Aluminum body with hardened stainless steel for precision and durability.",
@@ -376,7 +376,7 @@ export const equipments: Equipment[] = [
         name: "0-90° Zero Swivel Seat (Type 52)",
         modelNo: "TS52-120R",
         category: "52 Series",
-        image: "/equipments/ts52-120r.jpg",
+        image: "/equipments/ts52-120r.png",
         shortDescription: "Swivel rotation base with 18KN locking force for flexible positioning.",
         description:
             "The TS52-120R is a zero point swivel seat that provides rotational flexibility combined with zero point accuracy. With 18KN locking force and 52mm pull stud mounting, it enables versatile workpiece positioning for complex machining tasks.",
@@ -402,7 +402,7 @@ export const equipments: Equipment[] = [
         name: "Circular Zero Point Quick Change Plate (96)",
         modelNo: "TS96-185",
         category: "96 Series",
-        image: "/equipments/ts96-185.jpg",
+        image: "/equipments/ts96-185-.png",
         shortDescription: "Circular zero point plate with 22KN force for 96mm system.",
         description:
             "The TS96-185 is a circular zero point quick change plate for the 96mm hole spacing system. With 22KN locking force and hardened stainless steel construction, it provides robust clamping for medium to large workpieces on rotary and fixed setups.",
@@ -426,7 +426,7 @@ export const equipments: Equipment[] = [
         name: "Circular Zero Point Quick Change Plate (D200)",
         modelNo: "TS96-200",
         category: "96 Series",
-        image: "/equipments/ts96-200.jpg",
+        image: "/equipments/ts96-200-.png",
         shortDescription: "Large 200mm circular plate with 20KN locking force.",
         description:
             "The TS96-200 is a large circular zero point plate with 200mm diameter. Featuring 20KN locking force, it accommodates larger workpieces and provides stable, repeatable clamping for precision machining operations.",
@@ -450,7 +450,7 @@ export const equipments: Equipment[] = [
         name: "Square Zero Point Quick Change Plate (96)",
         modelNo: "IS96-155",
         category: "96 Series",
-        image: "/equipments/is96-155.jpg",
+        image: "/equipments/is96-155-.png",
         shortDescription: "Square manual zero point plate with 22KN force for 96mm systems.",
         description:
             "The IS96-155 is a square manual zero point plate with 96mm hole spacing. Delivering 22KN locking force from hardened stainless steel construction, it provides a stable platform for precision CNC machining setups.",
@@ -474,7 +474,7 @@ export const equipments: Equipment[] = [
         name: "Rectangular Zero Point Quick Change Plate",
         modelNo: "IS96-175",
         category: "96 Series",
-        image: "/equipments/is96-175.jpg",
+        image: "/equipments/is96-175.png",
         shortDescription: "Rectangular plate with 22KN force for elongated workpieces.",
         description:
             "The IS96-175 is a rectangular zero point quick change plate designed for elongated workpieces. With 22KN locking force and 96mm hole spacing, it provides extended clamping area while maintaining precision positioning.",
@@ -498,7 +498,7 @@ export const equipments: Equipment[] = [
         name: "Multi-Station Zero Point Quick Change Plate (96)",
         modelNo: "IS96-340",
         category: "96 Series",
-        image: "/equipments/is96-340.jpg",
+        image: "/equipments/is96-340.png",
         shortDescription: "Large multi-station plate for batch processing with 22KN force.",
         description:
             "The IS96-340 is a multi-station zero point plate with 96mm spacing for batch processing. At 340mm length, it supports multiple workpiece stations with 22KN locking force each, maximizing machine throughput.",
@@ -522,7 +522,7 @@ export const equipments: Equipment[] = [
         name: "Square Zero Point Quick Change Plate (Aluminum 96)",
         modelNo: "IA9652-155",
         category: "96 Series",
-        image: "/equipments/ia9652-155.jpg",
+        image: "/equipments/ia9652-155.png",
         shortDescription: "Lightweight aluminum plate with hardened steel ring for 96mm systems.",
         description:
             "The IA9652-155 is a lightweight aluminum zero point plate with hardened steel ring insert for the 96mm system. At just 2.2kg, it delivers 78KN locking force while significantly reducing fixture weight.",
@@ -546,7 +546,7 @@ export const equipments: Equipment[] = [
         name: "Compatible Zero Point Quick Change Plate",
         modelNo: "TS9652-155",
         category: "96 Series",
-        image: "/equipments/ts9652-155.jpg",
+        image: "/equipments/ts9652-155-.png",
         shortDescription: "Compatible plate bridging 96mm and 52mm zero point systems.",
         description:
             "The TS9652-155 is a compatible zero point quick change plate that bridges 96mm and 52mm systems. With 20KN locking force, it provides cross-system flexibility for shops running both zero point standards.",
@@ -569,7 +569,7 @@ export const equipments: Equipment[] = [
         name: "Zero Point Tower (Type 96)",
         modelNo: "TS96-276",
         category: "96 Series",
-        image: "/equipments/ts96-276.jpg",
+        image: "/equipments/ts96-276-.png",
         shortDescription: "Large multi-face tower for 96mm system with 22KN locking force.",
         description:
             "The TS96-276 Zero Point Tower enables multi-face machining with the 96mm zero point system. Made from aluminum with hardened stainless steel inserts, it supports 22KN locking force on each station for heavy-duty 4th axis operations.",
@@ -593,7 +593,7 @@ export const equipments: Equipment[] = [
         name: "Through Hole Zero Point Tower (Type 96)",
         modelNo: "TO96-276",
         category: "96 Series",
-        image: "/equipments/to96-276.jpg",
+        image: "/equipments/to96-276-.png",
         shortDescription: "Through-hole tower design for 96mm system with 20KN locking.",
         description:
             "The TO96-276 is a through-hole zero point tower for the 96mm system. With D60mm center bore and 20KN locking force, it allows passage of coolant, air, or cables through the center while providing multi-face clamping.",
@@ -617,7 +617,7 @@ export const equipments: Equipment[] = [
         name: "0-90° Zero Point Workholding (Type 96)",
         modelNo: "TS96-9690",
         category: "96 Series",
-        image: "/equipments/ts96-9690.jpg",
+        image: "/equipments/TS96-0090-.png",
         shortDescription: "Adjustable 0-90° workholding with 22KN force for 96mm system.",
         description:
             "The TS96-9690 provides 0-90° adjustable workholding for the 96mm zero point system. With 22KN locking force and 96mm pull stud mounting, it handles larger workpieces at precise angles for multi-face operations.",
@@ -641,7 +641,7 @@ export const equipments: Equipment[] = [
         name: "0-90° Zero Point Workholding (Large 96)",
         modelNo: "TS96-0090",
         category: "96 Series",
-        image: "/equipments/ts96-0090.jpg",
+        image: "/equipments/ts96-0090-.png",
         shortDescription: "Large 0-90° workholding with 22KN force for heavy workpieces.",
         description:
             "The TS96-0090 is a large format 0-90° zero point workholding for heavy workpieces. At 24kg with 22KN locking force, it provides extreme stability for demanding angled machining operations using 96mm pull studs.",
@@ -665,7 +665,7 @@ export const equipments: Equipment[] = [
         name: "90° Zero Point Workholding (Type 96)",
         modelNo: "IS96-9096",
         category: "96 Series",
-        image: "/equipments/is96-9096.jpg",
+        image: "/equipments/is96-9096-.png",
         shortDescription: "Fixed 90° workholding for perpendicular machining on 96mm system.",
         description:
             "The IS96-9096 provides fixed 90° perpendicular workholding with 22KN locking force. Designed for the 96mm zero point system, it enables precise right-angle machining setups with stable clamping.",
@@ -691,7 +691,7 @@ export const equipments: Equipment[] = [
         name: "75 Self-Centering Vise (Economy)",
         modelNo: "SV10075",
         category: "Self-Centering Vise",
-        image: "/equipments/sv10075.jpg",
+        image: "/equipments/sv10075.png",
         shortDescription: "Compact 75mm economy self-centering vise with 14KN clamping force.",
         description:
             "The SV10075 is a compact economy self-centering vise with 45° dovetail jaws. It ensures the workpiece center perfectly coincides with the jaw center, eliminating machining errors. With 14KN clamping force and forward/reverse clamping capability.",
@@ -717,7 +717,7 @@ export const equipments: Equipment[] = [
         name: "100 Self-Centering Vise (Economy)",
         modelNo: "SV150100",
         category: "Self-Centering Vise",
-        image: "/equipments/sv150100.jpg",
+        image: "/equipments/sv150100.png",
         shortDescription: "Mid-size economy vise with 20KN force and 120mm reverse clamping.",
         description:
             "The SV150100 is a mid-size economy self-centering vise with 20KN clamping force. Features drive screw with locator mounting holes and screw retainers. Forward and reverse clamping up to 120mm for versatile workpiece holding.",
@@ -743,7 +743,7 @@ export const equipments: Equipment[] = [
         name: "130 Self-Centering Vise (Economy)",
         modelNo: "SV170130",
         category: "Self-Centering Vise",
-        image: "/equipments/sv170130.jpg",
+        image: "/equipments/sv170130.png",
         shortDescription: "Large economy vise with 25KN force and 152mm max clamping range.",
         description:
             "The SV170130 is a large economy self-centering vise with 25KN clamping force at 80Nm torque. With 130mm jaw width and up to 152mm reverse clamping range, it handles larger workpieces with precision centering.",
@@ -769,7 +769,7 @@ export const equipments: Equipment[] = [
         name: "75 Self-Centering Vise (Short)",
         modelNo: "CV10075",
         category: "Self-Centering Vise",
-        image: "/equipments/cv10075.jpg",
+        image: "/equipments/cv10075.png",
         shortDescription: "Compact short-body 75mm vise with 14KN force for tight spaces.",
         description:
             "The CV10075 is a compact short-body self-centering vise with 14KN clamping force. Its reduced height of 56mm makes it ideal for tight machining envelopes while maintaining precise self-centering capability.",
@@ -794,7 +794,7 @@ export const equipments: Equipment[] = [
         name: "75 Self-Centering Vise (Long)",
         modelNo: "CV15075",
         category: "Self-Centering Vise",
-        image: "/equipments/cv15075.jpg",
+        image: "/equipments/cv15075.png",
         shortDescription: "Extended length 75mm vise for longer workpieces with 14KN force.",
         description:
             "The CV15075 is an extended length self-centering vise for longer workpieces. With 14KN clamping force and up to 126mm reverse clamping range, it provides stable centering for elongated parts.",
@@ -819,7 +819,7 @@ export const equipments: Equipment[] = [
         name: "125 Self-Centering Vise (Short)",
         modelNo: "CV155125-I",
         category: "Self-Centering Vise",
-        image: "/equipments/cv155125-i.jpg",
+        image: "/equipments/cv155125-i.png",
         shortDescription: "125mm short-body vise with 20KN force for precision machining.",
         description:
             "The CV155125-I is a 125mm short-body self-centering vise with 20KN clamping force at 75Nm torque. Provides precise centering for medium-sized workpieces with forward and reverse clamping capability.",
@@ -844,7 +844,7 @@ export const equipments: Equipment[] = [
         name: "125 Self-Centering Vise (Short II)",
         modelNo: "CV155125-II",
         category: "Self-Centering Vise",
-        image: "/equipments/cv155125-ii.jpg",
+        image: "/equipments/cv155125-ii.png",
         shortDescription: "Second variant of 125mm vise with 20KN force.",
         description:
             "The CV155125-II is a variant of the 125mm self-centering vise with the same 20KN clamping force and 75Nm torque. Designed for precision clamping with forward and reverse capability.",
@@ -869,7 +869,7 @@ export const equipments: Equipment[] = [
         name: "125 Self-Centering Vise (Long)",
         modelNo: "CV255125",
         category: "Self-Centering Vise",
-        image: "/equipments/cv255125.jpg",
+        image: "/equipments/cv255125.png",
         shortDescription: "Extra-long 125mm vise with 20KN force for extended workpieces.",
         description:
             "The CV255125 is an extra-long 125mm self-centering vise at 255mm length. With 20KN clamping force, it provides stable centering for extended workpieces with up to 228mm forward/reverse clamping range.",
@@ -896,7 +896,7 @@ export const equipments: Equipment[] = [
         name: "125 Self-Centering Vise (Clamping Cylinder)",
         modelNo: "TB255125",
         category: "Pneumatic Vise",
-        image: "/equipments/tb255125.jpg",
+        image: "/equipments/tb255125.png",
         shortDescription: "Double-station vise with clamping cylinder for automated operation.",
         description:
             "The TB255125 is a double-station self-centering vise with clamping cylinder. With 20KN clamping force at 75Nm, it features dual clamping stations for increased productivity. Forward and reverse clamping up to 110mm.",
@@ -921,7 +921,7 @@ export const equipments: Equipment[] = [
         name: "Pneumatic Self-Centering Vise",
         modelNo: "AV0166",
         category: "Pneumatic Vise",
-        image: "/equipments/av0166.jpg",
+        image: "/equipments/av0166.png",
         shortDescription: "Fully pneumatic self-centering vise with self-locking at 20KN force.",
         description:
             "The AV0166 is a fully pneumatic self-centering vise with 20KN clamping force at 7bar. It features self-locking capability – the vise stays locked even when air pressure is removed. Forward and reverse clamping up to 160mm.",
@@ -948,7 +948,7 @@ export const equipments: Equipment[] = [
         name: "ER32 Zero Point Chuck",
         modelNo: "TS52-ER32",
         category: "ER Zero Point Chuck",
-        image: "/equipments/ts52-er32.jpg",
+        image: "/equipments/ts52-er32.png",
         shortDescription: "ER32 collet chuck with zero point mounting for quick tool/part changes.",
         description:
             "The TS52-ER32 is an ER32 zero point chuck that combines collet clamping with zero point positioning. With 2-20mm clamping range and hardened steel construction, it enables quick, precise part changes on zero point plates.",
@@ -971,7 +971,7 @@ export const equipments: Equipment[] = [
         name: "ER40 Zero Point Chuck",
         modelNo: "TS52-ER40",
         category: "ER Zero Point Chuck",
-        image: "/equipments/ts52-er40.jpg",
+        image: "/equipments/ts52-er40.png",
         shortDescription: "ER40 collet chuck with zero point mounting for larger diameter parts.",
         description:
             "The TS52-ER40 is an ER40 zero point chuck for larger diameter parts up to 26mm. With hardened steel body and zero point compatible design, it provides versatile collet clamping on zero point plate systems.",
@@ -994,7 +994,7 @@ export const equipments: Equipment[] = [
         name: "ER32 Zero Point Chuck (96 Series)",
         modelNo: "TS96-ER32",
         category: "ER Zero Point Chuck",
-        image: "/equipments/ts96-er32.jpg",
+        image: "/equipments/ts96-er32.png",
         shortDescription: "ER32 chuck for 96mm zero point systems with 2-20mm range.",
         description:
             "The TS96-ER32 is an ER32 zero point chuck designed for the 96mm hole spacing system. With 2-20mm clamping range and hardened steel construction, it provides precise collet clamping on 96mm zero point plates.",
@@ -1017,7 +1017,7 @@ export const equipments: Equipment[] = [
         name: "ER40 Zero Point Chuck (96 Series)",
         modelNo: "TS96-ER40",
         category: "ER Zero Point Chuck",
-        image: "/equipments/ts96-er40.jpg",
+        image: "/equipments/ts96-er40.png",
         shortDescription: "ER40 chuck for 96mm zero point systems with 3-26mm range.",
         description:
             "The TS96-ER40 is an ER40 zero point chuck for the 96mm system. With 3-26mm clamping range and hardened steel body, it handles larger diameter parts while maintaining zero point positioning accuracy.",
@@ -1042,7 +1042,7 @@ export const equipments: Equipment[] = [
         name: "Four-Axis L-Plate (D170)",
         modelNo: "L170",
         category: "4-Axis L Plate",
-        image: "/equipments/l170.jpg",
+        image: "/equipments/l170.png",
         shortDescription: "170mm L-plate for 4th axis machining compatible with all ZPPCNC zero plates.",
         description:
             "The L170 is a four-axis L-plate that enables 4th axis machining setups. Made from hardened steel with D170 × 190mm dimensions, it is compatible with all ZPPCNC zero plates and self-centering vises for versatile multi-face machining.",
@@ -1065,7 +1065,7 @@ export const equipments: Equipment[] = [
         name: "Four-Axis L-Plate (D200)",
         modelNo: "L200",
         category: "4-Axis L Plate",
-        image: "/equipments/l200.jpg",
+        image: "/equipments/l200.png",
         shortDescription: "Larger 200mm L-plate for heavy-duty 4th axis setups.",
         description:
             "The L200 is a larger four-axis L-plate with D200 × 225mm dimensions. At 14.6kg, it provides robust support for heavy-duty 4th axis machining setups. Compatible with all ZPPCNC zero plates and self-centering vises.",
@@ -1088,7 +1088,7 @@ export const equipments: Equipment[] = [
         name: "DW-1 Positioning Locator",
         modelNo: "DW-1",
         category: "4-Axis L Plate",
-        image: "/equipments/dw-1.jpg",
+        image: "/equipments/dw-1.png",
         shortDescription: "Adjustable positioning locator for precise length and angle setting.",
         description:
             "The DW-1 is a compact positioning locator made from 304 stainless steel and aluminum. Its adjustable design allows fine-tuning of positioning length and angle for precise workpiece setup on zero point systems.",
@@ -1111,7 +1111,7 @@ export const equipments: Equipment[] = [
         name: "Three Jaw Chuck 125mm (96 Series)",
         modelNo: "SC96-125",
         category: "Three Jaws Series",
-        image: "/equipments/sc96-125.jpg",
+        image: "/equipments/sc96-125.png",
         shortDescription: "125mm 3-jaw chuck with 96mm pull stud mounting for zero point systems.",
         description:
             "The SC96-125 is a 125mm three jaw chuck designed for the 96mm zero point system. With 30mm bore, 2.5-40mm forward clamping and 38-110mm reverse clamping, it provides versatile round workpiece holding on zero point plates.",
@@ -1136,7 +1136,7 @@ export const equipments: Equipment[] = [
         name: "Three Jaw Chuck 160mm (96 Series)",
         modelNo: "SC96-160",
         category: "Three Jaws Series",
-        image: "/equipments/sc96-160.jpg",
+        image: "/equipments/sc96-160.png",
         shortDescription: "160mm 3-jaw chuck with 40mm bore for medium workpieces.",
         description:
             "The SC96-160 is a 160mm three jaw chuck for the 96mm system. With 40mm bore and 3-55mm forward clamping range, it handles medium-sized round and irregular workpieces with precise centering.",
@@ -1161,7 +1161,7 @@ export const equipments: Equipment[] = [
         name: "Three Jaw Chuck 200mm (96 Series)",
         modelNo: "SC96-200",
         category: "Three Jaws Series",
-        image: "/equipments/sc96-200.jpg",
+        image: "/equipments/sc96-200.png",
         shortDescription: "Large 200mm 3-jaw chuck with 65mm bore for heavy workpieces.",
         description:
             "The SC96-200 is a large 200mm three jaw chuck for the 96mm system. With 65mm bore and 4-85mm forward clamping, it handles large round workpieces with up to 200mm reverse clamping range.",
@@ -1186,7 +1186,7 @@ export const equipments: Equipment[] = [
         name: "Three Jaw Chuck 80mm (52 Series)",
         modelNo: "SC52-80",
         category: "Three Jaws Series",
-        image: "/equipments/sc52-80.jpg",
+        image: "/equipments/sc52-80.png",
         shortDescription: "Compact 80mm 3-jaw chuck for 52mm zero point systems.",
         description:
             "The SC52-80 is a compact 80mm three jaw chuck for the 52mm zero point system. With 16mm bore and 2-22mm forward clamping, it is ideal for small round workpiece holding on 52mm zero point plates.",
@@ -1211,7 +1211,7 @@ export const equipments: Equipment[] = [
         name: "Three Jaw Chuck 100mm (52 Series)",
         modelNo: "SC52-100",
         category: "Three Jaws Series",
-        image: "/equipments/sc52-100.jpg",
+        image: "/equipments/sc52-100.png",
         shortDescription: "100mm 3-jaw chuck with 22mm bore for 52mm systems.",
         description:
             "The SC52-100 is a 100mm three jaw chuck for the 52mm system. With 22mm bore and 2-30mm forward clamping range, it provides versatile small-to-medium round workpiece holding.",
@@ -1236,7 +1236,7 @@ export const equipments: Equipment[] = [
         name: "Three Jaw Chuck 130mm (52 Series)",
         modelNo: "SC52-130",
         category: "Three Jaws Series",
-        image: "/equipments/sc52-130.jpg",
+        image: "/equipments/sc52-130.png",
         shortDescription: "130mm 3-jaw chuck with 30mm bore for 52mm zero point systems.",
         description:
             "The SC52-130 is the largest three jaw chuck in the 52mm series. With 130mm OD, 30mm bore, and 2.5-40mm forward clamping range, it handles medium-sized round workpieces on 52mm zero point systems.",
@@ -1263,7 +1263,7 @@ export const equipments: Equipment[] = [
         name: "Run Out Tester (BT30/BT40)",
         modelNo: "BT30/BT40",
         category: "Run Out Tester",
-        image: "/equipments/runout-tester.jpg",
+        image: "/equipments/runout-tester.png",
         shortDescription: "High-precision run out tester with 0.003mm accuracy for BT30/BT40 tools.",
         description:
             "The BT30/BT40 Run Out Tester measures tool runout before mounting on the machine. With 0.003mm accuracy at H240mm, it helps improve product surface finish, ensures machined dimensions are closer to requirements, and saves machine preparation time. Essential for quality-conscious machining operations.",

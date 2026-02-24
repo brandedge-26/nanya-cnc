@@ -482,10 +482,10 @@ const Header = () => {
 
                         {/* Logo */}
                         <Image
-                            src="/nanyawhitelogo.png"
+                            src="/logo-primary.png"
                             alt="Logo"
-                            height={20}
-                            width={150}
+                            height={50}
+                            width={200}
                             className="cursor-pointer "
                             onClick={() => router.push("/")}
                         />

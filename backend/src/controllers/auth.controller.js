@@ -332,6 +332,9 @@ const adminChangePasswordController = async (req, res, next) => {
 // GOOGLE CLIENT ID CONTROLLER
 const googleClientIdController = async (req, res, next) => {
     try {
+
+        console.log(ENV.GOOGLE_CLIENT_ID)
+
         return res.status(200).json({
             success: true,
             clientId: ENV.GOOGLE_CLIENT_ID
@@ -346,6 +349,7 @@ const googleClientIdController = async (req, res, next) => {
 // GOOGLE ONE TAP LOGIN CONTROLLER
 const googleOneTapLoginController = async (req, res, next) => {
     try {
+
         const { credential } = req.body;
 
         if (!credential) {
