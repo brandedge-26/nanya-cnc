@@ -35,17 +35,17 @@ const UtilityBar = () => {
         <>
 
             {user?.role !== "admin" && <div
-                className=" max-sm:hidden w-full h-8 px-7 bg-orange-500 flex items-center justify-between text-[14px] tracking-tight text-black">
+                className="w-full h-8 px-7 bg-orange-500 flex items-center justify-between text-[14px] tracking-tight text-black">
 
                 {/* Left */}
-                <div className="flex items-center gap-6 font-medium">
+                <div className="max-sm:hidden flex items-center gap-6 font-medium">
                     <span>Email: att0905@gmail.com</span>
                     <span>Phone: +965-520-531</span>
                 </div>
 
                 {/* Right */}
                 <button
-                    className=" flex items-center gap-2 font-semibold hover:underline transition cursor-pointer"
+                    className="max-sm:mx-auto flex items-center gap-2 font-semibold hover:underline transition cursor-pointer"
                     onClick={handleDealerRequest}
                 >
 
