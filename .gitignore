@@ -9,6 +9,11 @@ Thumbs.db
 .env.production
 .env.test
 
+
+# Claude
+claude-*.log
+.claude/
+
 # Logs
 logs
 *.log

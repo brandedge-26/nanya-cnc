@@ -39,15 +39,6 @@ passport.use(
                     email: email
                 });
 
-                // send welcome email to user
-                const emailOptions = {
-                    name: user.name,
-                    email: user.email,
-                    subject: "Welcome back to NANYA CNC",
-                }
-
-                await sendEmail(emailOptions);
-
 
                 // 3. CREATE USER IF NOT EXISTS
                 if (!user) {
@@ -87,6 +78,13 @@ passport.use(
 
                     await user.save();
                 }
+
+                // send welcome back email to existing user
+                await sendEmail({
+                    name: user.name,
+                    email: user.email,
+                    subject: "Welcome back to NANYA CNC",
+                });
 
                 return done(null, { _id: user._id });
 

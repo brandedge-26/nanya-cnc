@@ -4,7 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, type MouseEvent } from "react";
-import { ArrowLeft, ChevronRight, CheckCircle, Circle } from "lucide-react";
+import { ArrowLeft, ChevronRight, CheckCircle, Circle, Download } from "lucide-react";
 import { useProductStore } from "@/store/productStore";
 import { useRouter } from "next/navigation";
 
@@ -242,8 +242,10 @@ const ProductDetailClient = ({ slug }: { slug: string }) => {
                         {brochureMap[slug] && (
                             <button
                                 onClick={handleDownloadBrochure}
-                                className="cursor-pointer px-8 py-3 rounded-lg border border-white/20 text-white hover:bg-white/10 transition">
-                                Download Brochure
+                                className="flex items-center gap-2 cursor-pointer px-8 py-3 rounded-lg border border-white/20 text-white hover:bg-white/10 transition"
+                            >
+                                <Download size={20} />
+                                <span>Download Brochure</span>
                             </button>
                         )}
                     </div>

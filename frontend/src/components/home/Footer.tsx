@@ -114,7 +114,7 @@ const Footer = () => {
                                 </li>
 
                                 <li className="flex gap-3">
-                                    <MapPin size={16} className="text-(--primary)" />
+                                    <MapPin size={40} className="text-(--primary)" />
                                     <span>
                                         No. 5F-1, No. 118, Dadun 20th Street, Xitun District,
                                         Taichung City, 407, Taiwan ROC
