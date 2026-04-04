@@ -333,8 +333,6 @@ const adminChangePasswordController = async (req, res, next) => {
 const googleClientIdController = async (req, res, next) => {
     try {
 
-        console.log(ENV.GOOGLE_CLIENT_ID)
-
         return res.status(200).json({
             success: true,
             clientId: ENV.GOOGLE_CLIENT_ID
