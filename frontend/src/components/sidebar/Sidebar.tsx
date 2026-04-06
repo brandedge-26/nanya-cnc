@@ -10,6 +10,7 @@ import {
     LayoutDashboard,
     Settings,
     KeyRound,
+    ShoppingCart,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -30,6 +31,11 @@ const menuItems = [
         label: "Dealer Requests",
         path: "/dashboard/dealer-requests",
         icon: Users,
+    },
+    {
+        label: "Dealer Orders",
+        path: "/dashboard/dealer-orders",
+        icon: ShoppingCart,
     },
     {
         label: "All Users",

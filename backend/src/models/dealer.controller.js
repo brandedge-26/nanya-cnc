@@ -1,4 +1,5 @@
 import { DealerRequest } from "../models/DealerRequest.js";
+import { User } from "../models/User.js";
 
 
 
@@ -75,6 +76,12 @@ const updateDealerStatusController = async (req, res, next) => {
                 success: false,
                 message: "Dealer request not found"
             });
+        }
+
+        // Sync user role with dealer request status
+        if (updatedRequest.userId) {
+            const newRole = status === "accept" ? "dealer" : "user";
+            await User.findByIdAndUpdate(updatedRequest.userId, { role: newRole });
         }
 
         return res.status(200).json({

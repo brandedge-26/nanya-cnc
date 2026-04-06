@@ -6,14 +6,15 @@ import { useAuthStore } from "@/store/authStore";
 import { Dealer, useDealerStore } from "@/store/dealerStore";
 import toast from "react-hot-toast";
 import PendingStatus from "@/components/dealer/PendingStatus";
-import AcceptedStatus from "@/components/dealer/AcceptedStatus";
 import RejectedStatus from "@/components/dealer/RejectStatus";
+import { useRouter } from "next/dist/client/components/navigation";
 
 
 const DealerRequest = () => {
 
     // user state
     const { user } = useAuthStore();
+    const router = useRouter();
 
     // dealer request state
     const { isLoading, submitRequest, dealerStatus, getDealerStatus } = useDealerStore();
@@ -27,6 +28,12 @@ const DealerRequest = () => {
         };
         fetchStatus();
     }, [getDealerStatus])
+
+    useEffect(() => {
+        if (dealerStatus === 'accept') {
+            router.replace("/dealer-portal");
+        }
+    }, [dealerStatus, router]);
 
 
     const [formData, setFormData] = useState<Dealer>({
@@ -96,7 +103,7 @@ const DealerRequest = () => {
     }
 
     if (dealerStatus === 'accept') {
-        return <AcceptedStatus />;
+        return null;
     }
 
     if (dealerStatus === 'reject') {

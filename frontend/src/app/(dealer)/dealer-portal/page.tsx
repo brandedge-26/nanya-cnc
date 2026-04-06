@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
     ShoppingCart,
@@ -13,7 +14,10 @@ import {
     ShieldCheck,
     Smartphone,
     CheckCircle2,
+    Loader,
 } from "lucide-react";
+import { useAuthStore } from "@/store/authStore";
+
 
 const features = [
     {
@@ -82,6 +86,30 @@ const benefits = [
 
 export default function DealerPortalPage() {
     const router = useRouter();
+    const { user, isAuthenticated, isCheckingAuth } = useAuthStore();
+
+    useEffect(() => {
+        if (isCheckingAuth) return;
+        if (!isAuthenticated || !user) {
+            router.replace("/");
+            return;
+        }
+        if (user.role !== "dealer") {
+            router.replace("/dealer-request");
+        }
+    }, [isAuthenticated, isCheckingAuth, user, router]);
+
+    if (isCheckingAuth) {
+        return (
+            <div className="min-h-screen bg-black flex items-center justify-center">
+                <Loader className="animate-spin w-12 h-12 text-orange-500" />
+            </div>
+        );
+    }
+
+    if (!isAuthenticated || !user || user.role !== "dealer") {
+        return null;
+    }
 
     return (
         <div className="bg-black min-h-screen text-white">
@@ -99,7 +127,7 @@ export default function DealerPortalPage() {
 
                 <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
                     <span className="inline-block mb-4 px-4 py-1.5 rounded-full border border-orange-500/40 text-orange-400 text-sm font-medium tracking-wide">
-                        NANYA CNC Partner Network
+                        Welcome, {user.name}
                     </span>
 
                     <h1 className="text-4xl md:text-6xl font-serif font-bold tracking-tighter leading-tight">
@@ -115,10 +143,10 @@ export default function DealerPortalPage() {
 
                     <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
                         <button
-                            onClick={() => router.push("/dealer-request")}
+                            onClick={() => router.push("/dealer-order")}
                             className="cursor-pointer px-8 py-3 rounded-full bg-orange-500 text-black font-semibold hover:bg-orange-400 transition flex items-center justify-center gap-2"
                         >
-                            Apply to Become a Dealer
+                            Place an Order
                             <ChevronRight size={18} />
                         </button>
                         <button
@@ -199,7 +227,6 @@ export default function DealerPortalPage() {
                                 <h3 className="font-semibold text-white font-serif mb-2">{s.title}</h3>
                                 <p className="text-sm text-gray-400 leading-relaxed">{s.desc}</p>
 
-                                {/* Connector line (hide on last) */}
                                 {i < steps.length - 1 && (
                                     <div className="hidden lg:block absolute top-6 right-0 translate-x-1/2 w-6 h-px bg-orange-500/30" />
                                 )}
@@ -215,7 +242,6 @@ export default function DealerPortalPage() {
                 <div className="max-w-5xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
 
-                        {/* Left: text */}
                         <div>
                             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
                                 Why Join the{" "}
@@ -228,17 +254,13 @@ export default function DealerPortalPage() {
                             <ul className="space-y-3">
                                 {benefits.map((b, i) => (
                                     <li key={i} className="flex items-start gap-3 text-sm text-gray-300">
-                                        <CheckCircle2
-                                            size={18}
-                                            className="text-orange-500 shrink-0 mt-0.5"
-                                        />
+                                        <CheckCircle2 size={18} className="text-orange-500 shrink-0 mt-0.5" />
                                         {b}
                                     </li>
                                 ))}
                             </ul>
                         </div>
 
-                        {/* Right: stat cards */}
                         <div className="grid grid-cols-2 gap-4">
                             {[
                                 { icon: Globe, label: "Global Network", value: "50+ Countries" },
@@ -269,24 +291,23 @@ export default function DealerPortalPage() {
             <section className="py-24 px-6">
                 <div className="max-w-3xl mx-auto text-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 relative overflow-hidden">
 
-                    {/* Background glow */}
                     <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
                         <div className="h-64 w-64 bg-[radial-gradient(circle,rgba(255,140,0,0.2),transparent_70%)] blur-2xl" />
                     </div>
 
                     <div className="relative z-10">
                         <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
-                            Ready to <span className="text-orange-500">Get Started?</span>
+                            Ready to <span className="text-orange-500">Place an Order?</span>
                         </h2>
                         <p className="text-gray-400 mb-8 leading-relaxed max-w-xl mx-auto">
-                            Join the NANYA CNC dealer network today and unlock access to
-                            exclusive pricing, inventory, and marketing resources.
+                            Browse our full product catalog and place your order directly
+                            through the dealer portal. Fast, secure, and hassle-free.
                         </p>
                         <button
-                            onClick={() => router.push("/dealer-request")}
+                            onClick={() => router.push("/dealer-order")}
                             className="cursor-pointer px-10 py-3.5 rounded-full bg-orange-500 text-black font-semibold hover:bg-orange-400 transition inline-flex items-center gap-2"
                         >
-                            Apply Now
+                            Order Now
                             <ChevronRight size={18} />
                         </button>
                     </div>

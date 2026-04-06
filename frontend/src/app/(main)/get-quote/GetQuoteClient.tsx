@@ -23,13 +23,13 @@ const GetQuoteClient = () => {
     const { isLoading, submitApplication } = useApplicationStore();
 
     const [formData, setFormData] = useState<Quote>({
-        firstName: "welcome",
-        lastName: "khan",
-        email: "welcome@gmail.com",
-        companyEmail: "welcome@gmail.com",
-        companyName: "Welcoem",
-        companyAddress: "Banaras",
-        message: "Hello welcome to our team Hello welcome to our tea Hello welcome to our tea",
+        firstName: "",
+        lastName: "",
+        email: "",
+        companyEmail: "",
+        companyName: "",
+        companyAddress: "",
+        message: "",
     });
 
     const handleChange = (

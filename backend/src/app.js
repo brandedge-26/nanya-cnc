@@ -12,6 +12,7 @@ import "./passport/auth.passport.js";
 import { userRoutes } from "./routes/user.routes.js";
 import { dealerRoutes } from "./routes/dealer.routes.js";
 import { productRoutes } from "./routes/product.routes.js";
+import { dealerOrderRoutes } from "./routes/dealerOrder.routes.js";
 
 
 
@@ -68,6 +69,7 @@ app.use("/api/blogs", blogRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/dealers", dealerRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/dealer-orders", dealerOrderRoutes);
 
 
 
