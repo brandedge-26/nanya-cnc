@@ -117,7 +117,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
     // Login with google
     loginWithGoogle: () => {
-        window.location.href = "http://localhost:5510/api/auth/google"
+        window.location.href = "https://api.nanyacnc.com/api/auth/google"
     },
 
 

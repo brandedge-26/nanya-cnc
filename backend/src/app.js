@@ -39,7 +39,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS CONFIGURATION
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://nye-cnc.com",
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],

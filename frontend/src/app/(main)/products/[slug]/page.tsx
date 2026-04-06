@@ -10,7 +10,7 @@ type ProductResponse = {
     };
 };
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5510/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.nanyacnc.com/api";
 
 const getProductForMetadata = async (slug: string) => {
     try {
