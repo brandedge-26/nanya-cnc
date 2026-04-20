@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Loader, Send } from "lucide-react";
+import {
+    Loader, Send, CheckCircle, Globe, TrendingUp,
+    HeadphonesIcon, BadgeDollarSign, ShieldCheck,
+} from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
 import { Dealer, useDealerStore } from "@/store/dealerStore";
 import toast from "react-hot-toast";
@@ -10,16 +13,45 @@ import RejectedStatus from "@/components/dealer/RejectStatus";
 import { useRouter } from "next/dist/client/components/navigation";
 
 
+const benefits = [
+    {
+        icon: Globe,
+        title: "Global Network",
+        desc: "Access NANYA CNC's worldwide distribution and sales infrastructure.",
+    },
+    {
+        icon: BadgeDollarSign,
+        title: "Competitive Margins",
+        desc: "Earn attractive margins with flexible pricing and volume incentives.",
+    },
+    {
+        icon: HeadphonesIcon,
+        title: "Dedicated Support",
+        desc: "Get a dedicated account manager and priority technical assistance.",
+    },
+    {
+        icon: TrendingUp,
+        title: "Marketing Resources",
+        desc: "Co-branded materials, leads, and digital marketing support.",
+    },
+    {
+        icon: ShieldCheck,
+        title: "Certified Partner",
+        desc: "Official certification and recognition as an authorized NANYA CNC dealer.",
+    },
+];
+
+
+const inputClass =
+    "w-full bg-white/5 border border-white/10 outline-none px-4 py-3 rounded-xl text-white placeholder-white/25 text-sm transition focus:border-orange-500/60 focus:bg-white/8 focus:ring-1 focus:ring-orange-500/30";
+
+
 const DealerRequest = () => {
 
-    // user state
     const { user } = useAuthStore();
     const router = useRouter();
-
-    // dealer request state
     const { isLoading, submitRequest, dealerStatus, getDealerStatus } = useDealerStore();
     const [initialLoad, setInitialLoad] = useState(true);
-
 
     useEffect(() => {
         const fetchStatus = async () => {
@@ -27,24 +59,33 @@ const DealerRequest = () => {
             setInitialLoad(false);
         };
         fetchStatus();
-    }, [getDealerStatus])
+    }, [getDealerStatus]);
 
     useEffect(() => {
-        if (dealerStatus === 'accept') {
+        if (dealerStatus === "accept") {
             router.replace("/dealer-portal");
         }
     }, [dealerStatus, router]);
 
-
     const [formData, setFormData] = useState<Dealer>({
-        name: user?.name as string,
-        email: user?.email as string,
+        name: user?.name ?? "",
+        email: user?.email ?? "",
         companyName: "",
         companyEmail: "",
         message: "",
-        status: "idle"
+        status: "idle",
     });
 
+    // Sync name/email once user loads
+    useEffect(() => {
+        if (user) {
+            setFormData((prev) => ({
+                ...prev,
+                name: prev.name || user.name || "",
+                email: prev.email || user.email || "",
+            }));
+        }
+    }, [user]);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -53,10 +94,7 @@ const DealerRequest = () => {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-
-
-    // form submission
-    const handleSubmit = async (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement | HTMLFormElement | HTMLButtonElement>) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!formData.name || !formData.email || !formData.companyName || !formData.companyEmail || !formData.message) {
@@ -65,10 +103,7 @@ const DealerRequest = () => {
         }
 
         try {
-
             const success = await submitRequest(formData);
-
-
             if (success) {
                 setFormData({
                     name: "",
@@ -76,146 +111,221 @@ const DealerRequest = () => {
                     companyName: "",
                     companyEmail: "",
                     message: "",
-                    status: "idle"
+                    status: "idle",
                 });
             }
-
-        } catch (err) {
+        } catch {
             toast.error("Something went wrong!");
-            console.log(err);
         }
+    };
 
-    }
 
-    if (initialLoad || isLoading) {
+    if (initialLoad) {
         return (
-            <div className="max-w-2xl mx-auto px-5 py-20 text-center">
-                <Loader className="animate-spin w-12 h-12 text-orange-500 mx-auto" />
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="w-10 h-10 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
             </div>
         );
     }
 
-
-    if (dealerStatus === 'pending') {
-        return <>
-            {isLoading ? <Loader className="animate-spin" /> : <PendingStatus />}
-        </>;
+    if (dealerStatus === "pending") {
+        return <PendingStatus />;
     }
 
-    if (dealerStatus === 'accept') {
+    if (dealerStatus === "accept") {
         return null;
     }
 
-    if (dealerStatus === 'reject') {
+    if (dealerStatus === "reject") {
         return <RejectedStatus />;
     }
 
 
     return (
-        <div className="max-w-3xl mx-auto px-5 py-5">
+        <div className="min-h-screen bg-black pt-6 pb-20">
 
-            {dealerStatus === "idle" && <>
+            {/* ── Page Hero ── */}
+            <div className="max-w-6xl mx-auto px-5 pt-10 pb-12 text-center">
+                <span className="inline-block text-xs font-semibold uppercase tracking-widest text-orange-500 mb-3">
+                    Partner Program
+                </span>
+                <h1 className="text-3xl md:text-5xl font-bold font-serif text-white mb-4 leading-tight">
+                    Become an Authorized <span className="text-orange-500">NANYA CNC</span> Dealer
+                </h1>
+                <p className="text-gray-400 max-w-xl mx-auto text-sm md:text-base">
+                    Join our global network of certified dealers and grow your business with industry-leading CNC machines, support, and resources.
+                </p>
+            </div>
 
-                {/* Header Section */}
-                <div className="text-center mb-10 mt-10">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white font-serif">
-                        Become a <span className="text-orange-500">Dealer</span>
-                    </h2>
-                    <p className="text-gray-400 mt-2">Submit your details to join our global network.</p>
+            {/* ── Main Layout ── */}
+            <div className="max-w-6xl mx-auto px-5">
+                <div className="grid lg:grid-cols-5 gap-8 items-start">
+
+                    {/* ── Left: Benefits ── */}
+                    <div className="lg:col-span-2 space-y-4">
+
+                        <div className="rounded-2xl p-6 relative overflow-hidden"
+                            style={{ background: "#0A0A0A", border: "1px solid rgba(255,255,255,0.07)" }}
+                        >
+                            {/* Subtle grid */}
+                            <div className="absolute inset-0 pointer-events-none rounded-2xl" style={{
+                                backgroundImage: `linear-gradient(rgba(249,133,19,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(249,133,19,0.06) 1px, transparent 1px)`,
+                                backgroundSize: "28px 28px",
+                            }} />
+                            {/* Glow */}
+                            <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none" style={{
+                                background: "radial-gradient(ellipse at 50% 0%, rgba(249,133,19,0.15) 0%, transparent 70%)"
+                            }} />
+                            {/* Accent line */}
+                            <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl" style={{
+                                background: "linear-gradient(90deg, transparent, #f98513, rgba(255,255,255,0.4), #f98513, transparent)"
+                            }} />
+
+                            <div className="relative z-10">
+                                <h3 className="text-lg font-bold text-white font-serif mb-1">Why Partner With Us?</h3>
+                                <p className="text-xs text-gray-500 mb-6">Everything you need to scale your business</p>
+
+                                <div className="space-y-4">
+                                    {benefits.map((b) => {
+                                        const Icon = b.icon;
+                                        return (
+                                            <div key={b.title} className="flex items-start gap-3.5">
+                                                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                                                    style={{ background: "rgba(249,133,19,0.12)", color: "#f98513" }}>
+                                                    <Icon size={16} strokeWidth={2} />
+                                                </div>
+                                                <div>
+                                                    <p className="text-sm font-semibold text-white">{b.title}</p>
+                                                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{b.desc}</p>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Note card */}
+                        <div className="rounded-xl px-4 py-3.5 flex items-start gap-3"
+                            style={{ background: "rgba(249,133,19,0.07)", border: "1px solid rgba(249,133,19,0.2)" }}>
+                            <CheckCircle size={16} className="text-orange-400 flex-shrink-0 mt-0.5" />
+                            <p className="text-xs text-orange-300/80 leading-relaxed">
+                                Applications are reviewed within <span className="font-semibold text-orange-400">2–3 business days</span>. Our team will contact you via the email you provide.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* ── Right: Form ── */}
+                    <div className="lg:col-span-3">
+                        <form
+                            onSubmit={handleSubmit}
+                            className="rounded-2xl p-6 md:p-8 space-y-5"
+                            style={{ background: "#0A0A0A", border: "1px solid rgba(255,255,255,0.07)" }}
+                        >
+                            <div className="mb-2">
+                                <h2 className="text-xl font-bold text-white">Submit Your Application</h2>
+                                <p className="text-xs text-gray-500 mt-1">Fill in your details and we&apos;ll get back to you shortly.</p>
+                            </div>
+
+                            {/* Divider */}
+                            <div style={{ height: 1, background: "rgba(255,255,255,0.06)" }} />
+
+                            {/* Personal Info */}
+                            <div>
+                                <p className="text-xs font-semibold uppercase tracking-widest text-orange-500 mb-3">Personal Information</p>
+                                <div className="grid sm:grid-cols-2 gap-4">
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-medium text-gray-400">Full Name <span className="text-orange-500">*</span></label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            placeholder="e.g. John Doe"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            className={inputClass}
+                                        />
+                                    </div>
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-medium text-gray-400">Personal Email <span className="text-orange-500">*</span></label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            placeholder="you@example.com"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            className={inputClass}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Company Info */}
+                            <div>
+                                <p className="text-xs font-semibold uppercase tracking-widest text-orange-500 mb-3">Company Information</p>
+                                <div className="grid sm:grid-cols-2 gap-4">
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-medium text-gray-400">Company Name <span className="text-orange-500">*</span></label>
+                                        <input
+                                            type="text"
+                                            name="companyName"
+                                            placeholder="Your Business Name"
+                                            value={formData.companyName}
+                                            onChange={handleChange}
+                                            className={inputClass}
+                                        />
+                                    </div>
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-medium text-gray-400">Company Email <span className="text-orange-500">*</span></label>
+                                        <input
+                                            type="email"
+                                            name="companyEmail"
+                                            placeholder="business@company.com"
+                                            value={formData.companyEmail}
+                                            onChange={handleChange}
+                                            className={inputClass}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Message */}
+                            <div className="space-y-1.5">
+                                <label className="text-xs font-medium text-gray-400">Message / Requirements <span className="text-orange-500">*</span></label>
+                                <textarea
+                                    name="message"
+                                    placeholder="Tell us about your business, the markets you serve, and why you want to partner with NANYA CNC..."
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    rows={5}
+                                    className={`${inputClass} resize-none`}
+                                />
+                            </div>
+
+                            {/* Submit */}
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className="w-full h-12 flex items-center justify-center gap-2.5 rounded-xl font-semibold text-sm text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                                style={{ background: isLoading ? "#f98513" : "linear-gradient(135deg, #f98513, #e06e00)" }}
+                            >
+                                {isLoading ? (
+                                    <div className="w-5 h-5 border-2 border-black/40 border-t-black rounded-full animate-spin" />
+                                ) : (
+                                    <>
+                                        <Send size={16} strokeWidth={2.5} />
+                                        Submit Application
+                                    </>
+                                )}
+                            </button>
+
+                            <p className="text-xs text-center text-gray-600">
+                                By submitting, you agree to our Terms of Service and Privacy Policy.
+                            </p>
+                        </form>
+                    </div>
+
                 </div>
-
-                {/* Form */}
-                <form
-                    onSubmit={handleSubmit}
-                    className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl space-y-6"
-                >
-
-                    {/* name & email */}
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                            <label className="text-sm text-gray-400 ml-1">Full Name</label>
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="e.g. John Doe"
-                                value={formData.name}
-                                readOnly
-                                className="input-glass cursor-not-allowed"
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-sm text-gray-400 ml-1">Personal Email</label>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="john@example.com"
-                                value={formData.email}
-                                readOnly
-                                className="input-glass cursor-not-allowed"
-                            />
-                        </div>
-                    </div>
-
-                    {/* Company Name & Company Email */}
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                            <label className="text-sm text-gray-400 ml-1">Company Name</label>
-                            <input
-                                type="text"
-                                name="companyName"
-                                placeholder="Your Business Name"
-                                value={formData.companyName}
-                                onChange={handleChange}
-                                className="w-full bg-black/20 border border-white/10 outline-none px-4 py-3 rounded-xl focus:ring-1 focus:ring-orange-500 transition text-white"
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-sm text-gray-400 ml-1">Company Email</label>
-                            <input
-                                type="email"
-                                name="companyEmail"
-                                placeholder="business@company.com"
-                                value={formData.companyEmail}
-                                onChange={handleChange}
-                                className="w-full bg-black/20 border border-white/10 outline-none px-4 py-3 rounded-xl focus:ring-1 focus:ring-orange-500 transition text-white"
-                            />
-                        </div>
-                    </div>
-
-                    {/*  Message */}
-                    <div className="space-y-2">
-                        <label className="text-sm text-gray-400 ml-1">Message / Requirements</label>
-                        <textarea
-                            name="message"
-                            placeholder="Tell us about your business..."
-                            value={formData.message}
-                            onChange={handleChange}
-                            rows={5}
-                            className="w-full bg-black/20 border border-white/10 outline-none px-4 py-3 rounded-xl focus:ring-1 focus:ring-orange-500 transition text-white resize-none"
-                        />
-                    </div>
-
-
-                    {/* Submit Button */}
-                    <button
-                        onClick={handleSubmit}
-                        disabled={isLoading}
-                        className="h-12 w-full flex items-center gap-3 cursor-pointer justify-center border align-middle select-none font-sans font-medium text-center duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none text-sm py-2 px-4 shadow-sm hover:shadow-md bg-amber-500 hover:bg-warning-light relative bg-linear-to-b from-orange-500 to-orange-600 border-orange-600 text-stone-50 rounded-lg hover:bg-linear-to-b hover:from-orange-600 hover:to-orange-600 hover:border-orange-600 after:absolute after:inset-0 after:rounded-[inherit] after:box-shadow after:shadow-[inset_0_1px_0px_rgba(255,255,255,0.35),inset_0_-2px_0px_rgba(0,0,0,0.18)] after:pointer-events-none transition antialiased"
-                    >
-                        {isLoading ? (
-                            <Loader className="animate-spin" size={24} />
-                        ) : (
-                            <>
-                                <span>Send Request</span>
-                                <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                            </>
-                        )}
-                    </button>
-
-                </form>
-
-            </>}
-
+            </div>
         </div>
     );
 };

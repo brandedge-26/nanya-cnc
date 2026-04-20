@@ -170,12 +170,19 @@ const IndustryDetailClient = ({ slug }: { slug: string }) => {
                                         </p>
                                     </div>
 
-                                    {/* Button */}
-                                    <Link href={`/products/${product.slug}`}>
-                                        <button className="mt-4 w-full cursor-pointer items-center justify-center border align-middle select-none font-sans font-medium text-center duration-300 ease-in text-sm py-2 px-4 shadow-sm hover:shadow-md relative bg-linear-to-b from-orange-500 to-orange-600 border-orange-600 text-stone-50 rounded-lg hover:from-orange-600 hover:to-orange-600 hover:border-orange-600 after:absolute after:inset-0 after:rounded-[inherit] after:box-shadow after:shadow-[inset_0_1px_0px_rgba(255,255,255,0.35),inset_0_-2px_0px_rgba(0,0,0,0.18)] after:pointer-events-none transition antialiased">
-                                            View Details
-                                        </button>
-                                    </Link>
+                                    {/* Buttons */}
+                                    <div className="flex gap-2 mt-4">
+                                        <Link href="/get-quote" className="flex-1">
+                                            <button className="w-full cursor-pointer text-sm py-2 px-3 font-medium bg-orange-500 text-black rounded-lg hover:bg-orange-500/80 transition">
+                                                Request Quote
+                                            </button>
+                                        </Link>
+                                        <Link href={`/products/${product.slug}`}>
+                                            <button className="cursor-pointer text-sm py-2 px-3 font-medium bg-white/10 border border-white/10 text-white rounded-lg hover:bg-white/20 transition">
+                                                Details
+                                            </button>
+                                        </Link>
+                                    </div>
                                 </div>
                             );
                         })}
@@ -195,8 +202,8 @@ const IndustryDetailClient = ({ slug }: { slug: string }) => {
                     </p>
                     <div className="flex justify-center gap-4 flex-wrap">
                         <Link href="/get-quote">
-                            <button className="cursor-pointer px-8 py-3 rounded-full bg-orange-500 text-black font-medium hover:bg-orange-500/80 transition">
-                                Get a Quote
+                            <button className="cursor-pointer px-8 py-3 rounded-full bg-orange-500 text-black font-semibold hover:bg-orange-500/80 transition shadow-lg shadow-orange-500/20">
+                                Request Free Consultation
                             </button>
                         </Link>
                         <Link href="/products">

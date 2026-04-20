@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-    title: "Get Instant Quote | NANYA CNC",
+    title: "Request CNC Consultation | Nanya CNC – Engineering System",
     description:
-        "Get a fast and accurate quote for your project. Submit your details and receive a customized solution quickly.",
+        "Request a CNC machine consultation. Tell us your production needs and our engineers will design the right machine setup for your industry.",
 };
 
 

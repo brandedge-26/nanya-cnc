@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Product, useProductStore } from "@/store/productStore";
 import { useSearchParams } from "next/navigation";
+import { ArrowRight, Zap, Target, Cpu } from "lucide-react";
 
 
 /* ---------- Category short labels for tabs ---------- */
@@ -19,60 +20,97 @@ const categoryLabels: Record<string, string> = {
     "Industrial Robotic Technology": "Robotics",
 };
 
+/* ---------- Tag based on category ---------- */
+const categoryTag: Record<string, string> = {
+    "CNC Vertical Machine Center": "AI Optimized",
+    "CNC Horizontal Machine Center": "High Speed",
+    "CNC Slant-Bed Lathe Machine": "Industrial Grade",
+    "CNC Vertical Lathe Machine": "Industrial Grade",
+    "CNC Double Column Machine Center": "High Speed",
+    "Industrial Device": "Smart Device",
+    "Industrial Robotic Technology": "AI Optimized",
+};
 
 
-/* ---------- Product Card ---------- */
+/* ---------- Futuristic Product Card ---------- */
 const ProductCard = ({ product }: { product: Product }) => {
     const primaryImage = product.images.find(img => img.isPrimary) || product.images[0];
     const imageSrc = primaryImage?.url;
+    const tag = categoryTag[product.category] || "Precision";
 
     return (
-        <div className="relative rounded-2xl overflow-hidden bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg transition-shadow duration-300 hover:shadow-2xl p-3">
+        <div className="group relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/10 hover:border-orange-500/40">
 
             {/* Image */}
-            <div className="h-55 w-full overflow-hidden group border border-white/20 rounded-xl bg-black">
+            <div className="relative h-56 w-full overflow-hidden bg-black">
                 <Image
                     src={imageSrc}
                     alt={primaryImage?.altText || product.modelName}
-                    width={500}
-                    height={300}
-                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 rounded-xl"
+                    fill
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
+                    <div className="text-center">
+                        <Zap size={18} className="text-orange-400 mx-auto mb-1" />
+                        <span className="text-xs text-gray-300">High Speed</span>
+                    </div>
+                    <div className="text-center">
+                        <Target size={18} className="text-orange-400 mx-auto mb-1" />
+                        <span className="text-xs text-gray-300">Precision</span>
+                    </div>
+                    <div className="text-center">
+                        <Cpu size={18} className="text-orange-400 mx-auto mb-1" />
+                        <span className="text-xs text-gray-300">AI Ready</span>
+                    </div>
+                </div>
+                {/* Tag badge */}
+                <div className="absolute top-3 left-3">
+                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 backdrop-blur-sm">
+                        {tag}
+                    </span>
+                </div>
             </div>
 
             {/* Content */}
-            <div className="pt-6">
-                {/* Category Badge */}
-                <span className="inline-block text-xs font-medium text-orange-400 bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full mb-3">
+            <div className="p-5">
+                {/* Category */}
+                <span className="inline-block text-xs font-medium text-gray-500 mb-2">
                     {categoryLabels[product.category] || product.category}
                 </span>
 
-                <h3 className="text-white text-xl font-semibold mb-1">
+                <h3 className="text-white text-lg font-semibold mb-1 font-serif group-hover:text-orange-400 transition-colors duration-300">
                     {product.modelName}
                 </h3>
 
-                <p className="text-gray-300 text-sm leading-relaxed line-clamp-1">
+                <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-1">
                     {product.tagline}
                 </p>
 
                 {product.subCategory && (
-                    <p className="text-gray-500 text-xs mt-1">{product.subCategory}</p>
+                    <p className="text-gray-600 text-xs">{product.subCategory}</p>
                 )}
             </div>
 
-            {/* View Details Button */}
-            <Link href={`/products/${product.slug}`}>
-                <button className="mt-4 w-full cursor-pointer items-center justify-center border align-middle select-none font-sans font-medium text-center duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none text-sm py-2 px-4 shadow-sm hover:shadow-md bg-amber-500 hover:bg-warning-light relative bg-linear-to-b from-orange-500 to-orange-600 border-orange-600 text-stone-50 rounded-lg hover:bg-linear-to-b hover:from-orange-600 hover:to-orange-600 hover:border-orange-600 after:absolute after:inset-0 after:rounded-[inherit] after:box-shadow after:shadow-[inset_0_1px_0px_rgba(255,255,255,0.35),inset_0_-2px_0px_rgba(0,0,0,0.18)] after:pointer-events-none transition antialiased">
-                    View Details
-                </button>
-            </Link>
+            {/* Action Buttons */}
+            <div className="px-5 pb-5 flex gap-2">
+                <Link href={`/get-quote`} className="flex-1">
+                    <button className="w-full py-2 text-sm font-semibold rounded-lg bg-orange-500 text-black hover:bg-orange-500/80 transition cursor-pointer">
+                        Get a Quote
+                    </button>
+                </Link>
+                <Link href={`/products/${product.slug}`}>
+                    <button className="p-2 rounded-lg bg-white/10 border border-white/10 text-white hover:bg-white/20 hover:border-white/20 transition cursor-pointer">
+                        <ArrowRight size={16} />
+                    </button>
+                </Link>
+            </div>
 
-            {/* Soft Glow */}
-            <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-br from-(--primary)/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+            {/* Orange glow border on hover */}
+            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-0 group-hover:ring-1 group-hover:ring-orange-500/20 transition-all duration-300"></div>
         </div>
     );
 };
-
 
 
 
@@ -91,13 +129,10 @@ const ProductsClient = () => {
     useEffect(() => {
         const category = searchParams.get("category");
         if (!category) return;
-
         const decodedCategory = decodeURIComponent(category.replace(/\+/g, " "));
         setActiveTab(decodedCategory);
     }, [searchParams]);
 
-
-    // Filter products by active tab
     const filteredProducts =
         activeTab === "All"
             ? products
@@ -106,22 +141,32 @@ const ProductsClient = () => {
     const tabs = ["All", ...categories];
 
     return (
-        <div className="max-w-7xl mx-auto px-5 py-16">
+        <div className="max-w-7xl mx-auto px-5 py-10">
 
-            {/* Tabs */}
-            <div className="flex flex-wrap gap-3 justify-center mb-10">
-                {tabs.map((tab) => (
-                    <button
-                        key={tab}
-                        onClick={() => setActiveTab(tab)}
-                        className={`px-6 py-2 rounded-full backdrop-blur-lg bg-white/10 text-sm font-medium cursor-pointer transition-colors duration-300 hover:bg-white/20 hover:text-white ${activeTab === tab
-                            ? "bg-white/20 text-white shadow-lg border"
-                            : "text-gray-300 border border-white/10"
-                            }`}
-                    >
-                        {categoryLabels[tab] || tab}
-                    </button>
-                ))}
+            {/* Smart Filter System */}
+            <div className="mb-8">
+                <p className="text-center text-xs text-gray-500 uppercase tracking-widest mb-5">Smart Filter</p>
+                <div className="flex flex-wrap gap-3 justify-center">
+                    {tabs.map((tab) => (
+                        <button
+                            key={tab}
+                            onClick={() => setActiveTab(tab)}
+                            className={`px-5 py-2 rounded-full backdrop-blur-lg text-sm font-medium cursor-pointer transition-all duration-300 border ${activeTab === tab
+                                ? "bg-orange-500 text-black border-orange-500 shadow-lg shadow-orange-500/20"
+                                : "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10 hover:text-white hover:border-white/20"
+                                }`}
+                        >
+                            {categoryLabels[tab] || tab}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Result count */}
+                {!isLoading && (
+                    <p className="text-center text-xs text-gray-600 mt-4">
+                        {filteredProducts.length} machine{filteredProducts.length !== 1 ? "s" : ""} found
+                    </p>
+                )}
             </div>
 
             {/* Loading State */}
@@ -134,16 +179,34 @@ const ProductsClient = () => {
             {/* No Products */}
             {!isLoading && filteredProducts.length === 0 && (
                 <div className="text-center py-20">
-                    <p className="text-gray-400 text-lg">No products found in this category.</p>
+                    <p className="text-gray-400 text-lg">No machines found in this category.</p>
                 </div>
             )}
 
             {/* Product Cards Grid */}
             {!isLoading && filteredProducts.length > 0 && (
-                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
                     {filteredProducts.map((product) => (
                         <ProductCard key={product._id} product={product} />
                     ))}
+                </div>
+            )}
+
+            {/* Bottom CTA */}
+            {!isLoading && filteredProducts.length > 0 && (
+                <div className="text-center mt-16 py-10 border-t border-white/5">
+                    <h3 className="text-xl font-bold text-white mb-3 font-serif">
+                        Need help choosing the right machine?
+                    </h3>
+                    <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">
+                        Our engineers will guide you to the perfect CNC system for your production needs.
+                    </p>
+                    <Link
+                        href="/get-quote"
+                        className="inline-block px-8 py-3 rounded-full bg-orange-500 text-black font-semibold hover:bg-orange-500/80 transition shadow-lg shadow-orange-500/20"
+                    >
+                        Get Free Consultation
+                    </Link>
                 </div>
             )}
 

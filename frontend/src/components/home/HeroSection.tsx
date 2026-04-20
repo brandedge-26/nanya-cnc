@@ -29,32 +29,46 @@ const HeroSection = () => {
       {/* HERO CONTENT */}
       <div className="relative z-10 max-w-5xl px-6 text-center">
 
+        <p className="text-xs md:text-sm uppercase tracking-widest text-orange-500 mb-4 font-medium">
+          Next-Generation CNC Manufacturing
+        </p>
+
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tighter leading-tight">
-          Precision CNC Machining,
+          AI-Powered CNC Manufacturing
           <br />
-          Built for <span className="text-orange-500">Modern Manufacturing.</span>
+          for the <span className="text-orange-500">Next Industrial Era</span>
         </h1>
 
         <p className="mt-6 text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          Nanya CNC is a precision machining platform where advanced technology,
-          engineering excellence, and trusted partnerships come together to deliver
-          uncompromised quality.
+          Nanya CNC combines precision engineering with intelligent automation to deliver faster
+          production, higher accuracy, and smarter manufacturing solutions.
         </p>
 
-        <div className="mt-10 flex justify-center gap-4">
+        <p className="mt-2 text-sm text-gray-500 max-w-xl mx-auto">
+          From single machines to fully integrated smart factories — we help you scale with confidence.
+        </p>
 
-          <button 
+        <div className="mt-10 flex justify-center gap-4 flex-wrap">
+
+          <button
             onClick={() => router.push("/get-quote")}
-            className="cursor-pointer px-8 py-3 rounded-full bg-orange-500 text-black font-medium hover:bg-orange-500/80 transition">
-            Get Quote
+            className="cursor-pointer px-8 py-3 rounded-full bg-orange-500 text-black font-semibold hover:bg-orange-500/80 transition shadow-lg shadow-orange-500/20">
+            Get Consultation
           </button>
 
-          <button 
+          <button
             onClick={() => router.push("/products")}
             className="cursor-pointer px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition">
-            Our Products
+            Explore Smart Machines
           </button>
 
+        </div>
+
+        {/* Micro Text */}
+        <div className="mt-8 flex justify-center gap-6 flex-wrap text-sm text-gray-400">
+          <span className="flex items-center gap-1"><span className="text-orange-500">✔</span> AI Optimization</span>
+          <span className="flex items-center gap-1"><span className="text-orange-500">✔</span> High Precision Output</span>
+          <span className="flex items-center gap-1"><span className="text-orange-500">✔</span> Global Industrial Standards</span>
         </div>
 
       </div>

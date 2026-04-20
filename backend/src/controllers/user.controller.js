@@ -6,8 +6,8 @@ import { User } from "../models/User.js";
 const getAllUsersController = async (req, res, next) => {
     try {
 
-        const users = await User.find({ role: "user" }).select("_id name email provider").sort({ createdAt: -1 });
-        
+        const users = await User.find({ role: ["user", "dealer"] }).select("_id name email provider").sort({ createdAt: -1 });
+
         return res.status(200).json({
             success: true,
             data: users

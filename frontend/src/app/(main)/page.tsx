@@ -1,18 +1,21 @@
 import Advantage from "@/components/home/Advantage";
 import CardList from "@/components/home/CardList";
-import Faq from "@/components/home/Faq";
 import HeroSection from "@/components/home/HeroSection";
 import TrustedCompany from "@/components/home/TrustedCompany";
-import YouTubeEmbed from "@/components/home/YoutubeCard";
+import SmartFactory from "@/components/home/SmartFactory";
+import StatsSection from "@/components/home/StatsSection";
+import IndustriesPreview from "@/components/home/IndustriesPreview";
+import ConsultationCTA from "@/components/home/ConsultationCTA";
+import BlogsSection from "@/components/home/BlogsSection";
 
 export const metadata = {
-  title: "NANYA CNC Machines | Precision CNC Manufacturing Solutions",
+  title: "Nanya CNC | AI-Powered CNC Manufacturing for the Next Industrial Era",
   description:
-    "Explore NANYA CNC’s advanced vertical machining centers, lathes, robotics, and automation solutions for high-performance manufacturing.",
+    "Nanya CNC combines precision engineering with intelligent automation to deliver faster production, higher accuracy, and smarter manufacturing solutions.",
   openGraph: {
-    title: "NANYA CNC Machines | Precision CNC Manufacturing Solutions",
+    title: "Nanya CNC | AI-Powered CNC Manufacturing for the Next Industrial Era",
     description:
-      "Explore NANYA CNC’s advanced vertical machining centers, lathes, robotics, and automation solutions for high-performance manufacturing.",
+      "Nanya CNC combines precision engineering with intelligent automation to deliver faster production, higher accuracy, and smarter manufacturing solutions.",
     type: "website",
     images: [
       {
@@ -25,9 +28,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NANYA CNC Machines | Precision CNC Manufacturing Solutions",
+    title: "Nanya CNC | AI-Powered CNC Manufacturing for the Next Industrial Era",
     description:
-      "Explore NANYA CNC’s advanced vertical machining centers, lathes, robotics, and automation solutions for high-performance manufacturing.",
+      "Nanya CNC combines precision engineering with intelligent automation to deliver faster production, higher accuracy, and smarter manufacturing solutions.",
     images: ["/logo-primary.png"],
   },
 };
@@ -35,29 +38,42 @@ export const metadata = {
 const HomePage = () => {
   return (
     <>
-    
       {/* DARK BACKGROUND WRAPPER */}
-      <section className="bg-black min-h-screen relative overflow-hidden ">
+      <section className="bg-black min-h-screen relative overflow-hidden">
 
-        {/* HERO SECTION */}
+        {/* 1. HERO SECTION */}
         <HeroSection />
 
         {/* MAIN CONTENT */}
         <div className="px-5">
 
+          {/* 2. WHY NANYA CNC */}
+          <Advantage />
+
+          {/* 3. SMART MACHINES (Featured Products) */}
           <CardList />
 
-          {/* Youtube placeholder */}
-          <YouTubeEmbed videoid="o2J_jdKBLI4" />
-
-          <Advantage />
-          <TrustedCompany />
-
-          <div className="mt-10">
-            <Faq />
-          </div>
-
         </div>
+
+        {/* 4. INDUSTRIES PREVIEW */}
+        <IndustriesPreview />
+
+        {/* 5. SMART FACTORY SYSTEM */}
+        <SmartFactory />
+
+        {/* 6. STATS */}
+        <StatsSection />
+
+        {/* TRUSTED COMPANIES */}
+        <div className="px-5">
+          <TrustedCompany />
+        </div>
+
+        {/* 7. BLOGS / INSIGHTS */}
+        <BlogsSection />
+
+        {/* 8. CONSULTATION CTA */}
+        <ConsultationCTA />
 
       </section>
     </>

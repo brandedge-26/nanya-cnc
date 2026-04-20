@@ -28,6 +28,8 @@ export interface Blog {
     content: string;
     image?: string;
     imagePublicId?: string;
+    published?: boolean;
+    featuredOnHome?: boolean;
     createdAt?: string;
     updatedAt?: string;
 }
@@ -43,6 +45,8 @@ interface BlogState {
     getBlogById: (id: string) => Promise<Blog | null>;
     updateBlog: (id: string, data: FormData) => Promise<boolean>;
     deleteBlog: (id: string) => Promise<void>;
+    togglePublish: (id: string, published: boolean) => Promise<void>;
+    toggleFeatured: (id: string, featured: boolean) => Promise<void>;
 
 }
 
@@ -188,6 +192,53 @@ export const useBlogStore = create<BlogState>((set) => ({
             toast.error(msg);
         } finally {
             set({ isLoading: false });
+        }
+    },
+
+
+    // TOGGLE PUBLISH
+    togglePublish: async (id: string, published: boolean): Promise<void> => {
+        // Optimistic update
+        set((state) => ({
+            blogs: state.blogs.map((b) => b._id === id ? { ...b, published } : b)
+        }));
+        try {
+            const fd = new FormData();
+            fd.append("published", String(published));
+            await api.put(`/blogs/${id}/update`, fd, {
+                headers: { "Content-Type": "multipart/form-data" }
+            });
+            toast.success(published ? "Blog published" : "Blog unpublished");
+        } catch (err) {
+            // Revert on failure
+            set((state) => ({
+                blogs: state.blogs.map((b) => b._id === id ? { ...b, published: !published } : b)
+            }));
+            const msg = handleError(err);
+            toast.error(msg);
+        }
+    },
+
+
+    // TOGGLE FEATURED ON HOME
+    toggleFeatured: async (id: string, featured: boolean): Promise<void> => {
+        // Optimistic update
+        set((state) => ({
+            blogs: state.blogs.map((b) => b._id === id ? { ...b, featuredOnHome: featured } : b)
+        }));
+        try {
+            const fd = new FormData();
+            fd.append("featuredOnHome", String(featured));
+            await api.put(`/blogs/${id}/update`, fd, {
+                headers: { "Content-Type": "multipart/form-data" }
+            });
+            toast.success(featured ? "Featured on homepage" : "Removed from homepage");
+        } catch (err) {
+            set((state) => ({
+                blogs: state.blogs.map((b) => b._id === id ? { ...b, featuredOnHome: !featured } : b)
+            }));
+            const msg = handleError(err);
+            toast.error(msg);
         }
     },
 

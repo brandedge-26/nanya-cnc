@@ -2,7 +2,6 @@ import {
     Cpu,
     ClipboardCheck,
     Eye,
-    Settings,
     BadgeCheck,
     LucideIcon
 } from "lucide-react";
@@ -13,28 +12,23 @@ const Advantage = () => {
     const advantages = [
         {
             icon: Cpu,
-            title: "AI-Enhanced Manufacturing",
-            desc: "Technology that optimizes production without sacrificing human expertise",
+            title: "AI-Driven Precision",
+            desc: "Advanced algorithms optimize cutting paths and reduce errors, ensuring unmatched accuracy in every operation.",
         },
         {
             icon: ClipboardCheck,
-            title: "Methodology-Driven Approach",
-            desc: "Theory of Constraints implementation that maximizes efficiency",
+            title: "High-Speed Production",
+            desc: "Maximize output with machines engineered for speed without compromising quality.",
         },
         {
             icon: Eye,
-            title: "Complete Transparency",
-            desc: "Real-time visibility into your manufacturing process at every stage",
-        },
-        {
-            icon: Settings,
-            title: "Engineering Excellence",
-            desc: "Team with decades of manufacturing experience across multiple industries",
+            title: "Smart Automation",
+            desc: "Reduce manual work with automated workflows, real-time monitoring, and intelligent controls.",
         },
         {
             icon: BadgeCheck,
-            title: "Quality Commitment",
-            desc: "Rigorous quality systems that ensure precision and consistency",
+            title: "Global Reliability",
+            desc: "Trusted by industries worldwide with durable machines and consistent performance.",
         },
     ];
 
@@ -88,30 +82,18 @@ const Advantage = () => {
             <div className="max-w-7xl mx-auto px-6">
 
                 {/* Heading */}
-                <h2 className="text-4xl font-bold mb-16 text-center text-white font-serif">
-                    The <span className="text-orange-500">NANYA CNC</span> Advantages
-                </h2>
-
-                {/* 🔹 FIRST ROW → 3 CARDS */}
-                <div className="
-                    grid grid-cols-3 gap-3
-                    max-md:grid-cols-2
-                    max-sm:grid-cols-1
-                    mb-3
-                ">
-                    {advantages.slice(0, 3).map((item, i) => (
-                        <Card key={i} item={item} />
-                    ))}
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl font-bold text-white font-serif">
+                        Why Nanya CNC Leads the <span className="text-orange-500">Future of Manufacturing</span>
+                    </h2>
+                    <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
+                        We don&apos;t just manufacture machines — we build intelligent production systems designed for efficiency, scalability, and long-term growth.
+                    </p>
                 </div>
 
-                {/* 🔹 SECOND ROW → 2 CARDS CENTER */}
-                <div className="w-full
-                    grid grid-cols-2 gap-3
-                    max-md:grid-cols-2
-                    max-sm:grid-cols-1
-                    max-w-4xl mx-auto
-                ">
-                    {advantages.slice(3).map((item, i) => (
+                {/* 4 Cards Grid */}
+                <div className="grid grid-cols-2 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-w-5xl mx-auto">
+                    {advantages.map((item, i) => (
                         <Card key={i} item={item} />
                     ))}
                 </div>

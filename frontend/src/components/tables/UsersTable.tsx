@@ -2,26 +2,22 @@
 
 import { useModal } from "@/context/ModalContext";
 import { useUserStore, User } from "@/store/userStore";
-import { Loader, Trash2, Search } from "lucide-react";
+import { Loader, Trash2, Search, Users, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import DeleteConfirmPopup from "../popup/DeleteConfirmPopup";
+
 
 const UsersTable = () => {
 
     const { isLoading, getAllUsers, users, deleteUser } = useUserStore();
-
-
-    // filter states
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [providerFilter, setProviderFilter] = useState<string>("All");
-
+    const { openModal, closeModal } = useModal();
 
     useEffect(() => {
         getAllUsers();
     }, [getAllUsers]);
 
-
-    // Filter Logic
     const filteredUsers = users.filter((user: User) => {
         const name = user.name || "";
         const email = user.email || "";
@@ -36,127 +32,189 @@ const UsersTable = () => {
         return matchesSearch && matchesProvider;
     });
 
-
-
-    // modal state
-    const { openModal, closeModal } = useModal();
-
-
-    // confirm popup
     const handleUserDelete = (user: User) => {
-        openModal(<DeleteConfirmPopup
-            title={`${user.name} User`}
-            onClose={closeModal}
-            onDelete={() => deleteUser(user._id as string)}
-        />)
-    }
+        openModal(
+            <DeleteConfirmPopup
+                title={`${user.name} User`}
+                onClose={closeModal}
+                onDelete={() => deleteUser(user._id as string)}
+            />
+        );
+    };
 
+    const avatarColors = [
+        "rgba(249,133,19,0.2)", "rgba(59,130,246,0.2)", "rgba(34,197,94,0.2)",
+        "rgba(168,85,247,0.2)", "rgba(239,68,68,0.2)", "rgba(20,184,166,0.2)",
+    ];
+    const avatarTextColors = ["#f98513", "#3b82f6", "#22c55e", "#a855f7", "#ef4444", "#14b8a6"];
 
 
     return (
-        <>
+        <div className="space-y-5">
 
-            {/* Heading */}
-            <h1 className="mb-3 font-normal tracking-tighter text-[20px]">All Users</h1>
-
-
-            {/* Search bar */}
-            <div className="flex flex-col md:flex-row my-5 gap-3 items-center">
-                <div className="relative w-full">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
-                    <input
-                        type="text"
-                        placeholder="Search by name or email..."
-                        className="w-full bg-black/20 border border-gray-700 outline-none pl-10 pr-4 py-2 rounded-lg focus:ring-1 focus:ring-orange-500 transition text-white"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
+            {/* Header */}
+            <div className="flex items-center justify-between flex-wrap gap-3">
+                <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                        style={{ background: "rgba(59,130,246,0.12)", color: "#3b82f6" }}>
+                        <Users size={18} strokeWidth={2} />
+                    </div>
+                    <div>
+                        <h1 className="text-lg font-bold text-white">All Users</h1>
+                        <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
+                            {isLoading ? "Loading..." : `${users.length} registered accounts`}
+                        </p>
+                    </div>
                 </div>
 
-                <select
-                    className="w-full md:w-48 bg-black/20 border border-gray-700 outline-none px-4 py-2 rounded-lg focus:ring-1 focus:ring-orange-500 text-white cursor-pointer"
-                    value={providerFilter}
-                    onChange={(e) => setProviderFilter(e.target.value)}
-                >
-                    <option value="All" className="bg-gray-900">All Providers</option>
-                    <option value="google" className="bg-gray-900">Google</option>
-                    <option value="local" className="bg-gray-900">Local</option>
-                </select>
+                {/* Filters */}
+                <div className="flex items-center gap-2 flex-wrap w-full sm:w-auto">
+                    {/* Search */}
+                    <div className="relative w-full sm:w-64">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2" size={15}
+                            style={{ color: "rgba(255,255,255,0.3)" }} />
+                        <input
+                            type="text"
+                            placeholder="Search name or email..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full pl-9 pr-8 py-2.5 rounded-xl text-sm text-white outline-none transition"
+                            style={{ background: "#0A0A0A", border: "1px solid rgba(255,255,255,0.1)" }}
+                            onFocus={(e) => (e.target.style.borderColor = "rgba(59,130,246,0.5)")}
+                            onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                        />
+                        {searchTerm && (
+                            <button onClick={() => setSearchTerm("")}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                                style={{ color: "rgba(255,255,255,0.3)" }}>
+                                <X size={13} />
+                            </button>
+                        )}
+                    </div>
+
+                    {/* Provider filter */}
+                    <select
+                        value={providerFilter}
+                        onChange={(e) => setProviderFilter(e.target.value)}
+                        className="px-3 py-2.5 rounded-xl text-sm text-white outline-none cursor-pointer transition"
+                        style={{ background: "#0A0A0A", border: "1px solid rgba(255,255,255,0.1)" }}
+                    >
+                        <option value="All" className="bg-[#0A0A0A]">All Providers</option>
+                        <option value="google" className="bg-[#0A0A0A]">Google</option>
+                        <option value="local" className="bg-[#0A0A0A]">Local</option>
+                    </select>
+                </div>
             </div>
 
-
-
-            {/* Table */}
-            <div className="w-full overflow-x-auto rounded-xl border border-white/10 bg-black/20 backdrop-blur-md flex flex-col">
+            {/* Table Card */}
+            <div className="rounded-2xl overflow-hidden"
+                style={{ background: "#0A0A0A", border: "1px solid rgba(255,255,255,0.07)" }}>
 
                 {isLoading ? (
-
-                    <div className="flex-1 flex items-center justify-center p-10">
-                        <Loader className="animate-spin text-orange-500" size={32} />
+                    <div className="flex items-center justify-center py-20 gap-3">
+                        <div className="w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+                        <span className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>Loading users…</span>
                     </div>
-
                 ) : filteredUsers.length === 0 ? (
-
-                    <div className="flex-1 flex flex-col items-center justify-center p-10 text-white/50">
-                        <p className="text-lg">No users found</p>
+                    <div className="flex flex-col items-center justify-center py-20 gap-3">
+                        <Users size={36} style={{ color: "rgba(255,255,255,0.15)" }} />
+                        <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>
+                            {searchTerm || providerFilter !== "All" ? "No users match your filters" : "No users registered yet"}
+                        </p>
+                        {(searchTerm || providerFilter !== "All") && (
+                            <button onClick={() => { setSearchTerm(""); setProviderFilter("All"); }}
+                                className="text-xs text-blue-400 hover:text-blue-300 transition cursor-pointer">
+                                Clear filters
+                            </button>
+                        )}
                     </div>
-
                 ) : (
-
-                    <table className="w-full text-left border-collapse">
-
-                        {/* Table Header */}
-                        <thead className="bg-white/5 text-white/70 uppercase text-[11px] tracking-wider">
-                            <tr>
-                                <th className="px-6 py-4 font-semibold">#ID</th>
-                                <th className="px-6 py-4 font-semibold">Name</th>
-                                <th className="px-6 py-4 font-semibold">Email</th>
-                                <th className="px-6 py-4 font-semibold">Login With</th>
-                                <th className="px-6 py-4 font-semibold text-center">Action</th>
-                            </tr>
-                        </thead>
-
-                        {/* Table body */}
-                        <tbody className="divide-y divide-white/5 text-white/90">
-                            {filteredUsers.map((user: User, index: number) => (
-
-                                <tr key={user._id || index} className="hover:bg-white/5 transition-colors">
-
-                                    <td className="px-6 py-2 text-white/50 font-mono text-sm">
-                                        {String(index + 1).padStart(2, '0')}
-                                    </td>
-
-                                    <td className="px-6 py-2 font-medium">{user.name}</td>
-                                    <td className="px-6 py-2 text-white/70">{user.email}</td>
-                                    <td className="px-6 py-2">
-                                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase border ${user.provider === 'google'
-                                            ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
-                                            : 'bg-orange-500/10 text-orange-500 border-orange-500/20'
-                                            }`}>
-                                            {user.provider}
-                                        </span>
-                                    </td>
-
-                                    <td className="px-6 py-2">
-                                        <div className="flex items-center justify-center">
-                                            <button
-                                                className="p-2 hover:bg-red-500/20 rounded-full text-red-400 transition-all cursor-pointer"
-                                                title="Delete User"
-                                                onClick={() => handleUserDelete(user)}
-                                            >
-                                                <Trash2 size={18} />
-                                            </button>
-                                        </div>
-                                    </td>
-
-
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-left">
+                            <thead>
+                                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                                    {["#", "User", "Email", "Login Method", "Action"].map((h) => (
+                                        <th key={h} className="px-5 py-3.5 text-[11px] font-semibold uppercase tracking-wider"
+                                            style={{ color: "rgba(255,255,255,0.35)" }}>
+                                            {h}
+                                        </th>
+                                    ))}
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {filteredUsers.map((user: User, index: number) => {
+                                    const colorIdx = index % avatarColors.length;
+                                    const initial = (user.name || user.email || "?").charAt(0).toUpperCase();
+                                    return (
+                                        <tr key={user._id || index}
+                                            style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
+                                            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.02)")}
+                                            onMouseLeave={(e) => (e.currentTarget.style.background = "")}>
+
+                                            {/* # */}
+                                            <td className="px-5 py-4 text-xs font-mono"
+                                                style={{ color: "rgba(255,255,255,0.25)" }}>
+                                                {String(index + 1).padStart(2, "0")}
+                                            </td>
+
+                                            {/* User */}
+                                            <td className="px-5 py-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0"
+                                                        style={{ background: avatarColors[colorIdx], color: avatarTextColors[colorIdx] }}>
+                                                        {initial}
+                                                    </div>
+                                                    <p className="text-sm font-semibold text-white">{user.name || "—"}</p>
+                                                </div>
+                                            </td>
+
+                                            {/* Email */}
+                                            <td className="px-5 py-4 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
+                                                {user.email}
+                                            </td>
+
+                                            {/* Provider */}
+                                            <td className="px-5 py-4">
+                                                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase"
+                                                    style={user.provider === "google"
+                                                        ? { background: "rgba(59,130,246,0.12)", color: "#3b82f6", border: "1px solid rgba(59,130,246,0.2)" }
+                                                        : { background: "rgba(249,133,19,0.12)", color: "#f98513", border: "1px solid rgba(249,133,19,0.2)" }
+                                                    }>
+                                                    {user.provider || "local"}
+                                                </span>
+                                            </td>
+
+                                            {/* Action */}
+                                            <td className="px-5 py-4">
+                                                <button
+                                                    title="Delete User"
+                                                    onClick={() => handleUserDelete(user)}
+                                                    className="w-8 h-8 rounded-lg flex items-center justify-center transition-all cursor-pointer"
+                                                    style={{ color: "#ef4444" }}
+                                                    onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(239,68,68,0.12)"; }}
+                                                    onMouseLeave={(e) => { e.currentTarget.style.background = ""; }}
+                                                >
+                                                    <Trash2 size={15} strokeWidth={2} />
+                                                </button>
+                                            </td>
+
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
                 )}
             </div>
-        </>
+
+            {/* Footer count */}
+            {!isLoading && filteredUsers.length > 0 && (
+                <p className="text-xs text-right" style={{ color: "rgba(255,255,255,0.25)" }}>
+                    Showing {filteredUsers.length} of {users.length} users
+                </p>
+            )}
+
+        </div>
     );
 };
 

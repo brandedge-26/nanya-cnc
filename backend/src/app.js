@@ -13,6 +13,7 @@ import { userRoutes } from "./routes/user.routes.js";
 import { dealerRoutes } from "./routes/dealer.routes.js";
 import { productRoutes } from "./routes/product.routes.js";
 import { dealerOrderRoutes } from "./routes/dealerOrder.routes.js";
+import { dealerQuotationRoutes } from "./routes/dealerQuotation.routes.js";
 
 
 
@@ -40,7 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS CONFIGURATION
 app.use(cors({
-    origin: "https://nye-cnc.com",
+    origin: ["http://localhost:3000", "https://nye-cnc.com"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -70,6 +71,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/dealers", dealerRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/dealer-orders", dealerOrderRoutes);
+app.use("/api/dealer-quotations", dealerQuotationRoutes);
 
 
 

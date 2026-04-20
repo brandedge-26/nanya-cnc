@@ -86,7 +86,7 @@ export const useUserStore = create<UserState>((set) => ({
             const { success, message } = response.data;
 
             if (success) {
-                
+
                 toast.success(message);
 
                 set((state) => ({
@@ -104,6 +104,6 @@ export const useUserStore = create<UserState>((set) => ({
             set({ isLoading: false });
         }
     }
-    
+
 
 }));

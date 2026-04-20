@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { Work_Sans } from 'next/font/google';
 import Provider from "@/providers/Providers";
-import DealerPortalHeader from "@/components/dealer/DealerPortalHeader";
+import DealerLayoutClient from "@/components/dealer/DealerLayoutClient";
 
 
 const workSans = Work_Sans({
@@ -10,7 +10,6 @@ const workSans = Work_Sans({
     weight: ['400', '700'],
     display: 'swap',
 });
-
 
 
 export const metadata: Metadata = {
@@ -30,8 +29,9 @@ export default function DealerLayout({
                 className={`${workSans.className} antialiased tracking-tight bg-black text-white`}
             >
                 <Provider>
-                    <DealerPortalHeader />
-                    {children}
+                    <DealerLayoutClient>
+                        {children}
+                    </DealerLayoutClient>
                 </Provider>
             </body>
         </html>

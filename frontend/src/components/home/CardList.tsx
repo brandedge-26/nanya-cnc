@@ -22,12 +22,11 @@ const CardList = () => {
 
             {/* Section Title */}
             <div className="mb-16 text-center">
-                <h1 className="font-bold text-[38px] leading-tight text-white font-serif">
-                    Manufacturing Expertise <br />
-                    <span className="text-(--primary)">That Delivers Results</span>
-                </h1>
+                <h2 className="font-bold text-[38px] leading-tight text-white font-serif">
+                    Explore Our <span className="text-(--primary)">Smart CNC Machines</span>
+                </h2>
                 <p className="text-gray-400 mx-auto mt-4 max-w-xl">
-                    Working with a manufacturing partner who understands your product needs makes all the difference.
+                    Designed for modern manufacturing, our machines deliver performance, precision, and intelligent control.
                 </p>
             </div>
 
@@ -69,11 +68,18 @@ const CardList = () => {
                                     </p>
                                 </div>
 
-                                <Link href={`/products/${product.slug}`}>
-                                    <button className="mt-4 w-full cursor-pointer items-center justify-center border align-middle select-none font-sans font-medium text-center duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none text-sm py-2 px-4 shadow-sm hover:shadow-md bg-amber-500 hover:bg-warning-light relative bg-linear-to-b from-orange-500 to-orange-600 border-orange-600 text-stone-50 rounded-lg hover:bg-linear-to-b hover:from-orange-600 hover:to-orange-600 hover:border-orange-600 after:absolute after:inset-0 after:rounded-[inherit] after:box-shadow after:shadow-[inset_0_1px_0px_rgba(255,255,255,0.35),inset_0_-2px_0px_rgba(0,0,0,0.18)] after:pointer-events-none transition antialiased">
-                                        View Details
-                                    </button>
-                                </Link>
+                                <div className="flex gap-2 mt-4">
+                                    <Link href={`/get-quote`} className="flex-1">
+                                        <button className="w-full cursor-pointer font-medium text-center text-sm py-2 px-4 bg-linear-to-b from-orange-500 to-orange-600 border border-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-600 transition">
+                                            Request a Quote
+                                        </button>
+                                    </Link>
+                                    <Link href={`/products/${product.slug}`} className="flex-1">
+                                        <button className="w-full cursor-pointer font-medium text-center text-sm py-2 px-4 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition">
+                                            View Details
+                                        </button>
+                                    </Link>
+                                </div>
 
                                 {/* Soft Glow */}
                                 <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-br from-(--primary)/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>

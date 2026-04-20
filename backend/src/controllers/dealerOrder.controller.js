@@ -37,6 +37,22 @@ const submitDealerOrderController = async (req, res, next) => {
 
 
 
+// Get orders for the currently logged-in dealer
+const getMyDealerOrdersController = async (req, res, next) => {
+    try {
+
+        const userId = req.user._id;
+        const orders = await DealerOrder.find({ userId }).sort({ createdAt: -1 });
+
+        return res.status(200).json({ success: true, data: orders });
+
+    } catch (err) {
+        next(err);
+    }
+};
+
+
+
 // Get all dealer orders (admin)
 const getAllDealerOrdersController = async (req, res, next) => {
     try {
@@ -105,6 +121,7 @@ const deleteDealerOrderController = async (req, res, next) => {
 
 export {
     submitDealerOrderController,
+    getMyDealerOrdersController,
     getAllDealerOrdersController,
     updateDealerOrderStatusController,
     deleteDealerOrderController
