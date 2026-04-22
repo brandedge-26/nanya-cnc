@@ -129,14 +129,16 @@ const QuotationPage = () => {
                 <p className="text-xs font-semibold uppercase tracking-widest text-orange-500">Your Details</p>
                 <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                        <label className="text-xs font-medium text-gray-400">Full Name</label>
+                        <label className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>Full Name</label>
                         <input type="text" value={user.name || ""} readOnly
-                            className="w-full bg-black/20 border border-white/10 outline-none px-4 py-3 rounded-xl text-white cursor-not-allowed opacity-60 text-sm" />
+                            className="w-full border outline-none px-4 py-3 rounded-xl text-white cursor-not-allowed text-sm opacity-50"
+                            style={{ background: "rgba(255,255,255,0.03)", borderColor: "rgba(255,255,255,0.08)" }} />
                     </div>
                     <div className="space-y-1.5">
-                        <label className="text-xs font-medium text-gray-400">Email</label>
+                        <label className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>Email</label>
                         <input type="email" value={user.email || ""} readOnly
-                            className="w-full bg-black/20 border border-white/10 outline-none px-4 py-3 rounded-xl text-white cursor-not-allowed opacity-60 text-sm" />
+                            className="w-full border outline-none px-4 py-3 rounded-xl text-white cursor-not-allowed text-sm opacity-50"
+                            style={{ background: "rgba(255,255,255,0.03)", borderColor: "rgba(255,255,255,0.08)" }} />
                     </div>
                 </div>
 
@@ -261,8 +263,8 @@ const QuotationPage = () => {
 
                 {/* Message (optional) */}
                 <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-gray-400">
-                        Message <span className="text-white/20 font-normal">(optional)</span>
+                    <label className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>
+                        Message <span style={{ color: "rgba(255,255,255,0.2)", fontWeight: 400 }}>(optional)</span>
                     </label>
                     <textarea rows={4}
                         placeholder="Any specific requirements, quantities, or questions for this quotation..."

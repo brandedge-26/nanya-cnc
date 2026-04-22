@@ -15,9 +15,14 @@ import {
     X,
     ChevronDown,
     KeyRound,
+    MessageSquare,
+    HeadphonesIcon,
 } from "lucide-react";
 import Image from "next/image";
 import { useDealerStore } from "@/store/dealerStore";
+import { useDealerOrderStore } from "@/store/dealerOrderStore";
+import { useDealerQuotationStore } from "@/store/dealerQuotationStore";
+import { useDealerSupportStore } from "@/store/dealerSupportStore";
 import { useAuthStore } from "@/store/authStore";
 import { useModal } from "@/context/ModalContext";
 import ChangePasswordModal from "@/components/sidebar/ChangePasswordModal";
@@ -30,6 +35,8 @@ const menuItems = [
     { label: "Dealer Quotations",  path: "/dashboard/dealer-quotations",  icon: FileText },
     { label: "All Users",          path: "/dashboard/all-users",          icon: Users },
     { label: "All Applications",   path: "/dashboard/all-applications",   icon: ClipboardList },
+    { label: "Consultations",      path: "/dashboard/consultations",      icon: MessageSquare },
+    { label: "Dealer Support",     path: "/dashboard/dealer-support",     icon: HeadphonesIcon },
     { label: "Add Blog",           path: "/dashboard/add-blog",           icon: PlusCircle },
     { label: "All Blogs",          path: "/dashboard/all-blogs",          icon: FileText },
 ];
@@ -41,6 +48,8 @@ const pageTitles: Record<string, string> = {
     "/dashboard/dealer-quotations":      "Dealer Quotations",
     "/dashboard/all-users":              "All Users",
     "/dashboard/all-applications":       "All Applications",
+    "/dashboard/consultations":          "Consultations",
+    "/dashboard/dealer-support":         "Dealer Support",
     "/dashboard/add-blog":               "Add Blog",
     "/dashboard/all-blogs":              "All Blogs",
 };
@@ -53,6 +62,9 @@ export default function DashboardShell({ children }: { children: React.ReactNode
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const { pendingCount, getPendingRequestCount } = useDealerStore();
+    const { pendingOrderCount, getPendingOrderCount } = useDealerOrderStore();
+    const { pendingQuotationCount, getPendingQuotationCount } = useDealerQuotationStore();
+    const { openTicketCount, getOpenTicketCount } = useDealerSupportStore();
     const { logout, user } = useAuthStore();
     const { openModal } = useModal();
 
@@ -61,7 +73,10 @@ export default function DashboardShell({ children }: { children: React.ReactNode
 
     useEffect(() => {
         getPendingRequestCount();
-    }, [getPendingRequestCount]);
+        getPendingOrderCount();
+        getPendingQuotationCount();
+        getOpenTicketCount();
+    }, [getPendingRequestCount, getPendingOrderCount, getPendingQuotationCount, getOpenTicketCount]);
 
     // Close sidebar on route change
     useEffect(() => {
@@ -193,6 +208,21 @@ export default function DashboardShell({ children }: { children: React.ReactNode
                                 {item.label === "Dealer Requests" && pendingCount > 0 && (
                                     <span className="flex items-center justify-center bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px]">
                                         {pendingCount}
+                                    </span>
+                                )}
+                                {item.label === "Dealer Orders" && pendingOrderCount > 0 && (
+                                    <span className="flex items-center justify-center bg-orange-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px]">
+                                        {pendingOrderCount}
+                                    </span>
+                                )}
+                                {item.label === "Dealer Quotations" && pendingQuotationCount > 0 && (
+                                    <span className="flex items-center justify-center bg-orange-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px]">
+                                        {pendingQuotationCount}
+                                    </span>
+                                )}
+                                {item.label === "Dealer Support" && openTicketCount > 0 && (
+                                    <span className="flex items-center justify-center bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px]">
+                                        {openTicketCount}
                                     </span>
                                 )}
                             </Link>

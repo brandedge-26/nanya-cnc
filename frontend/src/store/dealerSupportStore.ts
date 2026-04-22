@@ -16,56 +16,56 @@ const handleError = (err: unknown) => {
 };
 
 
-export interface DealerQuotation {
+export interface DealerSupportTicket {
     _id?: string;
     userId?: string;
     name: string;
     email: string;
-    productName: string;
-    productId?: string;
-    message?: string;
-    status: "pending" | "reviewed" | "sent";
+    topic: string;
+    subject: string;
+    message: string;
+    status: "open" | "in-progress" | "resolved";
     createdAt?: string;
 }
 
-export interface QuotationFormData {
-    productName: string;
-    productId?: string;
-    message?: string;
+export interface DealerSupportFormData {
+    topic: string;
+    subject: string;
+    message: string;
 }
 
 
-interface DealerQuotationState {
+interface DealerSupportState {
     isLoading: boolean;
-    quotations: DealerQuotation[];
+    tickets: DealerSupportTicket[];
     submitted: boolean;
-    pendingQuotationCount: number;
+    openTicketCount: number;
 
-    submitQuotation: (data: QuotationFormData) => Promise<boolean>;
-    getMyQuotations: () => Promise<void>;
-    getAllQuotations: () => Promise<void>;
-    updateQuotationStatus: (id: string, status: string) => Promise<boolean>;
-    deleteQuotation: (id: string) => Promise<boolean>;
+    submitTicket: (data: DealerSupportFormData) => Promise<boolean>;
+    getMyTickets: () => Promise<void>;
+    getAllTickets: () => Promise<void>;
+    updateTicketStatus: (id: string, status: string) => Promise<boolean>;
+    deleteTicket: (id: string) => Promise<boolean>;
     resetSubmitted: () => void;
-    getPendingQuotationCount: () => Promise<void>;
+    getOpenTicketCount: () => Promise<void>;
 }
 
 
-export const useDealerQuotationStore = create<DealerQuotationState>((set) => ({
+export const useDealerSupportStore = create<DealerSupportState>((set) => ({
 
     isLoading: false,
-    quotations: [],
+    tickets: [],
     submitted: false,
-    pendingQuotationCount: 0,
+    openTicketCount: 0,
 
 
-    submitQuotation: async (data: QuotationFormData): Promise<boolean> => {
+    submitTicket: async (data: DealerSupportFormData): Promise<boolean> => {
         set({ isLoading: true });
         try {
-            const response = await api.post("/dealer-quotations/submit", data);
+            const response = await api.post("/dealer-support/submit", data);
             const { success, message } = response.data;
             if (success) {
-                toast.success(message || "Quotation submitted!");
+                toast.success(message || "Support ticket submitted!");
                 set({ submitted: true });
                 return true;
             }
@@ -80,12 +80,12 @@ export const useDealerQuotationStore = create<DealerQuotationState>((set) => ({
     },
 
 
-    getMyQuotations: async (): Promise<void> => {
+    getMyTickets: async (): Promise<void> => {
         set({ isLoading: true });
         try {
-            const response = await api.get("/dealer-quotations/my-quotations");
+            const response = await api.get("/dealer-support/my-tickets");
             const { success, data } = response.data;
-            if (success) set({ quotations: data });
+            if (success) set({ tickets: data });
         } catch (err) {
             const msg = handleError(err);
             toast.error(msg);
@@ -95,12 +95,12 @@ export const useDealerQuotationStore = create<DealerQuotationState>((set) => ({
     },
 
 
-    getAllQuotations: async (): Promise<void> => {
+    getAllTickets: async (): Promise<void> => {
         set({ isLoading: true });
         try {
-            const response = await api.get("/dealer-quotations/all");
+            const response = await api.get("/dealer-support/all");
             const { success, data } = response.data;
-            if (success) set({ quotations: data });
+            if (success) set({ tickets: data });
         } catch (err) {
             const msg = handleError(err);
             toast.error(msg);
@@ -110,15 +110,15 @@ export const useDealerQuotationStore = create<DealerQuotationState>((set) => ({
     },
 
 
-    updateQuotationStatus: async (id: string, status: string): Promise<boolean> => {
+    updateTicketStatus: async (id: string, status: string): Promise<boolean> => {
         set({ isLoading: true });
         try {
-            const response = await api.put(`/dealer-quotations/${id}/update-status`, { status });
+            const response = await api.put(`/dealer-support/${id}/update-status`, { status });
             const { success, data } = response.data;
             if (success) {
                 set((state) => ({
-                    quotations: state.quotations.map((q) =>
-                        q._id === id ? { ...q, status: data.status } : q
+                    tickets: state.tickets.map((t) =>
+                        t._id === id ? { ...t, status: data.status } : t
                     )
                 }));
                 toast.success("Status updated");
@@ -135,16 +135,16 @@ export const useDealerQuotationStore = create<DealerQuotationState>((set) => ({
     },
 
 
-    deleteQuotation: async (id: string): Promise<boolean> => {
+    deleteTicket: async (id: string): Promise<boolean> => {
         set({ isLoading: true });
         try {
-            const response = await api.delete(`/dealer-quotations/${id}/delete`);
+            const response = await api.delete(`/dealer-support/${id}/delete`);
             const { success } = response.data;
             if (success) {
                 set((state) => ({
-                    quotations: state.quotations.filter((q) => q._id !== id)
+                    tickets: state.tickets.filter((t) => t._id !== id)
                 }));
-                toast.success("Quotation deleted");
+                toast.success("Ticket deleted");
                 return true;
             }
             return false;
@@ -160,13 +160,13 @@ export const useDealerQuotationStore = create<DealerQuotationState>((set) => ({
 
     resetSubmitted: () => set({ submitted: false }),
 
-    getPendingQuotationCount: async (): Promise<void> => {
+    getOpenTicketCount: async (): Promise<void> => {
         try {
-            const response = await api.get("/dealer-quotations/all");
+            const response = await api.get("/dealer-support/all");
             const { success, data } = response.data;
             if (success) {
-                const count = (data as DealerQuotation[]).filter(q => q.status === "pending").length;
-                set({ pendingQuotationCount: count });
+                const count = (data as DealerSupportTicket[]).filter(t => t.status === "open").length;
+                set({ openTicketCount: count });
             }
         } catch {
             // silent

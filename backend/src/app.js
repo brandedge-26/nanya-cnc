@@ -14,6 +14,8 @@ import { dealerRoutes } from "./routes/dealer.routes.js";
 import { productRoutes } from "./routes/product.routes.js";
 import { dealerOrderRoutes } from "./routes/dealerOrder.routes.js";
 import { dealerQuotationRoutes } from "./routes/dealerQuotation.routes.js";
+import { consultationRoutes } from "./routes/consultation.routes.js";
+import { dealerSupportRoutes } from "./routes/dealerSupport.routes.js";
 
 
 
@@ -72,6 +74,8 @@ app.use("/api/dealers", dealerRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/dealer-orders", dealerOrderRoutes);
 app.use("/api/dealer-quotations", dealerQuotationRoutes);
+app.use("/api/consultations", consultationRoutes);
+app.use("/api/dealer-support", dealerSupportRoutes);
 
 
 

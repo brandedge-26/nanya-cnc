@@ -68,20 +68,32 @@ const UserAvatar = ({ user }: UserAvatarProps) => {
                     </div>
 
                     {/* Navigation Links */}
+
                     <ul className="space-y-3">
                         <li>
-                            {user?.role === "user" ?
-                                (<Link href="/dealer-request" className="text-sm text-gray-300 hover:text-orange-500 transition block">
+                            {(user?.role === "user" || user?.role === "dealer") ? (
+                                <Link href="/dealer-request" className="text-sm text-gray-300 hover:text-orange-500 transition block">
                                     Dealer Portal
-                                </Link>) :
-                                (<Link href="/dashboard" className="text-sm text-gray-300 hover:text-orange-500 transition block">
+                                </Link>
+                            ) : (
+                                <Link href="/dashboard" className="text-sm text-gray-300 hover:text-orange-500 transition block">
                                     Dashboard
-                                </Link>)}
+                                </Link>
+                            )}
                         </li>
                         <li>
-                            {user?.role === "user" && <Link href="/get-quote" className="text-sm text-gray-300 hover:text-orange-500 transition block">
-                                Get Quote
-                            </Link>}
+                            {(user?.role === "user" || user?.role === "dealer") && (
+                                <Link href="/get-quote" className="text-sm text-gray-300 hover:text-orange-500 transition block">
+                                    Get Quote
+                                </Link>
+                            )}
+                        </li>
+                        <li>
+                            {(user?.role === "user" || user?.role === "dealer") && (
+                                <Link href="/get-consultations" className="text-sm text-gray-300 hover:text-orange-500 transition block">
+                                    Get Consultation
+                                </Link>
+                            )}
                         </li>
                         <li>
                             <button
@@ -92,6 +104,7 @@ const UserAvatar = ({ user }: UserAvatarProps) => {
                             </button>
                         </li>
                     </ul>
+
 
                 </div>
             </div>

@@ -48,6 +48,10 @@ backend/dist/
 backend/build/
 backend/coverage/
 
+
+catelogue/
+/NANYA CHANGES.pdf
+
 # Optional: Ignore uploads (if any)
 backend/uploads/
 backend/tmp/

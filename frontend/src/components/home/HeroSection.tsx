@@ -51,7 +51,7 @@ const HeroSection = () => {
         <div className="mt-10 flex justify-center gap-4 flex-wrap">
 
           <button
-            onClick={() => router.push("/get-quote")}
+            onClick={() => router.push("/get-consultations")}
             className="cursor-pointer px-8 py-3 rounded-full bg-orange-500 text-black font-semibold hover:bg-orange-500/80 transition shadow-lg shadow-orange-500/20">
             Get Consultation
           </button>

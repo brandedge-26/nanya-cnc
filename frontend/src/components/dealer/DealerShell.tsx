@@ -15,6 +15,7 @@ import {
     Menu,
     X,
     ChevronDown,
+    BookOpen,
 } from "lucide-react";
 import Image from "next/image";
 import { useAuthStore } from "@/store/authStore";
@@ -26,6 +27,7 @@ const menuItems = [
     { label: "Quotation",   path: "/dealer-portal/quotation",    icon: FileText },
     { label: "My Orders",   path: "/dealer-portal/my-orders",    icon: PackageSearch },
     { label: "Products",    path: "/dealer-portal/products",     icon: Box },
+    { label: "Catalogue",   path: "/dealer-portal/catalogue",    icon: BookOpen },
     { label: "Profile",     path: "/dealer-portal/profile",      icon: UserCircle },
     { label: "Support",     path: "/dealer-portal/support",      icon: HeadphonesIcon },
 ];
@@ -36,6 +38,7 @@ const pageTitles: Record<string, string> = {
     "/dealer-portal/quotation":     "Request Quotation",
     "/dealer-portal/my-orders":     "My Orders",
     "/dealer-portal/products":      "Products",
+    "/dealer-portal/catalogue":     "Machine Catalogue",
     "/dealer-portal/profile":       "Profile",
     "/dealer-portal/support":       "Support",
 };

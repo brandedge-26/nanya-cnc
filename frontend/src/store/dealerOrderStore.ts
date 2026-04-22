@@ -45,6 +45,7 @@ interface DealerOrderState {
     isLoading: boolean;
     orders: DealerOrder[];
     orderPlaced: boolean;
+    pendingOrderCount: number;
 
     submitOrder: (data: DealerOrderFormData) => Promise<boolean>;
     getMyOrders: () => Promise<void>;
@@ -52,6 +53,7 @@ interface DealerOrderState {
     updateOrderStatus: (id: string, deliveryStatus: string) => Promise<boolean>;
     deleteOrder: (id: string) => Promise<boolean>;
     resetOrderPlaced: () => void;
+    getPendingOrderCount: () => Promise<void>;
 }
 
 
@@ -60,6 +62,7 @@ export const useDealerOrderStore = create<DealerOrderState>((set) => ({
     isLoading: false,
     orders: [],
     orderPlaced: false,
+    pendingOrderCount: 0,
 
 
     // Submit dealer order
@@ -178,5 +181,18 @@ export const useDealerOrderStore = create<DealerOrderState>((set) => ({
 
 
     resetOrderPlaced: () => set({ orderPlaced: false }),
+
+    getPendingOrderCount: async (): Promise<void> => {
+        try {
+            const response = await api.get("/dealer-orders/all");
+            const { success, data } = response.data;
+            if (success) {
+                const count = (data as DealerOrder[]).filter(o => o.deliveryStatus === "pending").length;
+                set({ pendingOrderCount: count });
+            }
+        } catch {
+            // silent
+        }
+    },
 
 }));

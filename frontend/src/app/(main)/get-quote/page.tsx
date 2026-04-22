@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-    title: "Request CNC Consultation | Nanya CNC – Engineering System",
+    title: "Request a Quote | Nanya CNC",
     description:
-        "Request a CNC machine consultation. Tell us your production needs and our engineers will design the right machine setup for your industry.",
+        "Request a price quotation for Nanya CNC machines. Select your machine of interest and our team will send you a detailed quote.",
 };
 
 
-const AboutPage = () => {
+const GetQuotePage = () => {
     return <GetQuoteClient />
 }
 
-export default AboutPage
+export default GetQuotePage

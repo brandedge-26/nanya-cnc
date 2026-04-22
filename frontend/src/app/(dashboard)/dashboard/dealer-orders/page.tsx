@@ -1,184 +1,278 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Loader, Trash2, Search, Package } from "lucide-react";
+import { Trash2, Search, X, ShoppingCart, Clock, Truck, CheckCircle2, Package } from "lucide-react";
 import { useDealerOrderStore, DealerOrder } from "@/store/dealerOrderStore";
 import { useModal } from "@/context/ModalContext";
 import DeleteConfirmPopup from "@/components/popup/DeleteConfirmPopup";
 
+const avatarColors = ["#f98513", "#3b82f6", "#22c55e", "#a855f7", "#ef4444", "#14b8a6"];
+const avatarBgs    = [
+    "rgba(249,133,19,0.15)", "rgba(59,130,246,0.15)", "rgba(34,197,94,0.15)",
+    "rgba(168,85,247,0.15)", "rgba(239,68,68,0.15)",  "rgba(20,184,166,0.15)",
+];
+
+const STATUS_CONFIG = {
+    pending:   { label: "Pending",   color: "#f98513", bg: "rgba(249,133,19,0.12)",  border: "rgba(249,133,19,0.25)",  icon: Clock },
+    shipped:   { label: "Shipped",   color: "#3b82f6", bg: "rgba(59,130,246,0.12)",  border: "rgba(59,130,246,0.25)",  icon: Truck },
+    delivered: { label: "Delivered", color: "#22c55e", bg: "rgba(34,197,94,0.12)",   border: "rgba(34,197,94,0.25)",   icon: CheckCircle2 },
+};
 
 const DealerOrdersPage = () => {
-
     const { isLoading, orders, getAllOrders, updateOrderStatus, deleteOrder } = useDealerOrderStore();
-    const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm,   setSearchTerm]   = useState("");
     const [statusFilter, setStatusFilter] = useState("All");
     const { openModal, closeModal } = useModal();
 
+    useEffect(() => { getAllOrders(); }, [getAllOrders]);
 
-    useEffect(() => {
-        getAllOrders();
-    }, [getAllOrders]);
-
-
-    const filteredOrders = orders.filter((order: DealerOrder) => {
-        const matchesSearch =
-            order.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            order.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            order.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            order.productName.toLowerCase().includes(searchTerm.toLowerCase());
-
-        const matchesStatus = statusFilter === "All" || order.deliveryStatus === statusFilter;
-
-        return matchesSearch && matchesStatus;
+    const filtered = orders.filter((o: DealerOrder) => {
+        const matchSearch =
+            o.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            o.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            o.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            o.productName.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchStatus = statusFilter === "All" || o.deliveryStatus === statusFilter;
+        return matchSearch && matchStatus;
     });
 
+    const pendingCount   = orders.filter(o => o.deliveryStatus === "pending").length;
+    const shippedCount   = orders.filter(o => o.deliveryStatus === "shipped").length;
+    const deliveredCount = orders.filter(o => o.deliveryStatus === "delivered").length;
 
-    const handleDelete = (order: DealerOrder) => {
-        openModal(
-            <DeleteConfirmPopup
-                title={`Order by ${order.name}`}
-                onClose={closeModal}
-                onDelete={() => deleteOrder(order._id as string)}
-            />
-        );
-    };
-
-
-    const handleStatusChange = (orderId: string, newStatus: string) => {
-        updateOrderStatus(orderId, newStatus);
-    };
-
-
-    const getStatusStyles = (status: string) => {
-        switch (status) {
-            case "pending":
-                return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
-            case "shipped":
-                return "bg-blue-500/20 text-blue-400 border-blue-500/30";
-            case "delivered":
-                return "bg-green-500/20 text-green-400 border-green-500/30";
-            default:
-                return "bg-gray-500/20 text-gray-400 border-gray-500/30";
-        }
-    };
-
+    const formatDate = (d?: string) =>
+        d ? new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—";
 
     return (
-        <>
-            <h1 className="mb-3 font-normal tracking-tighter text-[20px]">Dealer Orders</h1>
+        <div className="space-y-5">
 
-            {/* Search & Filter */}
-            <div className="flex flex-col md:flex-row my-5 gap-3 items-center">
-                <div className="relative w-full">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
-                    <input
-                        type="text"
-                        placeholder="Search by name, email, company or product..."
-                        className="w-full bg-black/20 border border-gray-700 outline-none pl-10 pr-4 py-2 rounded-lg focus:ring-1 focus:ring-orange-500 transition text-white"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
+            {/* ── Header ── */}
+            <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                        style={{ background: "rgba(249,133,19,0.12)", color: "#f98513" }}>
+                        <ShoppingCart size={18} strokeWidth={2} />
+                    </div>
+                    <div>
+                        <h1 className="text-lg font-bold text-white">Dealer Orders</h1>
+                        <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
+                            {isLoading ? "Loading…" : `${orders.length} orders · ${pendingCount} pending · ${shippedCount} shipped · ${deliveredCount} delivered`}
+                        </p>
+                    </div>
                 </div>
 
-                <select
-                    className="w-full md:w-48 bg-black/20 border border-gray-700 outline-none px-4 py-2 rounded-lg focus:ring-1 focus:ring-orange-500 text-white cursor-pointer"
-                    value={statusFilter}
-                    onChange={(e) => setStatusFilter(e.target.value)}
-                >
-                    <option value="All" className="bg-gray-900">All</option>
-                    <option value="pending" className="bg-gray-900">Pending</option>
-                    <option value="shipped" className="bg-gray-900">Shipped</option>
-                    <option value="delivered" className="bg-gray-900">Delivered</option>
-                </select>
+                <div className="flex items-center gap-2 flex-wrap w-full sm:w-auto">
+                    <select
+                        value={statusFilter}
+                        onChange={(e) => setStatusFilter(e.target.value)}
+                        className="px-3 py-2.5 rounded-xl text-sm text-white outline-none cursor-pointer"
+                        style={{ background: "#0A0A0A", border: "1px solid rgba(255,255,255,0.1)" }}
+                    >
+                        <option value="All"       className="bg-[#0A0A0A]">All Status</option>
+                        <option value="pending"   className="bg-[#0A0A0A]">Pending</option>
+                        <option value="shipped"   className="bg-[#0A0A0A]">Shipped</option>
+                        <option value="delivered" className="bg-[#0A0A0A]">Delivered</option>
+                    </select>
+
+                    <div className="relative w-full sm:w-64">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2" size={15}
+                            style={{ color: "rgba(255,255,255,0.3)" }} />
+                        <input
+                            type="text"
+                            placeholder="Search name, company, product…"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full pl-9 pr-8 py-2.5 rounded-xl text-sm text-white outline-none transition"
+                            style={{ background: "#0A0A0A", border: "1px solid rgba(255,255,255,0.1)" }}
+                            onFocus={(e) => (e.target.style.borderColor = "rgba(249,133,19,0.5)")}
+                            onBlur={(e)  => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                        />
+                        {searchTerm && (
+                            <button onClick={() => setSearchTerm("")}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                                style={{ color: "rgba(255,255,255,0.3)" }}>
+                                <X size={13} />
+                            </button>
+                        )}
+                    </div>
+                </div>
             </div>
 
-            {/* Table */}
-            <div className="w-full overflow-x-auto rounded-xl border border-white/10 bg-black/20 backdrop-blur-md flex flex-col">
-                {isLoading ? (
-                    <div className="flex-1 flex items-center justify-center p-10">
-                        <Loader className="animate-spin text-orange-500" size={32} />
-                    </div>
-                ) : filteredOrders.length === 0 ? (
-                    <div className="flex-1 flex flex-col items-center justify-center p-10 text-white/50">
-                        <Package size={40} className="mb-3 opacity-30" />
-                        <p className="text-lg">No dealer orders found</p>
-                    </div>
-                ) : (
-                    <table className="w-full text-left border-collapse">
-                        <thead className="bg-white/5 text-white/70 uppercase text-[11px] tracking-wider">
-                            <tr>
-                                <th className="px-6 py-4 font-semibold">#</th>
-                                <th className="px-6 py-4 font-semibold">Customer</th>
-                                <th className="px-6 py-4 font-semibold">Company</th>
-                                <th className="px-6 py-4 font-semibold">Product</th>
-                                <th className="px-6 py-4 font-semibold">Message</th>
-                                <th className="px-6 py-4 font-semibold">Delivery Status</th>
-                                <th className="px-6 py-4 font-semibold">Date</th>
-                                <th className="px-6 py-4 font-semibold text-center">Actions</th>
-                            </tr>
-                        </thead>
+            {/* ── Quick Stats ── */}
+            {!isLoading && orders.length > 0 && (
+                <div className="grid grid-cols-3 gap-3">
+                    {[
+                        { label: "Pending",   value: pendingCount,   color: "#f98513", bg: "rgba(249,133,19,0.08)", icon: Clock },
+                        { label: "Shipped",   value: shippedCount,   color: "#3b82f6", bg: "rgba(59,130,246,0.08)", icon: Truck },
+                        { label: "Delivered", value: deliveredCount, color: "#22c55e", bg: "rgba(34,197,94,0.08)",  icon: CheckCircle2 },
+                    ].map((s) => {
+                        const Icon = s.icon;
+                        return (
+                            <div key={s.label} className="rounded-xl px-4 py-3 flex items-center gap-3"
+                                style={{ background: s.bg, border: `1px solid ${s.color}22` }}>
+                                <Icon size={16} style={{ color: s.color, flexShrink: 0 }} strokeWidth={2} />
+                                <div>
+                                    <p className="text-lg font-bold" style={{ color: s.color }}>{s.value}</p>
+                                    <p className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.4)" }}>{s.label}</p>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
 
-                        <tbody className="divide-y divide-white/5 text-white/90">
-                            {filteredOrders.map((order: DealerOrder, index: number) => (
-                                <tr key={order._id || index} className="hover:bg-white/5 transition-colors">
-                                    <td className="px-6 py-4 text-white/50 font-mono text-sm">
-                                        {String(index + 1).padStart(2, "0")}
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <div className="flex flex-col">
-                                            <span className="font-medium">{order.name}</span>
-                                            <span className="text-[11px] text-white/40">{order.email}</span>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 text-white/70">{order.companyName}</td>
-                                    <td className="px-6 py-4">
-                                        <span className="px-2 py-1 rounded-lg bg-orange-500/10 text-orange-400 text-xs font-medium">
-                                            {order.productName}
-                                        </span>
-                                    </td>
-                                    <td className="px-6 py-4 text-white/50 text-sm max-w-[160px]">
-                                        <p className="truncate" title={order.message}>
-                                            {order.message}
-                                        </p>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <select
-                                            value={order.deliveryStatus}
-                                            onChange={(e) => handleStatusChange(order._id as string, e.target.value)}
-                                            className={`px-3 py-1.5 rounded-lg text-sm font-medium border outline-none cursor-pointer transition-all ${getStatusStyles(order.deliveryStatus)}`}
-                                        >
-                                            <option value="pending" className="bg-gray-800">Pending</option>
-                                            <option value="shipped" className="bg-gray-800">Shipped</option>
-                                            <option value="delivered" className="bg-gray-800">Delivered</option>
-                                        </select>
-                                    </td>
-                                    <td className="px-6 py-4 text-white/40 text-xs">
-                                        {order.createdAt
-                                            ? new Date(order.createdAt).toLocaleDateString("en-IN", {
-                                                day: "2-digit",
-                                                month: "short",
-                                                year: "numeric",
-                                            })
-                                            : "—"}
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <div className="flex items-center justify-center">
-                                            <button
-                                                className="p-2 hover:bg-red-500/20 rounded-full text-red-400 transition-all cursor-pointer"
-                                                title="Delete Order"
-                                                onClick={() => handleDelete(order)}
-                                            >
-                                                <Trash2 size={18} />
-                                            </button>
-                                        </div>
-                                    </td>
+            {/* ── Table ── */}
+            <div className="rounded-2xl overflow-hidden"
+                style={{ background: "#0A0A0A", border: "1px solid rgba(255,255,255,0.07)" }}>
+
+                {isLoading ? (
+                    <div className="flex items-center justify-center py-24 gap-3">
+                        <div className="w-6 h-6 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
+                        <span className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>Loading orders…</span>
+                    </div>
+
+                ) : filtered.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-24 gap-3">
+                        <Package size={40} style={{ color: "rgba(255,255,255,0.1)" }} />
+                        <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>
+                            {searchTerm || statusFilter !== "All" ? "No orders match your filters" : "No dealer orders yet"}
+                        </p>
+                        {(searchTerm || statusFilter !== "All") && (
+                            <button onClick={() => { setSearchTerm(""); setStatusFilter("All"); }}
+                                className="text-xs text-orange-400 hover:text-orange-300 transition cursor-pointer">
+                                Clear filters
+                            </button>
+                        )}
+                    </div>
+
+                ) : (
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-left">
+                            <thead>
+                                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                                    {["#", "Dealer", "Company", "Product", "Message", "Status", "Date", "Action"].map((h) => (
+                                        <th key={h}
+                                            className="px-5 py-3.5 text-[11px] font-semibold uppercase tracking-wider whitespace-nowrap"
+                                            style={{ color: "rgba(255,255,255,0.35)" }}>
+                                            {h}
+                                        </th>
+                                    ))}
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {filtered.map((order: DealerOrder, index: number) => {
+                                    const colorIdx = index % avatarColors.length;
+                                    const sc       = STATUS_CONFIG[order.deliveryStatus] || STATUS_CONFIG.pending;
+                                    const SIcon    = sc.icon;
+
+                                    return (
+                                        <tr key={order._id || index}
+                                            style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
+                                            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.02)")}
+                                            onMouseLeave={(e) => (e.currentTarget.style.background = "")}>
+
+                                            {/* # */}
+                                            <td className="px-5 py-4 text-xs font-mono"
+                                                style={{ color: "rgba(255,255,255,0.25)" }}>
+                                                {String(index + 1).padStart(2, "0")}
+                                            </td>
+
+                                            {/* Dealer */}
+                                            <td className="px-5 py-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0"
+                                                        style={{ background: avatarBgs[colorIdx], color: avatarColors[colorIdx] }}>
+                                                        {order.name.charAt(0).toUpperCase()}
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-sm font-semibold text-white leading-tight">{order.name}</p>
+                                                        <p className="text-[11px] mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>{order.email}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            {/* Company */}
+                                            <td className="px-5 py-4 text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                                                {order.companyName}
+                                            </td>
+
+                                            {/* Product */}
+                                            <td className="px-5 py-4">
+                                                <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap"
+                                                    style={{ background: "rgba(249,133,19,0.1)", color: "#f98513", border: "1px solid rgba(249,133,19,0.2)" }}>
+                                                    {order.productName}
+                                                </span>
+                                            </td>
+
+                                            {/* Message */}
+                                            <td className="px-5 py-4 max-w-[180px]">
+                                                <p className="text-xs truncate" style={{ color: "rgba(255,255,255,0.4)" }}
+                                                    title={order.message}>
+                                                    {order.message || <span style={{ color: "rgba(255,255,255,0.2)" }}>—</span>}
+                                                </p>
+                                            </td>
+
+                                            {/* Status */}
+                                            <td className="px-5 py-4">
+                                                <div className="flex flex-col gap-1.5">
+                                                    <span className="inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full w-fit"
+                                                        style={{ background: sc.bg, color: sc.color, border: `1px solid ${sc.border}` }}>
+                                                        <SIcon size={9} strokeWidth={2.5} />
+                                                        {sc.label}
+                                                    </span>
+                                                    <select
+                                                        value={order.deliveryStatus}
+                                                        onChange={(e) => updateOrderStatus(order._id as string, e.target.value)}
+                                                        className="text-[10px] font-semibold rounded-lg px-2 py-1 outline-none cursor-pointer"
+                                                        style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.5)" }}
+                                                    >
+                                                        <option value="pending"   className="bg-[#141414]">Set Pending</option>
+                                                        <option value="shipped"   className="bg-[#141414]">Set Shipped</option>
+                                                        <option value="delivered" className="bg-[#141414]">Set Delivered</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+
+                                            {/* Date */}
+                                            <td className="px-5 py-4 text-xs whitespace-nowrap"
+                                                style={{ color: "rgba(255,255,255,0.35)" }}>
+                                                {formatDate(order.createdAt)}
+                                            </td>
+
+                                            {/* Delete */}
+                                            <td className="px-5 py-4">
+                                                <button
+                                                    title="Delete Order"
+                                                    onClick={() => openModal(
+                                                        <DeleteConfirmPopup
+                                                            title={`Order by ${order.name}`}
+                                                            onClose={closeModal}
+                                                            onDelete={() => deleteOrder(order._id as string)}
+                                                        />
+                                                    )}
+                                                    className="w-8 h-8 rounded-lg flex items-center justify-center transition-all cursor-pointer"
+                                                    style={{ color: "#ef4444" }}
+                                                    onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(239,68,68,0.12)"; }}
+                                                    onMouseLeave={(e) => { e.currentTarget.style.background = ""; }}
+                                                >
+                                                    <Trash2 size={15} strokeWidth={2} />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
                 )}
             </div>
-        </>
+
+            {!isLoading && filtered.length > 0 && (
+                <p className="text-xs text-right" style={{ color: "rgba(255,255,255,0.25)" }}>
+                    Showing {filtered.length} of {orders.length} orders
+                </p>
+            )}
+        </div>
     );
 };
 

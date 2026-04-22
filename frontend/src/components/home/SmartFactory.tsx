@@ -69,7 +69,7 @@ const SmartFactory = () => {
                         From standalone machines to complete smart manufacturing ecosystems — we power the future of production.
                     </p>
                     <Link
-                        href="/get-quote"
+                        href="/get-consultations"
                         className="inline-block px-8 py-3 rounded-full bg-orange-500 text-black font-semibold hover:bg-orange-500/80 transition shadow-lg shadow-orange-500/20"
                     >
                         Get Free Consultation

@@ -143,12 +143,13 @@ const PlaceOrderPage = () => {
                 <p className="text-xs font-semibold uppercase tracking-widest text-orange-500">Contact Details</p>
                 <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                        <label className="text-xs font-medium text-gray-400">Full Name</label>
+                        <label className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>Full Name</label>
                         <input type="text" value={user?.name || ""} readOnly
-                            className="w-full bg-black/20 border border-white/10 outline-none px-4 py-3 rounded-xl text-white cursor-not-allowed opacity-60 text-sm" />
+                            className="w-full border outline-none px-4 py-3 rounded-xl text-white cursor-not-allowed text-sm opacity-50"
+                            style={{ background: "rgba(255,255,255,0.03)", borderColor: "rgba(255,255,255,0.08)" }} />
                     </div>
                     <div className="space-y-1.5">
-                        <label className="text-xs font-medium text-gray-400">Email <span className="text-orange-500">*</span></label>
+                        <label className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>Email <span className="text-orange-500">*</span></label>
                         <input type="email" name="email" placeholder="your@email.com"
                             value={formData.email} onChange={handleChange} className={inputClass} />
                     </div>
@@ -161,12 +162,12 @@ const PlaceOrderPage = () => {
                 <p className="text-xs font-semibold uppercase tracking-widest text-orange-500">Company Details</p>
                 <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                        <label className="text-xs font-medium text-gray-400">Company Name <span className="text-orange-500">*</span></label>
+                        <label className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>Company Name <span className="text-orange-500">*</span></label>
                         <input type="text" name="companyName" placeholder="Your Business Name"
                             value={formData.companyName} onChange={handleChange} className={inputClass} />
                     </div>
                     <div className="space-y-1.5">
-                        <label className="text-xs font-medium text-gray-400">Company Email <span className="text-orange-500">*</span></label>
+                        <label className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>Company Email <span className="text-orange-500">*</span></label>
                         <input type="email" name="companyEmail" placeholder="business@company.com"
                             value={formData.companyEmail} onChange={handleChange} className={inputClass} />
                     </div>
@@ -225,7 +226,7 @@ const PlaceOrderPage = () => {
 
                 {/* Message */}
                 <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-gray-400">Message / Requirements <span className="text-orange-500">*</span></label>
+                    <label className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>Message / Requirements <span className="text-orange-500">*</span></label>
                     <textarea name="message" rows={5}
                         placeholder="Describe your requirements, quantity, delivery preferences..."
                         value={formData.message} onChange={handleChange}
