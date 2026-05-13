@@ -96,7 +96,8 @@ export const useApplicationStore = create<ApplicationState>((set) => ({
             }
 
         } catch (err) {
-            handleError(err);
+            const msg = handleError(err);
+            toast.error(msg);
             return false;
         } finally {
             set({ isLoading: false });

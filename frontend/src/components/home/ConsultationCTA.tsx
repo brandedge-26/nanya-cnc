@@ -109,14 +109,14 @@ const ConsultationCTA = () => {
                             onChange={handleChange}
                             className="input-glass bg-black/60 text-gray-300"
                         >
-                            <option value="">Select Industry</option>
-                            <option value="Automotive">Automotive</option>
-                            <option value="Aerospace & Defense">Aerospace & Defense</option>
-                            <option value="Medical & Healthcare">Medical & Healthcare</option>
-                            <option value="Mold, Die & Engineering">Mold, Die & Engineering</option>
-                            <option value="Electronics & Semiconductors">Electronics & Semiconductors</option>
-                            <option value="Robotics & Smart Manufacturing">Robotics & Smart Manufacturing</option>
-                            <option value="Other">Other</option>
+                            <option value="" className="bg-black text-white">Select Industry</option>
+                            <option value="Automotive" className="bg-black text-white">Automotive</option>
+                            <option value="Aerospace & Defense" className="bg-black text-white">Aerospace & Defense</option>
+                            <option value="Medical & Healthcare" className="bg-black text-white">Medical & Healthcare</option>
+                            <option value="Mold, Die & Engineering" className="bg-black text-white">Mold, Die & Engineering</option>
+                            <option value="Electronics & Semiconductors" className="bg-black text-white">Electronics & Semiconductors</option>
+                            <option value="Robotics & Smart Manufacturing" className="bg-black text-white">Robotics & Smart Manufacturing</option>
+                            <option value="Other" className="bg-black text-white">Other</option>
                         </select>
                     </div>
 
@@ -131,7 +131,6 @@ const ConsultationCTA = () => {
 
                     <button
                         type="submit"
-                        onClick={handleSubmit}
                         className="w-full py-3 rounded-lg bg-orange-500 text-black font-semibold hover:bg-orange-500/80 transition shadow-lg shadow-orange-500/20 cursor-pointer"
                     >
                         {isLoading ? <Loader className="animate-spin mx-auto" size={20} /> : "Get Free Consultation"}

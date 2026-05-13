@@ -303,14 +303,14 @@ const ConsultationClient = () => {
                                     onChange={(e) => setProjectDetails({ ...projectDetails, industry: e.target.value })}
                                     className="input-glass bg-black/60 text-gray-300"
                                 >
-                                    <option value="">Industry Type</option>
-                                    <option>Automotive</option>
-                                    <option>Aerospace & Defense</option>
-                                    <option>Medical & Healthcare</option>
-                                    <option>Mold, Die & Engineering</option>
-                                    <option>Electronics & Semiconductors</option>
-                                    <option>Robotics & Smart Manufacturing</option>
-                                    <option>Other</option>
+                                    <option value="" className="bg-black text-white">Industry Type</option>
+                                    <option className="bg-black text-white">Automotive</option>
+                                    <option className="bg-black text-white">Aerospace & Defense</option>
+                                    <option className="bg-black text-white">Medical & Healthcare</option>
+                                    <option className="bg-black text-white">Mold, Die & Engineering</option>
+                                    <option className="bg-black text-white">Electronics & Semiconductors</option>
+                                    <option className="bg-black text-white">Robotics & Smart Manufacturing</option>
+                                    <option className="bg-black text-white">Other</option>
                                 </select>
                             </div>
                             <div className="grid sm:grid-cols-2 gap-4">
@@ -342,9 +342,9 @@ const ConsultationClient = () => {
                                     onChange={(e) => setProjectDetails({ ...projectDetails, timeline: e.target.value })}
                                     className="input-glass bg-black/60 text-gray-300"
                                 >
-                                    <option>Urgent</option>
-                                    <option>Normal</option>
-                                    <option>Planning Phase</option>
+                                    <option className="bg-black text-white">Urgent</option>
+                                    <option className="bg-black text-white">Normal</option>
+                                    <option className="bg-black text-white">Planning Phase</option>
                                 </select>
                             </div>
                         </div>

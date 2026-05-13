@@ -15,7 +15,10 @@ const CardList = () => {
         fetchProducts();
     }, [fetchProducts]);
 
-    const displayProducts = products.slice(0, 3);
+    const FEATURED_MODELS = ["HMC-800A", "3105S", "NANO-X8"];
+    const displayProducts = FEATURED_MODELS
+        .map((name) => products.find((p) => p.modelName === name))
+        .filter(Boolean) as typeof products;
 
     return (
         <section className="mx-auto px-6 py-20 bg-black">

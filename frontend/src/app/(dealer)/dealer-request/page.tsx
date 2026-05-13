@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import {
-    Loader, Send, CheckCircle, Globe, TrendingUp,
+    Send, CheckCircle, Globe, TrendingUp,
     HeadphonesIcon, BadgeDollarSign, ShieldCheck,
 } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
@@ -10,6 +10,7 @@ import { Dealer, useDealerStore } from "@/store/dealerStore";
 import toast from "react-hot-toast";
 import PendingStatus from "@/components/dealer/PendingStatus";
 import RejectedStatus from "@/components/dealer/RejectStatus";
+import DealerLoginModal from "@/components/dealer/DealerLoginModal";
 import { useRouter } from "next/dist/client/components/navigation";
 
 
@@ -48,24 +49,29 @@ const inputClass =
 
 const DealerRequest = () => {
 
-    const { user } = useAuthStore();
+    const { user, isAuthenticated, isCheckingAuth } = useAuthStore();
     const router = useRouter();
     const { isLoading, submitRequest, dealerStatus, getDealerStatus } = useDealerStore();
-    const [initialLoad, setInitialLoad] = useState(true);
+    const [statusLoaded, setStatusLoaded] = useState(false);
 
+    // Only fetch dealer status when user is authenticated
     useEffect(() => {
+        if (isCheckingAuth) return;
+        if (!isAuthenticated) return;
+
         const fetchStatus = async () => {
             await getDealerStatus();
-            setInitialLoad(false);
+            setStatusLoaded(true);
         };
         fetchStatus();
-    }, [getDealerStatus]);
+    }, [isCheckingAuth, isAuthenticated, getDealerStatus]);
 
+    // Redirect to dealer portal if request is accepted
     useEffect(() => {
-        if (dealerStatus === "accept") {
+        if (statusLoaded && dealerStatus === "accept") {
             router.replace("/dealer-portal");
         }
-    }, [dealerStatus, router]);
+    }, [dealerStatus, statusLoaded, router]);
 
     const [formData, setFormData] = useState<Dealer>({
         name: user?.name ?? "",
@@ -120,7 +126,22 @@ const DealerRequest = () => {
     };
 
 
-    if (initialLoad) {
+    // Auth is still being checked — show spinner
+    if (isCheckingAuth) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="w-10 h-10 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
+            </div>
+        );
+    }
+
+    // Not logged in — show login modal
+    if (!isAuthenticated) {
+        return <DealerLoginModal />;
+    }
+
+    // Logged in but status not fetched yet — show spinner
+    if (!statusLoaded) {
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <div className="w-10 h-10 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
