@@ -39,37 +39,41 @@ const ProductCard = ({ product }: { product: Product }) => {
     const tag = categoryTag[product.category] || "Precision";
 
     return (
-        <div className="group relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/10 hover:border-orange-500/40">
+        <div className="group relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
 
             {/* Image */}
-            <div className="relative h-56 w-full overflow-hidden bg-black">
-                <Image
-                    src={imageSrc}
-                    alt={primaryImage?.altText || product.modelName}
-                    fill
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
-                    <div className="text-center">
-                        <Zap size={18} className="text-orange-400 mx-auto mb-1" />
-                        <span className="text-xs text-gray-300">High Speed</span>
+            <div className="px-2 pt-2">
+              <div className="machine-neon-wrapper">
+                <div className="relative h-56 w-full overflow-hidden rounded-lg bg-black">
+                    <Image
+                        src={imageSrc}
+                        alt={primaryImage?.altText || product.modelName}
+                        fill
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
+                        <div className="text-center">
+                            <Zap size={18} className="text-orange-400 mx-auto mb-1" />
+                            <span className="text-xs text-gray-300">High Speed</span>
+                        </div>
+                        <div className="text-center">
+                            <Target size={18} className="text-orange-400 mx-auto mb-1" />
+                            <span className="text-xs text-gray-300">Precision</span>
+                        </div>
+                        <div className="text-center">
+                            <Cpu size={18} className="text-orange-400 mx-auto mb-1" />
+                            <span className="text-xs text-gray-300">AI Ready</span>
+                        </div>
                     </div>
-                    <div className="text-center">
-                        <Target size={18} className="text-orange-400 mx-auto mb-1" />
-                        <span className="text-xs text-gray-300">Precision</span>
-                    </div>
-                    <div className="text-center">
-                        <Cpu size={18} className="text-orange-400 mx-auto mb-1" />
-                        <span className="text-xs text-gray-300">AI Ready</span>
+                    {/* Tag badge */}
+                    <div className="absolute top-3 left-3">
+                        <span className="text-xs font-medium px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 backdrop-blur-sm">
+                            {tag}
+                        </span>
                     </div>
                 </div>
-                {/* Tag badge */}
-                <div className="absolute top-3 left-3">
-                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 backdrop-blur-sm">
-                        {tag}
-                    </span>
-                </div>
+              </div>
             </div>
 
             {/* Content */}

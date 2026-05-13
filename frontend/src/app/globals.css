@@ -430,3 +430,23 @@ Injection Mold & Hydraulic Press Machines */
 .custom-zoom-window {
   z-index: 9999 !important;
 }
+
+
+/* ===== NEON PRIMARY BORDER ON MACHINE IMAGE ===== */
+@keyframes neonBorderPulse {
+  0%, 100% {
+    border-color: rgba(249, 133, 19, 0.3);
+    filter: drop-shadow(0 0 4px rgba(249, 133, 19, 0.4));
+  }
+  50% {
+    border-color: rgba(249, 133, 19, 0.9);
+    filter: drop-shadow(0 0 10px rgba(249, 133, 19, 0.8));
+  }
+}
+
+.machine-neon-wrapper {
+  border-radius: 0.5rem;
+  border: 1.5px solid rgba(249, 133, 19, 0.3);
+  animation: neonBorderPulse 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(249, 133, 19, 0.4));
+}

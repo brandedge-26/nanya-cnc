@@ -16,24 +16,21 @@ const Card = ({ image, title, description }: CardProps) => {
             bg-white/10 backdrop-blur-xl
             border border-white/20
             shadow-lg
-            transition-shadow duration-300
-            hover:shadow-2xl
+            transition-all duration-300
             p-3
         "
         >
             {/* Image Wrapper */}
-            <div className="h-55 w-full overflow-hidden group">
+            <div className="machine-neon-wrapper rounded-xl">
+              <div className="h-55 w-full overflow-hidden group rounded-xl">
                 <Image
                     src={image}
                     alt={title}
                     width={500}
                     height={300}
-                    className="
-                    h-full w-full object-cover
-                    transition-transform duration-500 ease-out
-                    group-hover:scale-110 rounded-xl hover:rounded-xl
-                    "
+                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 rounded-xl"
                 />
+              </div>
             </div>
 
             {/* Content */}
