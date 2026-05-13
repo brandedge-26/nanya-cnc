@@ -15,7 +15,7 @@ const CardList = () => {
         fetchProducts();
     }, [fetchProducts]);
 
-    const FEATURED_MODELS = ["HMC-800A", "3105S", "NANO-X8"];
+    const FEATURED_MODELS = ["3605M", "NV-855", "NANO-X8"];
     const displayProducts = FEATURED_MODELS
         .map((name) => products.find((p) => p.modelName === name))
         .filter(Boolean) as typeof products;

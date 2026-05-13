@@ -34,6 +34,11 @@ const ConsultationCTA = () => {
             return;
         }
 
+        if (formData.message.length < 20) {
+            toast.error("Please describe your requirement in at least 20 characters!");
+            return;
+        }
+
         try {
             const payload = {
                 ...formData,
