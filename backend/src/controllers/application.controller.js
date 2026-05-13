@@ -28,11 +28,11 @@ const submitApplicationController = async (req, res, next) => {
         const { firstName, lastName, email, companyName, companyEmail, companyAddress, message } = req.body;
 
         if (!firstName || !lastName || !email || !companyName || !companyEmail || !companyAddress || !message) {
-            return;
+            return res.status(400).json({ success: false, message: "All fields are required!" });
         }
 
         if (message.length < 20) {
-            return;
+            return res.status(400).json({ success: false, message: "Message must be at least 20 characters!" });
         }
 
         await Application.create({

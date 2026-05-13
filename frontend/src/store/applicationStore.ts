@@ -92,6 +92,7 @@ export const useApplicationStore = create<ApplicationState>((set) => ({
                 toast.success(message);
                 return true;
             } else {
+                toast.error(message || "Submission failed!");
                 return false;
             }
 
