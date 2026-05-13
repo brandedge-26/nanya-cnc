@@ -57,9 +57,9 @@ const HeroSection = () => {
           </button>
 
           <button
-            onClick={() => router.push("/products")}
+            onClick={() => router.push("/how-dealer-portal-works")}
             className="cursor-pointer px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition">
-            Explore Smart Machines
+            Access Dealer Portal
           </button>
 
         </div>

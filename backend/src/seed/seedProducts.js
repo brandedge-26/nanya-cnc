@@ -20,9 +20,8 @@ const allProducts = [
         tagline: "Eco-Line 3 Axis CNC Vertical Machining Center",
         description: "The NANO-X8 is a compact yet powerful 3-axis vertical machining center designed for high-precision operations. Featuring a direct-driven spindle at 12,000 RPM with BT-40 taper, roller linear guideways on all axes, and a 24-tool arm-type ATC with 1.8 sec tool change. Ideal for mold making, die work, and precision parts manufacturing.",
         images: [
-            { url: "/products/nano-x8-front.png", altText: "NANO-X8 Front View", isPrimary: true },
-            { url: "/products/nano-x8-angle1.png", altText: "NANO-X8 Angle View" },
-            { url: "/products/nano-x8-angle2.png", altText: "NANO-X8 Side View" },
+            { url: "/machines/nano-x8.jpeg", altText: "NANO-X8 Front View", isPrimary: true },
+            { url: "/machines/nano-x8-second-variant.jpeg", altText: "NANO-X8 Variant View" },
         ],
         specifications: [
             {
@@ -127,9 +126,7 @@ const allProducts = [
         subCategory: "ECO-LINE 3 Axis Machines",
         tagline: "Eco-Line Large-Table 3 Axis Vertical Machining Center",
         description: "The NANO-X10 offers a larger work envelope with 1020mm X-axis travel and 1200x600mm table size. Direct-driven spindle at 12,000 RPM with BT-40 taper, roller linear guideways, and 24-tool ATC. Perfect for larger workpieces requiring precision machining.",
-        images: [
-            { url: "/products/nano-x10-front.png", altText: "NANO-X10 Front View", isPrimary: true },
-        ],
+        images: [],
         specifications: [
             {
                 groupName: "Travel",
@@ -230,9 +227,8 @@ const allProducts = [
         tagline: "High Speed 3 Axis Vertical Machining Center",
         description: "The NV-855 is a high-speed 3-axis vertical machining center with 830mm X-axis travel. Features direct-driven spindle at 12,000 RPM, BT-40 taper, roller linear guideways on all axes, and 24-tool arm-type ATC. Engineered for high-speed precision machining with superior rigidity.",
         images: [
-            { url: "/products/nv-855-angle1.png", altText: "NV-855 Angle View", isPrimary: true },
-            { url: "/products/nv-855-angle2.png", altText: "NV-855 Side View" },
-            { url: "/products/nv-855-front.png", altText: "NV-855 Front View" },
+            { url: "/machines/nv-855.jpeg", altText: "NV-855 Front View", isPrimary: true },
+            { url: "/machines/NV-855.png", altText: "NV-855 Angle View" },
         ],
         specifications: [
             {
@@ -334,9 +330,7 @@ const allProducts = [
         tagline: "High Speed Large-Format 3 Axis Vertical Machining Center",
         description: "The NV-1165 provides a spacious 1100mm X-axis travel and 1200x600mm table. With a direct-driven spindle at 12,000 RPM, BT-40 taper, and enhanced rigidity, it delivers superior performance for larger workpieces requiring precision high-speed machining.",
         images: [
-            { url: "/products/nv-1165-angle1.png", altText: "NV-1165 Angle View", isPrimary: true },
-            { url: "/products/nv-1165-front.png", altText: "NV-1165 Front View" },
-            { url: "/products/nv-1165-angle2.png", altText: "NV-1165 Side View" },
+            { url: "/machines/nv-1165.jpeg", altText: "NV-1165 Front View", isPrimary: true },
         ],
         specifications: [
             {
@@ -430,8 +424,7 @@ const allProducts = [
         tagline: "High Speed Heavy-Duty 3 Axis Vertical Machining Center",
         description: "The NV-1370 is the flagship of the high-speed VMC range with 1300mm X-axis and 750mm Y-axis travel. Rigid inverted Y-shaped structure with full stroke support, 198% increased column span for enhanced rigidity. Direct-driven spindle, 1400x700mm table, ideal for heavy-duty precision machining.",
         images: [
-            { url: "/products/nv-1370-front.png", altText: "NV-1370 Front View", isPrimary: true },
-            { url: "/products/nv-1370-angle1.png", altText: "NV-1370 Angle View" },
+            { url: "/machines/nv-1370.jpeg", altText: "NV-1370 Front View", isPrimary: true },
         ],
         specifications: [
             {
@@ -537,7 +530,7 @@ const allProducts = [
         tagline: "Heavy-Duty Horizontal Machining Center",
         description: "The HMC-630A is a heavy-duty horizontal machining center with 630x630mm pallet, 1050mm X-axis travel, and BT-50 spindle taper. Supports belt, direct, and gear head drive types up to 8000 RPM. 30-tool arm-type ATC and 1200kg table load capacity for demanding production environments.",
         images: [
-            { url: "/products/hmc-630a.png", altText: "HMC-630A/630B Horizontal Machine", isPrimary: true },
+            { url: "/machines/hmc-630A.jpeg", altText: "HMC-630A Horizontal Machining Center", isPrimary: true },
         ],
         specifications: [
             {
@@ -638,7 +631,7 @@ const allProducts = [
         tagline: "Large-Format Heavy-Duty Horizontal Machining Center",
         description: "The HMC-800A features an 800x800mm pallet with 1300mm X-axis travel. BT-50 spindle taper with multiple drive options up to 8000 RPM. 30-tool ATC and up to 2000kg table load. Designed for heavy-duty horizontal machining of large workpieces.",
         images: [
-            { url: "/products/hmc-800a.png", altText: "HMC-800A/800B Horizontal Machine", isPrimary: true },
+            { url: "/machines/HMC-800A.png", altText: "HMC-800A Horizontal Machining Center", isPrimary: true },
         ],
         specifications: [
             {
@@ -715,14 +708,14 @@ const allProducts = [
     //  CNC SLANT-BED LATHE MACHINE
     // ────────────────────────────────────────────────────
     {
-        modelName: "3015S",
-        slug: "3015s",
+        modelName: "3105S",
+        slug: "3105s",
         category: "CNC Slant-Bed Lathe Machine",
         subCategory: "",
         tagline: "Slant-Bed CNC Lathe — Standard Series",
-        description: "The 3015S is a precision slant-bed CNC lathe with Ø740mm swing over bed and 708mm max turning length. Features 12-station turret, 2800 RPM belt-drive spindle, A2-8 nose with 12-inch chuck, and Ø74mm bar capacity. Perfect for high-precision turning operations.",
+        description: "The 3105S is a precision slant-bed CNC lathe with Ø740mm swing over bed and 708mm max turning length. Features 12-station turret, 2800 RPM belt-drive spindle, A2-8 nose with 12-inch chuck, and Ø74mm bar capacity. Perfect for high-precision turning operations.",
         images: [
-            { url: "/products/slant-bed-3015.png", altText: "Slant-Bed 3015S/M/L/XL", isPrimary: true },
+            { url: "/machines/3105S.jpeg", altText: "3105S Slant-Bed CNC Lathe", isPrimary: true },
         ],
         specifications: [
             {
@@ -790,15 +783,13 @@ const allProducts = [
     },
 
     {
-        modelName: "3015M",
-        slug: "3015m",
+        modelName: "3105M",
+        slug: "3105m",
         category: "CNC Slant-Bed Lathe Machine",
         subCategory: "",
         tagline: "Slant-Bed CNC Lathe — Milling Series with BMT Turret",
-        description: "The 3015M is the milling-capable variant with BMT55/65 turret, 12-station tool system, and 4000 RPM rotary tool spindle. Features C-axis with 0.001° indexing for complex mill-turn operations. Available in both BMT55 and BMT65 configurations.",
-        images: [
-            { url: "/products/slant-bed-3015.png", altText: "Slant-Bed 3015M", isPrimary: true },
-        ],
+        description: "The 3105M is the milling-capable variant with BMT55/65 turret, 12-station tool system, and 4000 RPM rotary tool spindle. Features C-axis with 0.001° indexing for complex mill-turn operations. Available in both BMT55 and BMT65 configurations.",
+        images: [],
         specifications: [
             {
                 groupName: "Capacity",
@@ -840,15 +831,13 @@ const allProducts = [
     },
 
     {
-        modelName: "3015L",
-        slug: "3015l",
+        modelName: "3105L",
+        slug: "3105l",
         category: "CNC Slant-Bed Lathe Machine",
         subCategory: "",
         tagline: "Slant-Bed CNC Lathe — Y-Axis Series",
-        description: "The 3015L features Y-axis capability with ±55mm travel for off-center machining. 3000 RPM spindle, 10-inch chuck with A2-8 nose, 12-station BMT55 turret. Ideal for complex parts requiring Y-axis milling operations.",
-        images: [
-            { url: "/products/slant-bed-3015.png", altText: "Slant-Bed 3015L", isPrimary: true },
-        ],
+        description: "The 3105L features Y-axis capability with ±55mm travel for off-center machining. 3000 RPM spindle, 10-inch chuck with A2-8 nose, 12-station BMT55 turret. Ideal for complex parts requiring Y-axis milling operations.",
+        images: [],
         specifications: [
             {
                 groupName: "Capacity",
@@ -901,9 +890,7 @@ const allProducts = [
         subCategory: "",
         tagline: "Large Slant-Bed CNC Lathe — Standard Series",
         description: "The 3605S is a large slant-bed CNC lathe with Ø940mm swing over bed, Ø540mm max turning diameter, and 1342mm turning length. Features Ø119mm bar capacity, 295mm X-axis travel, and 24 m/min rapid traverse. Designed for larger workpiece turning.",
-        images: [
-            { url: "/products/slant-bed-3605.png", altText: "Slant-Bed 3605S/M/L/XL", isPrimary: true },
-        ],
+        images: [],
         specifications: [
             {
                 groupName: "Capacity",
@@ -951,7 +938,7 @@ const allProducts = [
         tagline: "Large Slant-Bed CNC Lathe — Milling Series",
         description: "The 3605M brings milling capability to the large slant-bed platform with Ø520mm turning diameter and 1265mm turning length. Features C-axis indexing and BMT turret for complex mill-turn operations on large parts.",
         images: [
-            { url: "/products/slant-bed-3605.png", altText: "Slant-Bed 3605M", isPrimary: true },
+            { url: "/machines/3605M.jpeg", altText: "3605M Large Slant-Bed CNC Lathe Milling Series", isPrimary: true },
         ],
         specifications: [
             {
@@ -989,7 +976,7 @@ const allProducts = [
         tagline: "CNC Vertical Lathe for Precision Turning",
         description: "The VLT-550 is a precision CNC vertical lathe with 12-inch chuck, Ø550mm max turning diameter, and 580mm Z-axis travel. Features A2-8 spindle nose, 8-station horizontal turret, and 50-2000 RPM spindle speed. FANUC 0i-TF controller included as standard.",
         images: [
-            { url: "/products/vlt-550.png", altText: "VLT-550 Vertical Lathe", isPrimary: true },
+            { url: "/machines/vlt-550.jpeg", altText: "VLT-550 CNC Vertical Lathe", isPrimary: true },
         ],
         specifications: [
             {
@@ -1091,7 +1078,7 @@ const allProducts = [
         tagline: "Large CNC Vertical Lathe for Heavy Workpieces",
         description: "The VLT-750 is a large CNC vertical lathe with 15-inch chuck, Ø750mm max turning diameter, and 700mm Z-axis travel. A2-11 spindle nose, 8-station horizontal turret, 1000kg workpiece capacity. Designed for heavy-duty vertical turning of large components.",
         images: [
-            { url: "/products/vlt-750.png", altText: "VLT-750 Vertical Lathe", isPrimary: true },
+            { url: "/machines/vlt-750.jpeg", altText: "VLT-750 CNC Vertical Lathe", isPrimary: true },
         ],
         specifications: [
             {

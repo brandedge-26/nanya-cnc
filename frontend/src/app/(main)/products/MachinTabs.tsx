@@ -33,6 +33,23 @@ const tabs: Category[] = [
     "Surface Grinder",
 ];
 
+/* ---------- Machine images from /machines/ folder ---------- */
+const machineImages = [
+    "/machines/nv-855.jpeg",
+    "/machines/NV-855.png",
+    "/machines/nv-1165.jpeg",
+    "/machines/nv-1370.jpeg",
+    "/machines/HMC-800A.png",
+    "/machines/hmc-630A.jpeg",
+    "/machines/5AX-C60.jpeg",
+    "/machines/nano-x8.jpeg",
+    "/machines/nano-x8-second-variant.jpeg",
+    "/machines/3105S.jpeg",
+    "/machines/3605M.jpeg",
+    "/machines/vlt-550.jpeg",
+    "/machines/vlt-750.jpeg",
+];
+
 /* ---------- Products (30) ---------- */
 const products: Product[] = Array.from({ length: 30 }, (_, i) => {
     const categories: Category[] = [
@@ -51,7 +68,7 @@ const products: Product[] = Array.from({ length: 30 }, (_, i) => {
         description:
             "High performance industrial machine designed for precision and reliability.",
         category,
-        image: `/01-NYE.jpg`,
+        image: machineImages[i % machineImages.length],
     };
 });
 

@@ -6,6 +6,7 @@ import SmartFactory from "@/components/home/SmartFactory";
 import StatsSection from "@/components/home/StatsSection";
 import IndustriesPreview from "@/components/home/IndustriesPreview";
 import ConsultationCTA from "@/components/home/ConsultationCTA";
+import DealerSection from "@/components/home/DealerSection";
 import BlogsSection from "@/components/home/BlogsSection";
 
 export const metadata = {
@@ -65,14 +66,17 @@ const HomePage = () => {
         <StatsSection />
 
         {/* TRUSTED COMPANIES */}
-        <div className="px-5">
+        {/* <div className="px-5">
           <TrustedCompany />
-        </div>
+        </div> */}
 
         {/* 7. BLOGS / INSIGHTS */}
         <BlogsSection />
 
-        {/* 8. CONSULTATION CTA */}
+        {/* 8. DEALER PORTAL SECTION */}
+        <DealerSection />
+
+        {/* 9. CONSULTATION CTA */}
         <ConsultationCTA />
 
       </section>

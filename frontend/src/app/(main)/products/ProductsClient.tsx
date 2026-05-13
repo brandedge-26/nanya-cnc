@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Product, useProductStore } from "@/store/productStore";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, Zap, Target, Cpu } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 
 /* ---------- Category short labels for tabs ---------- */
@@ -20,60 +20,30 @@ const categoryLabels: Record<string, string> = {
     "Industrial Robotic Technology": "Robotics",
 };
 
-/* ---------- Tag based on category ---------- */
-const categoryTag: Record<string, string> = {
-    "CNC Vertical Machine Center": "AI Optimized",
-    "CNC Horizontal Machine Center": "High Speed",
-    "CNC Slant-Bed Lathe Machine": "Industrial Grade",
-    "CNC Vertical Lathe Machine": "Industrial Grade",
-    "CNC Double Column Machine Center": "High Speed",
-    "Industrial Device": "Smart Device",
-    "Industrial Robotic Technology": "AI Optimized",
-};
-
 
 /* ---------- Futuristic Product Card ---------- */
 const ProductCard = ({ product }: { product: Product }) => {
     const primaryImage = product.images.find(img => img.isPrimary) || product.images[0];
-    const imageSrc = primaryImage?.url;
-    const tag = categoryTag[product.category] || "Precision";
+    const rawUrl = primaryImage?.url ?? "";
+    const imageSrc = rawUrl.replace("/products/", "/machines/");
 
     return (
-        <div className="group relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+        <div className="group relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
 
             {/* Image */}
             <div className="px-2 pt-2">
-              <div className="machine-neon-wrapper">
-                <div className="relative h-56 w-full overflow-hidden rounded-lg bg-black">
-                    <Image
-                        src={imageSrc}
-                        alt={primaryImage?.altText || product.modelName}
-                        fill
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    />
-                    {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6">
-                        <div className="text-center">
-                            <Zap size={18} className="text-orange-400 mx-auto mb-1" />
-                            <span className="text-xs text-gray-300">High Speed</span>
-                        </div>
-                        <div className="text-center">
-                            <Target size={18} className="text-orange-400 mx-auto mb-1" />
-                            <span className="text-xs text-gray-300">Precision</span>
-                        </div>
-                        <div className="text-center">
-                            <Cpu size={18} className="text-orange-400 mx-auto mb-1" />
-                            <span className="text-xs text-gray-300">AI Ready</span>
-                        </div>
-                    </div>
-                    {/* Tag badge */}
-                    <div className="absolute top-3 left-3">
-                        <span className="text-xs font-medium px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 backdrop-blur-sm">
-                            {tag}
-                        </span>
-                    </div>
+                <div className="relative h-56 w-full overflow-hidden rounded-lg bg-white/5 flex items-center justify-center">
+                    {imageSrc ? (
+                        <Image
+                            src={imageSrc}
+                            alt={primaryImage?.altText || product.modelName}
+                            fill
+                            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        />
+                    ) : (
+                        <span className="text-gray-600 text-xs">Image coming soon</span>
+                    )}
                 </div>
-              </div>
             </div>
 
             {/* Content */}
@@ -83,7 +53,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                     {categoryLabels[product.category] || product.category}
                 </span>
 
-                <h3 className="text-white text-lg font-semibold mb-1 font-serif group-hover:text-orange-400 transition-colors duration-300">
+                <h3 className="text-white text-lg font-semibold mb-1">
                     {product.modelName}
                 </h3>
 
@@ -103,15 +73,13 @@ const ProductCard = ({ product }: { product: Product }) => {
                         Get a Quote
                     </button>
                 </Link>
-                <Link href={`/products/${product.slug}`}>
-                    <button className="p-2 rounded-lg bg-white/10 border border-white/10 text-white hover:bg-white/20 hover:border-white/20 transition cursor-pointer">
-                        <ArrowRight size={16} />
+                <Link href={`/products/${product.slug}`} className="flex-1">
+                    <button className="w-full py-2 text-sm font-semibold rounded-lg bg-white/10 border border-white/10 text-white hover:bg-white/15 transition cursor-pointer flex items-center justify-center gap-1.5">
+                        View Details
+                        <ArrowRight size={14} />
                     </button>
                 </Link>
             </div>
-
-            {/* Orange glow border on hover */}
-            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-0 group-hover:ring-1 group-hover:ring-orange-500/20 transition-all duration-300"></div>
         </div>
     );
 };

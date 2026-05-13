@@ -22,15 +22,15 @@ const Card = ({ image, title, description }: CardProps) => {
         >
             {/* Image Wrapper */}
             <div className="machine-neon-wrapper rounded-xl">
-              <div className="h-55 w-full overflow-hidden group rounded-xl">
-                <Image
-                    src={image}
-                    alt={title}
-                    width={500}
-                    height={300}
-                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 rounded-xl"
-                />
-              </div>
+                <div className="h-55 w-full overflow-hidden group rounded-xl">
+                    <Image
+                        src={image}
+                        alt={title}
+                        width={500}
+                        height={300}
+                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 rounded-xl"
+                    />
+                </div>
             </div>
 
             {/* Content */}

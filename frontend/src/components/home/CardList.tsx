@@ -42,6 +42,8 @@ const CardList = () => {
                 <div className="grid grid-cols-3 gap-5 max-md:grid-cols-2 max-sm:grid-cols-1">
                     {displayProducts.map((product) => {
                         const primaryImage = product.images?.find(img => img.isPrimary) || product.images?.[0];
+                        const rawUrl = primaryImage?.url ?? "";
+                        const resolvedUrl = rawUrl.replace("/products/", "/machines/");
                         return (
                             <div
                                 key={product._id}
@@ -50,7 +52,7 @@ const CardList = () => {
                                 {/* Image */}
                                 <div className="h-55 w-full overflow-hidden group bg-black rounded-xl border border-white/20">
                                     <Image
-                                        src={primaryImage?.url || ""}
+                                        src={resolvedUrl}
                                         alt={primaryImage?.altText || product.modelName}
                                         width={500}
                                         height={300}

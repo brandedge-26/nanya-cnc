@@ -99,6 +99,7 @@ const ProductDetailClient = ({ slug }: { slug: string }) => {
 
     const primaryImage = singleProduct.images.find(img => img.isPrimary) || singleProduct.images[0];
     const currentImage = singleProduct.images[activeImage] || primaryImage;
+    const resolveUrl = (url?: string) => (url ?? "").replace("/products/", "/machines/");
 
 
     return (
@@ -142,7 +143,7 @@ const ProductDetailClient = ({ slug }: { slug: string }) => {
                     >
                         {/* Original Image */}
                         <Image
-                            src={currentImage?.url || "/01-NYE.jpg"}
+                            src={resolveUrl(currentImage?.url) || "/01-NYE.jpg"}
                             alt={currentImage?.altText || singleProduct.modelName}
                             fill
                             className="object-cover"
@@ -153,7 +154,7 @@ const ProductDetailClient = ({ slug }: { slug: string }) => {
                             <div
                                 className="absolute inset-0 pointer-events-none z-10 transition-opacity duration-150"
                                 style={{
-                                    backgroundImage: `url(${currentImage?.url || "/01-NYE.jpg"})`,
+                                    backgroundImage: `url(${resolveUrl(currentImage?.url) || "/01-NYE.jpg"})`,
                                     backgroundPosition: `${position.x}% ${position.y}%`,
                                     backgroundSize: "250%",
                                     backgroundRepeat: "no-repeat",
@@ -176,7 +177,7 @@ const ProductDetailClient = ({ slug }: { slug: string }) => {
                                         }`}
                                 >
                                     <Image
-                                        src={img.url}
+                                        src={resolveUrl(img.url)}
                                         alt={img.altText || `View ${idx + 1}`}
                                         width={100}
                                         height={75}
