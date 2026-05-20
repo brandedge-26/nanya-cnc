@@ -37,6 +37,7 @@ const menuItems = [
     { label: "All Applications",   path: "/dashboard/all-applications",   icon: ClipboardList },
     { label: "Consultations",      path: "/dashboard/consultations",      icon: MessageSquare },
     { label: "Dealer Support",     path: "/dashboard/dealer-support",     icon: HeadphonesIcon },
+    { label: "Finance Applications", path: "/dashboard/finance-applications", icon: FileText },
     { label: "Add Blog",           path: "/dashboard/add-blog",           icon: PlusCircle },
     { label: "All Blogs",          path: "/dashboard/all-blogs",          icon: FileText },
 ];
@@ -50,6 +51,7 @@ const pageTitles: Record<string, string> = {
     "/dashboard/all-applications":       "All Applications",
     "/dashboard/consultations":          "Consultations",
     "/dashboard/dealer-support":         "Dealer Support",
+    "/dashboard/finance-applications":   "Finance Applications",
     "/dashboard/add-blog":               "Add Blog",
     "/dashboard/all-blogs":              "All Blogs",
 };

@@ -605,6 +605,8 @@ const Header = () => {
 
                             <Link href="/blogs" className={`hover:text-(--primary) cursor-pointer ${pathname === "/blogs" ? "text-orange-500" : ""}`}>Blogs</Link>
 
+                            <Link href="/finance" className={`hover:text-(--primary) cursor-pointer ${pathname.startsWith("/finance") ? "text-orange-500" : ""}`}>Finance</Link>
+
                         </nav>
 
 
@@ -767,6 +769,7 @@ const Header = () => {
                         </div>
 
                         <Link href="/blogs" className="cursor-pointer">Blogs</Link>
+                        <Link href="/finance" className="cursor-pointer">Finance</Link>
 
 
                         {/* In mobile menu if user do note show login */}
