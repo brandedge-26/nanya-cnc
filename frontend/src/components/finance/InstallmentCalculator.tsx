@@ -295,7 +295,7 @@ function EzFinancingSection() {
                     ))}
                 </div>
                 <p className="text-[11px] mt-3 font-medium" style={{ color: "rgba(249,133,19,0.5)" }}>
-                    WWW.NANYA-CNC.COM
+                    WWW.NYE-CNC.COM
                 </p>
             </div>
 

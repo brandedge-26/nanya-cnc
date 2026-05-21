@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import Header from "@/components/home/Header";
-import Footer from "@/components/home/Footer";
+import ConditionalFooter from "@/components/home/ConditionalFooter";
 import UtilityBar from "@/components/home/UtilityBar";
 import { Work_Sans } from 'next/font/google';
 import Provider from "@/providers/Providers";
@@ -84,7 +84,7 @@ export default function MainLayout({
                 {/* <script src="//code.tidio.co/q0rbikpfrmby33jbvifhmfwmwzvqgys4.js" async></script> */}
 
                 {/* Footer */}
-                <Footer />
+                <ConditionalFooter />
 
             </body>
         </html>
