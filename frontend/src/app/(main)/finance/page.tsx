@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Calculator, FileText } from "lucide-react";
 import InstallmentCalculator from "@/components/finance/InstallmentCalculator";
 import FinanceApplicationForm from "@/components/finance/FinanceApplicationForm";
@@ -8,11 +9,50 @@ import FinanceApplicationForm from "@/components/finance/FinanceApplicationForm"
 export default function FinancePage() {
     const [activeTab, setActiveTab] = useState<"calculator" | "form">("calculator");
 
+    const goToCalculator = () => {
+        setActiveTab("calculator");
+        document.getElementById("finance-tabs")?.scrollIntoView({ behavior: "smooth" });
+    };
+
     return (
         <div className="min-h-screen" style={{ background: "#0a0a0a" }}>
 
+            {/* ── Banner Image ── */}
+            <div className="w-full p-[30px]">
+                {/* Desktop */}
+                <Image
+                    src="/finance-banner.png"
+                    alt="Finance Banner"
+                    width={1920}
+                    height={600}
+                    className="w-full object-cover hidden sm:block"
+                    priority
+                />
+                {/* Mobile */}
+                <Image
+                    src="/mobile-banner.jpeg"
+                    alt="Finance Banner"
+                    width={768}
+                    height={500}
+                    className="w-full object-cover block sm:hidden"
+                    priority
+                />
+            </div>
+
+            {/* ── CTA Button ── */}
+            <div className="flex justify-center py-8" style={{ background: "#0d0d0d" }}>
+                <button
+                    onClick={goToCalculator}
+                    className="flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold tracking-wide transition-all hover:scale-105 cursor-pointer"
+                    style={{ background: "#f98513", color: "#fff", boxShadow: "0 0 24px rgba(249,133,19,0.35)" }}
+                >
+                    <Calculator size={16} strokeWidth={2.5} />
+                    Calculate Your EMI
+                </button>
+            </div>
+
             {/* ── Page Hero / Tab Header ── */}
-            <div className="relative overflow-hidden" style={{ background: "#0d0d0d", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+            <div id="finance-tabs" className="relative overflow-hidden" style={{ background: "#0d0d0d", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
                 {/* Grid bg */}
                 <div className="absolute inset-0 pointer-events-none" style={{
                     backgroundImage: `linear-gradient(rgba(249,133,19,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(249,133,19,0.04) 1px, transparent 1px)`,

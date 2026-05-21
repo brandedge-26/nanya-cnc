@@ -147,7 +147,7 @@ const IndustryDetailClient = ({ slug }: { slug: string }) => {
                                     {/* Image */}
                                     <div className="h-55 w-full overflow-hidden group rounded-xl bg-black border border-white/10">
                                         <Image
-                                            src={primaryImage?.url || ""}
+                                            src={primaryImage?.url || "/placeholder.png"}
                                             alt={primaryImage?.altText || product.modelName}
                                             width={500}
                                             height={300}
