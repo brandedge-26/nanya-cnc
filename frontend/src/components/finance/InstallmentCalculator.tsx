@@ -47,9 +47,9 @@ function EzFinancingSection() {
     ];
 
     const machines = [
-        { model: "NV-855",  table: "1000 × 550 mm", spindle: "8000 rpm", power: "11 / 15 kW" },
-        { model: "NV-1165", table: "1200 × 650 mm", spindle: "8000 rpm", power: "15 / 18.5 kW" },
-        { model: "NV-1370", table: "1500 × 700 mm", spindle: "8000 rpm", power: "18.5 / 22 kW" },
+        { model: "NV-855",  table: "1000 × 550 mm", spindle: "12000 rpm", power: "11 / 15 kW" },
+        { model: "NV-1165", table: "1200 × 650 mm", spindle: "12000 rpm", power: "15 / 18.5 kW" },
+        { model: "NV-1370", table: "1500 × 700 mm", spindle: "12000 rpm", power: "18.5 / 22 kW" },
     ];
 
     const financingSolutions = [
