@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// const API_BASE_URL = "https://api.nye-cnc.com/api";
-const API_BASE_URL = "http://localhost:5510/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
 
 
 

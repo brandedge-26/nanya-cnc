@@ -117,7 +117,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
     // Login with google
     loginWithGoogle: () => {
-        window.location.href = "https://api.nye-cnc.com/api/auth/google"
+        window.location.href = `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google`
     },
 
 
