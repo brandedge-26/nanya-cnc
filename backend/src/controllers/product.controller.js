@@ -14,7 +14,7 @@ const getAllProductsController = async (req, res, next) => {
         }
 
         const products = await Product.find(filter)
-            .select("modelName slug tagline category subCategory images machineWeight isFeatured")
+            .select("modelName slug tagline category subCategory images machineWeight isFeatured updatedAt")
             .sort({ sortOrder: 1, createdAt: -1 });
 
         return res.status(200).json({

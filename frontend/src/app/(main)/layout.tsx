@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import Header from "@/components/home/Header";
 import ConditionalFooter from "@/components/home/ConditionalFooter";
 import UtilityBar from "@/components/home/UtilityBar";
 import { Work_Sans } from 'next/font/google';
 import Provider from "@/providers/Providers";
+import JsonLd from "@/components/seo/JsonLd";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 
 const workSans = Work_Sans({
@@ -15,23 +17,53 @@ const workSans = Work_Sans({
 
 
 
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    themeColor: "#f98513",
+};
+
 export const metadata: Metadata = {
-    metadataBase: new URL("https://www.nanyacnc.com"),
+    metadataBase: new URL("https://www.nye-cnc.com"),
     title: {
         default: "NANYA CNC | Precision CNC Machines & Manufacturing Solutions",
         template: "%s | NANYA CNC",
     },
     description:
         "NANYA CNC delivers high-performance CNC machining centers, vertical mills, lathes, surface grinders, and 5-axis machines built for precision manufacturing. Trusted by industries worldwide for reliability and cutting-edge technology.",
+    alternates: {
+        canonical: "/",
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+        },
+    },
     keywords: [
+        "NANYA CNC",
+        "Nanya CNC",
+        "Nanya",
+        "NANYACNC",
+        "nanyacnc",
+        "NYE CNC",
+        "NYECNC",
+        "nye cnc",
+        "nyecnc",
         "CNC machines",
+        "CNC machinery",
+        "CNC machine manufacturer",
         "CNC machining center",
         "vertical machining center",
         "CNC lathe",
         "5-axis CNC",
         "surface grinder",
         "precision manufacturing",
-        "NANYA CNC",
         "industrial machines",
     ],
     openGraph: {
@@ -74,6 +106,8 @@ export default function MainLayout({
             <body
                 className={`${workSans.className} antialiased tracking-tight`}
             >
+
+                <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
 
                 <Provider>
                     <UtilityBar />

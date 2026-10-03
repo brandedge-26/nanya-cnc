@@ -1,6 +1,9 @@
 export const metadata = {
-    title: "Privacy Policy | NANYA CNC",
+    title: "Privacy Policy",
     description: "Privacy Policy based on legal confidentiality and contract handling terms used by NANYA CNC.",
+    alternates: {
+        canonical: "/privacy-policy",
+    },
 };
 
 const privacySections = [

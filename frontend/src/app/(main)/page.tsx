@@ -10,13 +10,33 @@ import DealerSection from "@/components/home/DealerSection";
 import BlogsSection from "@/components/home/BlogsSection";
 
 export const metadata = {
-  title: "Nanya CNC | AI-Powered CNC Manufacturing for the Next Industrial Era",
+  title: "AI-Powered CNC Manufacturing for the Next Industrial Era",
   description:
     "Nanya CNC combines precision engineering with intelligent automation to deliver faster production, higher accuracy, and smarter manufacturing solutions.",
+  keywords: [
+    "NANYA CNC",
+    "Nanya CNC",
+    "Nanya",
+    "NANYACNC",
+    "nanyacnc",
+    "NYE CNC",
+    "NYECNC",
+    "nye cnc",
+    "nyecnc",
+    "CNC machinery",
+    "CNC machines",
+    "CNC machine manufacturer",
+    "CNC machining center",
+    "precision manufacturing",
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Nanya CNC | AI-Powered CNC Manufacturing for the Next Industrial Era",
     description:
       "Nanya CNC combines precision engineering with intelligent automation to deliver faster production, higher accuracy, and smarter manufacturing solutions.",
+    url: "/",
     type: "website",
     images: [
       {
