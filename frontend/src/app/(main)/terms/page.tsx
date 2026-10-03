@@ -1,6 +1,9 @@
 export const metadata = {
-    title: "Terms & Conditions | NANYA CNC",
+    title: "Terms & Conditions",
     description: "Terms and Conditions governing sales of products by NANYA CNC ENTERPRISE CO., LTD.",
+    alternates: {
+        canonical: "/terms",
+    },
 };
 
 const termSections = [

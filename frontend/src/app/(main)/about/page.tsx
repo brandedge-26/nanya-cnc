@@ -4,9 +4,19 @@ import OurJourney from "@/components/about/OurJourney";
 import Link from "next/link";
 
 export const metadata = {
-    title: "About Us | Nanya CNC – Engineering Intelligence into Every Machine",
+    title: "About Us – Engineering Intelligence into Every Machine",
     description:
         "Nanya CNC combines advanced engineering with AI-driven innovation to redefine modern manufacturing. From precision machining to smart factory solutions.",
+    alternates: {
+        canonical: "/about",
+    },
+    openGraph: {
+        title: "About Us | Nanya CNC – Engineering Intelligence into Every Machine",
+        description:
+            "Nanya CNC combines advanced engineering with AI-driven innovation to redefine modern manufacturing. From precision machining to smart factory solutions.",
+        url: "/about",
+        type: "website",
+    },
 };
 
 const AboutPage = () => {

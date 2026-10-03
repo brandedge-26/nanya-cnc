@@ -2,9 +2,19 @@ import ProductsClient from "./ProductsClient";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Smart CNC Machines | Nanya CNC – AI-Optimized Manufacturing",
+    title: "Smart CNC Machines – AI-Optimized Manufacturing",
     description:
         "Explore Nanya CNC's AI-optimized machine range. Find the perfect CNC machine using smart filters, real-time comparisons, and intelligent recommendations.",
+    alternates: {
+        canonical: "/products",
+    },
+    openGraph: {
+        title: "Smart CNC Machines | Nanya CNC – AI-Optimized Manufacturing",
+        description:
+            "Explore Nanya CNC's AI-optimized machine range. Find the perfect CNC machine using smart filters, real-time comparisons, and intelligent recommendations.",
+        url: "/products",
+        type: "website",
+    },
 };
 
 

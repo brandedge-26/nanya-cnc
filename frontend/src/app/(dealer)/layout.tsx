@@ -15,6 +15,10 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
     title: "Dealer Portal | NANYA CNC",
     description: "NANYA CNC Dealer Portal",
+    robots: {
+        index: false,
+        follow: false,
+    },
 };
 
 

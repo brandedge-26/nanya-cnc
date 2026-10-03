@@ -1,9 +1,19 @@
 import EquipmentsClient from "./EquipmentsClient";
 
 export const metadata = {
-    title: "Equipments | NANYA CNC – CNC Machine Accessories & Tooling",
+    title: "Equipments – CNC Machine Accessories & Tooling",
     description:
         "Explore NANYA CNC's range of high-quality CNC equipment including tool holders, workholding solutions, coolant systems, rotary tables, measurement probes, and machine accessories.",
+    alternates: {
+        canonical: "/equipments",
+    },
+    openGraph: {
+        title: "Equipments | NANYA CNC – CNC Machine Accessories & Tooling",
+        description:
+            "Explore NANYA CNC's range of high-quality CNC equipment including tool holders, workholding solutions, coolant systems, rotary tables, measurement probes, and machine accessories.",
+        url: "/equipments",
+        type: "website",
+    },
 };
 
 const EquipmentsPage = () => {

@@ -17,6 +17,10 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
     title: "Admin Dashboard | NANYA CNC",
     description: "NANYA CNC Admin Dashboard",
+    robots: {
+        index: false,
+        follow: false,
+    },
 };
 
 

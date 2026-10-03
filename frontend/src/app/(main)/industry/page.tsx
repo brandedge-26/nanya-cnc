@@ -2,9 +2,19 @@ import IndustryCard from "@/components/industry/IndustryCard";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Industries | Nanya CNC – Intelligent CNC Solutions for Every Industry",
+    title: "Industries – Intelligent CNC Solutions for Every Industry",
     description:
         "From automotive to aerospace, Nanya CNC delivers precision-driven, AI-powered manufacturing solutions tailored to the unique demands of every industry.",
+    alternates: {
+        canonical: "/industry",
+    },
+    openGraph: {
+        title: "Industries | Nanya CNC – Intelligent CNC Solutions for Every Industry",
+        description:
+            "From automotive to aerospace, Nanya CNC delivers precision-driven, AI-powered manufacturing solutions tailored to the unique demands of every industry.",
+        url: "/industry",
+        type: "website",
+    },
 };
 
 const IndustryPage = () => {
