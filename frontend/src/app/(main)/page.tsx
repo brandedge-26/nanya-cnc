@@ -13,6 +13,22 @@ export const metadata = {
   title: "AI-Powered CNC Manufacturing for the Next Industrial Era",
   description:
     "Nanya CNC combines precision engineering with intelligent automation to deliver faster production, higher accuracy, and smarter manufacturing solutions.",
+  keywords: [
+    "NANYA CNC",
+    "Nanya CNC",
+    "Nanya",
+    "NANYACNC",
+    "nanyacnc",
+    "NYE CNC",
+    "NYECNC",
+    "nye cnc",
+    "nyecnc",
+    "CNC machinery",
+    "CNC machines",
+    "CNC machine manufacturer",
+    "CNC machining center",
+    "precision manufacturing",
+  ],
   alternates: {
     canonical: "/",
   },

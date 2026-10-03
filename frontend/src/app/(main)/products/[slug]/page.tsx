@@ -74,9 +74,16 @@ export const generateMetadata = async ({
     return {
         title,
         description,
-        keywords: [title, product.category, product.subCategory, "CNC machine", "NANYA CNC"].filter(
-            (v): v is string => Boolean(v)
-        ),
+        keywords: [
+            title,
+            product.category,
+            product.subCategory,
+            "CNC machine",
+            "CNC machinery",
+            "NANYA CNC",
+            "Nanya CNC",
+            "NYE CNC",
+        ].filter((v): v is string => Boolean(v)),
         alternates: {
             canonical: canonicalPath,
         },

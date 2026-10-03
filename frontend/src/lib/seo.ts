@@ -26,11 +26,24 @@ export const toPlainDescription = (html: string, maxLength = 160) => {
     return `${plain.slice(0, maxLength - 1).trimEnd()}…`;
 };
 
+// Brand-name variants people search for — helps Google tie all of these
+// queries back to this one business entity (brand disambiguation).
+export const BRAND_ALTERNATE_NAMES = [
+    "Nanya CNC",
+    "NANYACNC",
+    "Nanya",
+    "Nanya Enterprise",
+    "NYE CNC",
+    "NYECNC",
+    "NYE",
+];
+
 export const organizationJsonLd = () => ({
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
+    alternateName: BRAND_ALTERNATE_NAMES,
     url: SITE_URL,
     logo: absoluteUrl(DEFAULT_OG_IMAGE),
     sameAs: [] as string[],

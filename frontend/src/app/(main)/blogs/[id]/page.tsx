@@ -50,7 +50,16 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     return {
         title: blog.title,
         description,
-        keywords: [blog.title, categoryLabel, "NANYA CNC", "CNC manufacturing", "CNC machining"],
+        keywords: [
+            blog.title,
+            categoryLabel,
+            "NANYA CNC",
+            "Nanya CNC",
+            "NYE CNC",
+            "CNC manufacturing",
+            "CNC machining",
+            "CNC machinery",
+        ],
         alternates: {
             canonical: canonicalPath,
         },
